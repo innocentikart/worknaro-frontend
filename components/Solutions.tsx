@@ -1,0 +1,113 @@
+"use client";
+
+import {
+  BookOpen,
+  Briefcase,
+  Heart,
+  Rocket,
+  Share2,
+  Store,
+  UserRound,
+  Users,
+  type LucideIcon,
+} from "lucide-react";
+import {
+  FadeInWhenVisible,
+  StaggerChildren,
+} from "@/components/ui/AnimatedSection";
+import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
+import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
+import { solutions } from "@/lib/content";
+
+type AudienceAccent = "blue" | "teal" | "purple" | "orange";
+
+type AudienceMeta = {
+  icon: LucideIcon;
+  accent: AudienceAccent;
+  visual: ModuleVisualKind;
+};
+
+const AUDIENCE_META: Record<(typeof solutions)[number]["id"], AudienceMeta> = {
+  startups: { icon: Rocket, accent: "blue", visual: "projects" },
+  agencies: { icon: Briefcase, accent: "teal", visual: "clients" },
+  freelancers: { icon: UserRound, accent: "purple", visual: "tasks" },
+  "small-businesses": { icon: Store, accent: "orange", visual: "invoice" },
+  "larger-organizations": { icon: Share2, accent: "blue", visual: "team" },
+  nonprofits: { icon: Heart, accent: "teal", visual: "programs" },
+  "education-teams": { icon: BookOpen, accent: "purple", visual: "education" },
+  "client-service": { icon: Users, accent: "orange", visual: "clients-handshake" },
+};
+
+export function Solutions({
+  showHeading = true,
+  limit,
+}: {
+  showHeading?: boolean;
+  limit?: number;
+}) {
+  const items = typeof limit === "number" ? solutions.slice(0, limit) : solutions;
+
+  return (
+    <section
+      className="solutions-section relative overflow-hidden"
+      aria-labelledby={showHeading ? "solutions-heading" : undefined}
+    >
+      <div className="audience-ambient" aria-hidden="true" />
+
+      <div className="why-wrap relative py-16 lg:py-24">
+        {showHeading ? (
+          <FadeInWhenVisible>
+            <div className="mx-auto max-w-5xl text-center">
+              <p className="audience-eyebrow mx-auto">Product Features</p>
+              <h2
+                id="solutions-heading"
+                className="audience-heading font-display mt-5"
+              >
+                <span className="audience-heading-line">
+                  Powerful tools and features designed to help teams
+                </span>
+                <span className="audience-heading-accent">
+                  collaborate
+                  <AccentUnderline wide />
+                </span>
+              </h2>
+              <p className="audience-lead mx-auto mt-5 max-w-2xl">
+                Manage projects, and achieve more — all in one place.
+              </p>
+            </div>
+          </FadeInWhenVisible>
+        ) : null}
+
+        <StaggerChildren
+          className={[
+            "about-pillar-grid mx-auto grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6",
+            showHeading ? "mt-12 lg:mt-16" : "",
+          ].join(" ")}
+        >
+          {items.map((item, index) => {
+            const meta = AUDIENCE_META[item.id];
+            return (
+              <FadeInWhenVisible key={item.id} className="h-full" delay={index * 50}>
+                <PremiumModuleCard
+                  title={item.title}
+                  description={item.description}
+                  icon={meta.icon}
+                  accent={meta.accent}
+                  index={index}
+                  href={`/solutions#${item.id}`}
+                  ctaLabel="Learn more"
+                  visual={meta.visual}
+                />
+              </FadeInWhenVisible>
+            );
+          })}
+        </StaggerChildren>
+      </div>
+    </section>
+  );
+}
+
+export function SolutionsLight({ showHeading = true }: { showHeading?: boolean }) {
+  return <Solutions showHeading={showHeading} />;
+}

@@ -1,0 +1,87 @@
+"use client";
+
+import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
+import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { djangoRoutes } from "@/lib/site";
+
+export function CTA({
+  cmsCta,
+}: {
+  cmsCta?: {
+    title?: string;
+    body?: string;
+    meta?: { primary_label?: string; secondary_label?: string };
+  } | null;
+}) {
+  const title = cmsCta?.title || "Ready to bring your work together?";
+  const body =
+    cmsCta?.body ||
+    "Create your Organitio workspace in the application—projects, tasks, clients, files, and finance already live there.";
+  const primary = cmsCta?.meta?.primary_label || "Get Started";
+  const secondary = cmsCta?.meta?.secondary_label || "Sign In";
+  const hasTogether = /together\??$/i.test(title.trim());
+  const accentWord = hasTogether ? "together?" : title.split(" ").slice(-1)[0];
+  const beforeAccent = hasTogether
+    ? title.replace(/\s*together\??$/i, "").trim()
+    : title.replace(new RegExp(`\\s*${accentWord.replace(/[?*+^$(){}|[\]\\]/g, "\\$&")}$`), "").trim();
+
+  return (
+    <section className="final-cta-section relative overflow-x-clip" aria-labelledby="final-cta-heading">
+      <div className="final-cta-deco final-cta-deco-left" aria-hidden="true">
+        <span className="final-cta-deco-blob" />
+      </div>
+      <div className="final-cta-deco final-cta-deco-right" aria-hidden="true">
+        <span className="final-cta-deco-blob" />
+        <span className="final-cta-rings" />
+      </div>
+
+      <div className="why-wrap relative py-16 lg:py-20">
+        <FadeInWhenVisible>
+          <div className="final-cta-panel solutions-editions-panel relative overflow-hidden text-center">
+            <div className="solutions-editions-deco" aria-hidden="true" />
+
+            <p className="trust-eyebrow mx-auto relative z-[1]">
+              <span className="trust-eyebrow-line" aria-hidden="true" />
+              Get started
+              <span className="trust-eyebrow-line" aria-hidden="true" />
+            </p>
+
+            <div className="solutions-editions-copy relative z-[1]">
+              <span className="solutions-editions-copy-blur" aria-hidden="true" />
+              <h2 id="final-cta-heading" className="final-cta-heading relative z-[1] font-display">
+                {beforeAccent ? (
+                  <>
+                    {beforeAccent}{" "}
+                    <span className="final-cta-accent">
+                      {accentWord}
+                      <AccentUnderline className="final-cta-underline" wide />
+                    </span>
+                  </>
+                ) : (
+                  <span className="final-cta-accent">
+                    {accentWord}
+                    <AccentUnderline className="final-cta-underline" wide />
+                  </span>
+                )}
+              </h2>
+
+              <p className="final-cta-lead relative z-[1]">{body}</p>
+            </div>
+
+            <div className="final-cta-actions relative z-[1]">
+              <a href={djangoRoutes.register()} className="final-cta-primary">
+                <span>{primary}</span>
+                <span className="final-cta-arrow" aria-hidden="true">
+                  →
+                </span>
+              </a>
+              <a href={djangoRoutes.login()} className="final-cta-secondary">
+                {secondary}
+              </a>
+            </div>
+          </div>
+        </FadeInWhenVisible>
+      </div>
+    </section>
+  );
+}

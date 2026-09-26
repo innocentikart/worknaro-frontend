@@ -1,0 +1,253 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import {
+  ArrowRight,
+  BookOpen,
+  ExternalLink,
+  FileText,
+  LayoutGrid,
+  type LucideIcon,
+} from "lucide-react";
+import { ResourcesIntro } from "@/components/resources/ResourcesIntro";
+import {
+  FadeInWhenVisible,
+  StaggerChildren,
+} from "@/components/ui/AnimatedSection";
+import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { ThemeProductImage } from "@/components/ui/ThemeProductImage";
+import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
+import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
+import { resourceCards } from "@/lib/content";
+import { djangoRoutes } from "@/lib/site";
+
+const accents = ["blue", "emerald", "purple", "orange"] as const;
+
+type CardAccent = "blue" | "teal" | "purple" | "orange";
+
+const quickLinks: Array<{
+  title: string;
+  description: string;
+  href: string;
+  icon: LucideIcon;
+  accent: CardAccent;
+  visual: ModuleVisualKind;
+  ctaLabel: string;
+}> = [
+  {
+    title: "Features",
+    description: "Modules that exist in the Organitio application today.",
+    href: "/features",
+    icon: LayoutGrid,
+    accent: "blue",
+    visual: "features-link",
+    ctaLabel: "Explore features",
+  },
+  {
+    title: "Pricing",
+    description: "Free, Starter, Pro, and Enterprise plan options.",
+    href: "/pricing",
+    icon: FileText,
+    accent: "teal",
+    visual: "pricing-link",
+    ctaLabel: "Compare plans",
+  },
+  {
+    title: "Solutions",
+    description: "How different teams use the same workspace product.",
+    href: "/solutions",
+    icon: BookOpen,
+    accent: "purple",
+    visual: "solutions-link",
+    ctaLabel: "Browse solutions",
+  },
+  {
+    title: "Open the application",
+    description: "Sign in to continue working in your workspace.",
+    href: djangoRoutes.login(),
+    icon: ExternalLink,
+    accent: "orange",
+    visual: "app-link",
+    ctaLabel: "Open app",
+  },
+];
+
+export function ResourcesLanding() {
+  return (
+    <>
+      <ResourcesIntro />
+
+      <section
+        id="library"
+        className="resources-section relative overflow-hidden scroll-mt-28"
+        aria-labelledby="resources-library-heading"
+      >
+        <div className="resources-deco resources-deco-left" aria-hidden="true">
+          <span className="resources-deco-blob" />
+          <span className="resources-deco-dots" />
+        </div>
+        <div className="resources-deco resources-deco-right" aria-hidden="true">
+          <span className="resources-deco-blob" />
+          <span className="resources-deco-dots" />
+        </div>
+
+        <div className="why-wrap relative py-16 lg:py-20">
+          <FadeInWhenVisible>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="trust-eyebrow mx-auto">
+                <span className="trust-eyebrow-line" aria-hidden="true" />
+                Library
+                <span className="trust-eyebrow-line" aria-hidden="true" />
+              </p>
+              <h2 id="resources-library-heading" className="resources-heading font-display">
+                Learn more about{" "}
+                <span className="resources-heading-accent">
+                  Organitio
+                  <AccentUnderline className="resources-underline" />
+                </span>
+              </h2>
+              <p className="resources-lead">
+                Explore product capabilities, plans, and guides—or continue into the authenticated application.
+              </p>
+            </div>
+          </FadeInWhenVisible>
+
+          <StaggerChildren className="mt-12 grid gap-5 md:grid-cols-3 lg:mt-14">
+            {resourceCards.map((item, index) => {
+              const accent = item.accent || accents[index % accents.length];
+              return (
+                <FadeInWhenVisible key={item.href} className="h-full">
+                  <Link
+                    href={item.href}
+                    className={`resources-card resources-card-${accent} group flex h-full flex-col overflow-hidden`}
+                  >
+                    <div className="resources-media relative overflow-hidden">
+                      {"imageDark" in item && item.imageDark ? (
+                        <ThemeProductImage
+                          lightSrc={item.image}
+                          darkSrc={item.imageDark}
+                          alt=""
+                          width={1024}
+                          height={481}
+                          className="resources-billing-cover"
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                        />
+                      ) : (
+                        <Image
+                          src={item.image}
+                          alt=""
+                          width={960}
+                          height={500}
+                          className="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.03]"
+                        />
+                      )}
+                      <span className="resources-media-fade" aria-hidden="true" />
+                    </div>
+                    <div className="resources-card-body flex flex-1 flex-col">
+                      <p className="resources-category">{item.category}</p>
+                      <h3 className="resources-card-title">{item.title}</h3>
+                      <p className="resources-card-copy flex-1">{item.excerpt}</p>
+                      <span className="resources-learn">
+                        {item.cta || "Read more"}
+                        <ArrowRight className="resources-learn-arrow" aria-hidden="true" />
+                      </span>
+                    </div>
+                  </Link>
+                </FadeInWhenVisible>
+              );
+            })}
+          </StaggerChildren>
+
+          <FadeInWhenVisible delay={80} className="mt-10">
+            <p className="resources-placeholder">
+              Placeholder — additional help articles and tutorials will be linked here when available.
+            </p>
+          </FadeInWhenVisible>
+        </div>
+      </section>
+
+      <section
+        className="why-section relative overflow-hidden"
+        aria-labelledby="resources-links-heading"
+      >
+        <div className="why-wrap relative py-16 lg:py-20">
+          <FadeInWhenVisible>
+            <div className="mx-auto max-w-3xl text-center">
+              <p className="trust-eyebrow mx-auto">
+                <span className="trust-eyebrow-line" aria-hidden="true" />
+                Quick links
+                <span className="trust-eyebrow-line" aria-hidden="true" />
+              </p>
+              <h2 id="resources-links-heading" className="why-heading font-display">
+                Continue where you need to{" "}
+                <span className="why-brand">
+                  go
+                  <svg
+                    className="why-underline"
+                    viewBox="0 0 80 12"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 8.5C16 4 34 3 52 4.5C64 5.5 74 7.5 78 5"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+              </h2>
+            </div>
+          </FadeInWhenVisible>
+
+          <StaggerChildren className="about-pillar-grid mx-auto mt-12 grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-4 xl:gap-6">
+            {quickLinks.map((item, index) => (
+              <FadeInWhenVisible key={item.title} className="h-full" delay={index * 50}>
+                <PremiumModuleCard
+                  title={item.title}
+                  description={item.description}
+                  icon={item.icon}
+                  accent={item.accent}
+                  index={index}
+                  href={item.href}
+                  ctaLabel={item.ctaLabel}
+                  visual={item.visual}
+                  wrapLink
+                />
+              </FadeInWhenVisible>
+            ))}
+          </StaggerChildren>
+        </div>
+      </section>
+
+      <section className="features-search-band relative overflow-x-clip">
+        <div className="why-wrap relative pb-16 lg:pb-20">
+          <FadeInWhenVisible>
+            <div className="features-search-panel solutions-editions-panel relative overflow-hidden text-center">
+              <div className="solutions-editions-deco" aria-hidden="true" />
+              <div className="solutions-editions-copy relative z-[1]">
+                <span className="solutions-editions-copy-blur" aria-hidden="true" />
+                <h2 className="features-search-heading relative z-[1] font-display">
+                  Ready to work in Organitio?
+                </h2>
+                <p className="features-search-lead relative z-[1]">
+                  Create a workspace in the application—accounts, billing, and data stay there.
+                </p>
+              </div>
+              <div className="relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
+                <a href={djangoRoutes.register()} className="hero-cta-primary hero-btn btn-shine">
+                  Get Started
+                  <span aria-hidden="true">→</span>
+                </a>
+                <a href={djangoRoutes.login()} className="hero-cta-secondary hero-btn">
+                  Sign In
+                </a>
+              </div>
+            </div>
+          </FadeInWhenVisible>
+        </div>
+      </section>
+    </>
+  );
+}
