@@ -80,11 +80,11 @@ export function HeroVisual() {
           <span className="h-2 w-2 rounded-full bg-white/25" />
           <span className="h-2 w-2 rounded-full bg-white/25" />
           <span className="h-2 w-2 rounded-full bg-white/25" />
-          <span className="ml-2 text-[11px] font-medium text-white/60">Organitio</span>
+          <span className="ml-2 text-[11px] font-medium text-white/60">Worknaro</span>
         </div>
         <Image
           src="/product/dashboard.png"
-          alt="Organitio dashboard with workspace overview, projects, and tasks"
+          alt="Worknaro dashboard with workspace overview, projects, and tasks"
           width={1920}
           height={980}
           priority

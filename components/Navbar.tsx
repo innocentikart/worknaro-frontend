@@ -125,7 +125,7 @@ export function Navbar() {
           />
           <button
             type="button"
-            className={`inline-flex h-10 w-10 items-center justify-center rounded-md border ${
+            className={`inline-flex h-10 w-10 items-center justify-center landing-icon-btn border ${
               onDarkHero
                 ? "border-white/15 bg-white/5 text-white"
                 : "border-line bg-surface-elevated/80 text-ink backdrop-blur-sm"
@@ -166,13 +166,13 @@ export function Navbar() {
           <div className="mt-4 flex flex-col gap-2">
             <a
               href={djangoRoutes.login()}
-              className="inline-flex items-center justify-center rounded-lg border border-line px-4 py-2.5 text-sm font-semibold text-ink"
+              className="landing-control-btn inline-flex items-center justify-center border border-line text-sm font-semibold text-ink"
             >
               Sign In
             </a>
             <a
               href={djangoRoutes.register()}
-              className="hero-cta-primary inline-flex items-center justify-center rounded-full px-4 py-2.5 text-sm font-semibold text-white"
+              className="hero-cta-primary landing-control-btn inline-flex items-center justify-center text-sm font-semibold text-white"
             >
               Get Started
             </a>

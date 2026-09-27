@@ -10,7 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { AboutSectionBackground } from "@/components/about/AboutSectionBackground";
 import { PRINCIPLE_CARDS } from "@/components/about/PrincipleShowcaseCard";
 import { siteConfig } from "@/lib/site";
@@ -113,10 +113,7 @@ export function AboutIntro() {
               <h1 id="about-hero-heading" className="about-intro-heading font-display">
                 <span className="about-intro-heading-line">Built for the way</span>
                 <span className="about-intro-heading-line">
-                  <span className="about-intro-accent">
-                    modern teams
-                    <AccentUnderline className="about-intro-underline" wide />
-                  </span>{" "}
+                  <HeadingAccent>modern teams</HeadingAccent>{" "}
                   work.
                 </span>
               </h1>

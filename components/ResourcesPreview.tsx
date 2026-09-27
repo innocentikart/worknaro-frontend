@@ -12,7 +12,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { ThemeProductImage } from "@/components/ui/ThemeProductImage";
 import { resourceCards } from "@/lib/content";
 
@@ -69,7 +69,7 @@ function PricingPreview({
           <ThemeProductImage
             lightSrc={lightSrc}
             darkSrc={darkSrc}
-            alt="Organitio billing plans: Free, Starter, Pro, and Enterprise"
+            alt="Worknaro billing plans: Free, Starter, Pro, and Enterprise"
             width={1024}
             height={481}
             className="resources-billing-image"
@@ -105,9 +105,9 @@ function ResourceCard({ item }: { item: ResourceCardItem }) {
   const Icon = CATEGORY_ICONS[item.accent] ?? LayoutGrid;
   const previewAlt =
     item.preview === "product"
-      ? "Organitio platform projects view"
+      ? "Worknaro platform projects view"
       : item.preview === "guides"
-        ? "Organitio workspace hub with help center and workspace access"
+        ? "Worknaro workspace hub with help center and workspace access"
         : "";
 
   return (
@@ -163,7 +163,7 @@ export function ResourcesPreview() {
         <span className="resources-deco-blob" />
       </div>
 
-      <div className="why-wrap relative py-16 lg:py-24">
+      <div className="why-wrap relative">
         <FadeInWhenVisible>
           <div className="mx-auto max-w-3xl text-center">
             <p className="trust-eyebrow mx-auto">
@@ -176,10 +176,7 @@ export function ResourcesPreview() {
               className="resources-heading font-display mt-5 text-balance"
             >
               Learn more about{" "}
-              <span className="resources-brand">
-                Organitio
-                <AccentUnderline className="resources-underline" />
-              </span>
+              <HeadingAccent>Worknaro</HeadingAccent>
             </h2>
             <p className="resources-lead mx-auto mt-5">
               Explore product capabilities, plans, and guides—or continue into
@@ -188,7 +185,7 @@ export function ResourcesPreview() {
           </div>
         </FadeInWhenVisible>
 
-        <StaggerChildren className="resources-grid mt-12 lg:mt-16">
+        <StaggerChildren className="resources-grid landing-to-content">
           {resourceCards.map((item) => (
             <FadeInWhenVisible key={item.href} className="h-full">
               <ResourceCard item={item} />

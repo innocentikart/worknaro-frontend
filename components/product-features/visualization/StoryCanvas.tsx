@@ -62,7 +62,7 @@ export function StoryCanvas({
             <i />
             <i />
           </span>
-          <span className="pfs-viz-title">Organitio</span>
+          <span className="pfs-viz-title">Worknaro</span>
           <span className="pfs-viz-badge">{FEATURE_STAGES[index].label}</span>
         </div>
         <div className="pfs-viz-body">

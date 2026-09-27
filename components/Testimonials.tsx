@@ -10,7 +10,7 @@ import {
 } from "framer-motion";
 import { BadgeCheck, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 export type TestimonialItem = {
   quote: string;
@@ -31,7 +31,7 @@ const placeholders: TestimonialItem[] = [
     initials: "DO",
     rating: 5,
     quote:
-      "Organitio has completely transformed how our team manages projects. The interface is clean, intuitive, and has everything we need in one place.",
+      "Worknaro has completely transformed how our team manages projects. The interface is clean, intuitive, and has everything we need in one place.",
   },
   {
     name: "Sarah Mitchell",
@@ -41,7 +41,7 @@ const placeholders: TestimonialItem[] = [
     verified: true,
     rating: 5,
     quote:
-      "Organitio has helped us stay organized, meet deadlines, and deliver projects faster than ever before.",
+      "Worknaro has helped us stay organized, meet deadlines, and deliver projects faster than ever before.",
   },
   {
     name: "James Tunde",
@@ -50,7 +50,7 @@ const placeholders: TestimonialItem[] = [
     initials: "JT",
     rating: 5,
     quote:
-      "Organitio gives our team a much clearer way to manage clients, projects, and delivery without jumping between multiple tools.",
+      "Worknaro gives our team a much clearer way to manage clients, projects, and delivery without jumping between multiple tools.",
   },
 ];
 
@@ -244,14 +244,11 @@ export function Testimonials({
 
             <h2 id="stories-heading" className="stories-heading font-display">
               <span className="block">What teams say about</span>
-              <span className="why-brand-gradient">
-                Organitio
-                <AccentUnderline />
-              </span>
+              <HeadingAccent>Worknaro</HeadingAccent>
             </h2>
 
             <p className="stories-lead">
-              Teams using Organitio to run projects, clients, and delivery in one
+              Teams using Worknaro to run projects, clients, and delivery in one
               workspace.
             </p>
           </div>

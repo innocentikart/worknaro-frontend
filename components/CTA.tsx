@@ -1,7 +1,7 @@
 "use client";
 
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { djangoRoutes } from "@/lib/site";
 
 export function CTA({
@@ -16,7 +16,7 @@ export function CTA({
   const title = cmsCta?.title || "Ready to bring your work together?";
   const body =
     cmsCta?.body ||
-    "Create your Organitio workspace in the application—projects, tasks, clients, files, and finance already live there.";
+    "Create your Worknaro workspace in the application—projects, tasks, clients, files, and finance already live there.";
   const primary = cmsCta?.meta?.primary_label || "Get Started";
   const secondary = cmsCta?.meta?.secondary_label || "Sign In";
   const hasTogether = /together\??$/i.test(title.trim());
@@ -35,7 +35,7 @@ export function CTA({
         <span className="final-cta-rings" />
       </div>
 
-      <div className="why-wrap relative py-16 lg:py-20">
+      <div className="why-wrap relative">
         <FadeInWhenVisible>
           <div className="final-cta-panel solutions-editions-panel relative overflow-hidden text-center">
             <div className="solutions-editions-deco" aria-hidden="true" />
@@ -52,16 +52,10 @@ export function CTA({
                 {beforeAccent ? (
                   <>
                     {beforeAccent}{" "}
-                    <span className="final-cta-accent">
-                      {accentWord}
-                      <AccentUnderline className="final-cta-underline" wide />
-                    </span>
+                    <HeadingAccent>{accentWord}</HeadingAccent>
                   </>
                 ) : (
-                  <span className="final-cta-accent">
-                    {accentWord}
-                    <AccentUnderline className="final-cta-underline" wide />
-                  </span>
+                  <HeadingAccent>{accentWord}</HeadingAccent>
                 )}
               </h2>
 

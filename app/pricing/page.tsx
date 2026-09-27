@@ -6,7 +6,7 @@ import { PricingLandingHero } from "@/components/PricingLanding";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Organitio pricing: Free, Starter $29/mo, Pro $79/mo, and Enterprise custom plans. Start Starter or Pro with a 14-day free trial.",
+    "Worknaro pricing: Free, Starter $29/mo, Pro $79/mo, and Enterprise custom plans. Start Starter or Pro with a 14-day free trial.",
   alternates: { canonical: "/pricing" },
 };
 
@@ -16,7 +16,7 @@ export default function PricingPage() {
       <PricingLandingHero />
       <FAQ
         heading="Pricing questions"
-        description="How Organitio plans work, including Free, upgrades, and Enterprise."
+        description="How Worknaro plans work, including Free, upgrades, and Enterprise."
       />
       <CTA />
     </>

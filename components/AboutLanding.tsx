@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import {
-  Database,
   Layers,
   Shield,
   Users,
@@ -14,7 +13,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
 import {
@@ -47,7 +46,7 @@ const pillars: Array<{
   {
     title: "How we ship",
     description:
-      "This public website introduces Organitio. The authenticated application remains the source of truth for accounts, billing, and data.",
+      "This public website introduces Worknaro. The authenticated application remains the source of truth for accounts, billing, and data.",
     icon: Workflow,
     accent: "teal",
     visual: "ship",
@@ -95,7 +94,7 @@ export function AboutLanding() {
           <span className="why-deco-dots" />
         </div>
 
-        <div className="why-wrap relative py-16 lg:py-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-5xl text-center">
               <p className="trust-eyebrow mx-auto">
@@ -105,25 +104,10 @@ export function AboutLanding() {
               </p>
               <h2 id="about-pillars-heading" className="why-heading font-display">
                 A workspace for the work you already{" "}
-                <span className="why-brand">
-                  run
-                  <svg
-                    className="why-underline"
-                    viewBox="0 0 80 12"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2 8.5C16 4 34 3 52 4.5C64 5.5 74 7.5 78 5"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </span>
+                <HeadingAccent>run</HeadingAccent>
               </h2>
               <p className="why-description">
-                Organitio brings projects, clients, time, and finance together so teams stop
+                Worknaro brings projects, clients, time, and finance together so teams stop
                 splitting delivery across disconnected tools.
               </p>
             </div>
@@ -131,7 +115,7 @@ export function AboutLanding() {
 
           <StaggerChildren
             delay={40}
-            className="about-pillar-grid mx-auto mt-14 grid w-full gap-5 sm:grid-cols-2 sm:gap-6 xl:mt-16 xl:grid-cols-4"
+            className="about-pillar-grid landing-to-content mx-auto grid w-full gap-5 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4"
           >
             {pillars.map((item, index) => (
               <FadeInWhenVisible key={item.title} className="h-full" delay={index * 55}>
@@ -165,17 +149,14 @@ export function AboutLanding() {
               </p>
               <h2 id="about-principles-heading" className="int-heading font-display">
                 Clear boundaries between marketing and the{" "}
-                <span className="int-heading-accent">
-                  application
-                  <AccentUnderline className="int-underline" />
-                </span>
+                <HeadingAccent>application</HeadingAccent>
               </h2>
             </div>
           </FadeInWhenVisible>
 
           <StaggerChildren
             delay={70}
-            className="principle-grid mt-[3.5rem] grid gap-5 md:grid-cols-2 md:gap-6 lg:mt-16 lg:gap-7"
+            className="principle-grid landing-to-content grid gap-5 md:grid-cols-2 md:gap-6 lg:gap-7"
           >
             {PRINCIPLE_CARDS.map((item, index) => (
               <FadeInWhenVisible key={item.title} className="h-full" delay={index * 80}>
@@ -186,26 +167,37 @@ export function AboutLanding() {
         </div>
       </section>
 
-      <section className="features-search-band relative overflow-x-clip">
-        <div className="why-wrap relative pb-16 lg:pb-20">
+      <section className="final-cta-section relative overflow-x-clip" aria-labelledby="about-source-heading">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
-            <div className="features-search-panel relative overflow-hidden text-center">
-              <span className="final-cta-glow" aria-hidden="true" />
-              <span className="features-search-icon" aria-hidden="true">
-                <Database className="h-6 w-6" strokeWidth={1.8} />
-              </span>
-              <h2 className="features-search-heading relative z-[1] font-display">
-                The application is the source of truth
-              </h2>
-              <p className="features-search-lead relative z-[1]">
-                Create your workspace where accounts, tenants, and billing already live.
+            <div className="final-cta-panel solutions-editions-panel relative overflow-hidden text-center">
+              <div className="solutions-editions-deco" aria-hidden="true" />
+
+              <p className="trust-eyebrow mx-auto relative z-[1]">
+                <span className="trust-eyebrow-line" aria-hidden="true" />
+                Get started
+                <span className="trust-eyebrow-line" aria-hidden="true" />
               </p>
-              <div className="relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
-                <a href={djangoRoutes.register()} className="hero-cta-primary hero-btn btn-shine">
-                  Get Started
-                  <span aria-hidden="true">→</span>
+
+              <div className="solutions-editions-copy relative z-[1]">
+                <span className="solutions-editions-copy-blur" aria-hidden="true" />
+                <h2 id="about-source-heading" className="final-cta-heading relative z-[1] font-display">
+                  The application is the{" "}
+                  <HeadingAccent>source of truth</HeadingAccent>
+                </h2>
+                <p className="final-cta-lead relative z-[1]">
+                  Create your workspace where accounts, tenants, and billing already live.
+                </p>
+              </div>
+
+              <div className="final-cta-actions relative z-[1]">
+                <a href={djangoRoutes.register()} className="final-cta-primary">
+                  <span>Get Started</span>
+                  <span className="final-cta-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </a>
-                <Link href="/contact" className="hero-cta-secondary hero-btn">
+                <Link href="/contact" className="final-cta-secondary">
                   Contact
                 </Link>
               </div>

@@ -39,12 +39,7 @@ export function ConnectedServicesSection({
     >
       <div className="hub-mesh opacity-30" aria-hidden="true" />
 
-      <div
-        className={[
-          "why-wrap relative",
-          compact ? "py-10 lg:py-12" : "py-12 lg:py-16",
-        ].join(" ")}
-      >
+      <div className="why-wrap relative">
         <FadeInWhenVisible>
           <div className="mx-auto max-w-[920px] text-center">
             <p className="trust-eyebrow mx-auto">
@@ -58,17 +53,11 @@ export function ConnectedServicesSection({
           </div>
         </FadeInWhenVisible>
 
-        <FadeInWhenVisible delay={80} className={compact ? "mt-6" : "mt-8"}>
+        <FadeInWhenVisible delay={80} className="landing-to-content">
           <IntegrationBrandTicker label={title} />
         </FadeInWhenVisible>
 
-        <IntegrationCardsGrid
-          idPrefix={idPrefix}
-          className={[
-            "grid gap-5 sm:grid-cols-2 xl:grid-cols-4",
-            compact ? "mt-6" : "mt-8",
-          ].join(" ")}
-        />
+        <IntegrationCardsGrid idPrefix={idPrefix} />
       </div>
     </section>
   );

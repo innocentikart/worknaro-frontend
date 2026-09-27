@@ -14,6 +14,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
 import { djangoRoutes } from "@/lib/site";
@@ -42,7 +43,7 @@ const paths: Array<{
   {
     title: "Get Started",
     description:
-      "Create your account in the Organitio application. Authentication and onboarding stay on Django—no separate signup here.",
+      "Create your account in the Worknaro application. Authentication and onboarding stay on Django—no separate signup here.",
     cta: "Create account",
     href: djangoRoutes.register(),
     accent: "teal",
@@ -71,7 +72,7 @@ const channels: Array<{
   },
   {
     title: "Sign in",
-    description: "Continue in your existing Organitio workspace.",
+    description: "Continue in your existing Worknaro workspace.",
     icon: MessageSquare,
     href: djangoRoutes.login(),
     accent: "teal",
@@ -108,7 +109,7 @@ export function ContactLanding() {
           <span className="contact-deco-dots" />
         </div>
 
-        <div className="why-wrap relative py-16 lg:py-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
               <p className="trust-eyebrow mx-auto">
@@ -118,21 +119,16 @@ export function ContactLanding() {
               </p>
               <h2 id="contact-paths-heading" className="why-heading font-display">
                 Two clear paths—sales or{" "}
-                <span className="why-brand">
-                  self-serve
-                  <svg className="why-underline" viewBox="0 0 180 12" fill="none" aria-hidden="true">
-                    <path d="M2 8.5C28 3.5 58 2 90 3.5C122 5 152 8 178 4.5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
-                  </svg>
-                </span>
+                <HeadingAccent>self-serve</HeadingAccent>
               </h2>
               <p className="why-description">
                 This page does not collect emails or create accounts. Sales and registration
-                continue in the Organitio application.
+                continue in the Worknaro application.
               </p>
             </div>
           </FadeInWhenVisible>
 
-          <StaggerChildren className="about-pillar-grid mx-auto mt-12 grid w-full max-w-4xl gap-5 sm:grid-cols-2 sm:gap-6">
+          <StaggerChildren className="about-pillar-grid landing-to-content mx-auto grid w-full max-w-4xl gap-5 sm:grid-cols-2 sm:gap-6">
             {paths.map((item, index) => (
               <FadeInWhenVisible key={item.title} className="h-full" delay={index * 55}>
                 <PremiumModuleCard
@@ -152,7 +148,7 @@ export function ContactLanding() {
       </section>
 
       <section className="why-section relative overflow-hidden" aria-labelledby="contact-channels-heading">
-        <div className="why-wrap relative py-16 lg:py-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
               <p className="trust-eyebrow mx-auto">
@@ -166,7 +162,7 @@ export function ContactLanding() {
             </div>
           </FadeInWhenVisible>
 
-          <StaggerChildren className="about-pillar-grid mx-auto mt-12 grid w-full gap-5 sm:grid-cols-3 sm:gap-6">
+          <StaggerChildren className="about-pillar-grid landing-to-content mx-auto grid w-full gap-5 sm:grid-cols-3 sm:gap-6">
             {channels.map((item, index) => (
               <FadeInWhenVisible key={item.title} className="h-full" delay={index * 50}>
                 <PremiumModuleCard
@@ -186,23 +182,37 @@ export function ContactLanding() {
         </div>
       </section>
 
-      <section className="features-search-band relative overflow-x-clip">
-        <div className="why-wrap relative pb-16 lg:pb-20">
+      <section className="final-cta-section relative overflow-x-clip" aria-labelledby="contact-account-heading">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
-            <div className="features-search-panel relative overflow-hidden text-center">
-              <span className="final-cta-glow" aria-hidden="true" />
-              <h2 className="features-search-heading relative z-[1] font-display">
-                Already have an account?
-              </h2>
-              <p className="features-search-lead relative z-[1]">
-                Sign in to manage workspaces, billing, and day-to-day work in the application.
+            <div className="final-cta-panel solutions-editions-panel relative overflow-hidden text-center">
+              <div className="solutions-editions-deco" aria-hidden="true" />
+
+              <p className="trust-eyebrow mx-auto relative z-[1]">
+                <span className="trust-eyebrow-line" aria-hidden="true" />
+                Sign in
+                <span className="trust-eyebrow-line" aria-hidden="true" />
               </p>
-              <div className="relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
-                <a href={djangoRoutes.login()} className="hero-cta-primary hero-btn btn-shine">
-                  Sign In
-                  <span aria-hidden="true">→</span>
+
+              <div className="solutions-editions-copy relative z-[1]">
+                <span className="solutions-editions-copy-blur" aria-hidden="true" />
+                <h2 id="contact-account-heading" className="final-cta-heading relative z-[1] font-display">
+                  Already have an{" "}
+                  <HeadingAccent>account?</HeadingAccent>
+                </h2>
+                <p className="final-cta-lead relative z-[1]">
+                  Sign in to manage workspaces, billing, and day-to-day work in the application.
+                </p>
+              </div>
+
+              <div className="final-cta-actions relative z-[1]">
+                <a href={djangoRoutes.login()} className="final-cta-primary">
+                  <span>Sign In</span>
+                  <span className="final-cta-arrow" aria-hidden="true">
+                    →
+                  </span>
                 </a>
-                <Link href="/pricing" className="hero-cta-secondary hero-btn">
+                <Link href="/pricing" className="final-cta-secondary">
                   View pricing
                 </Link>
               </div>

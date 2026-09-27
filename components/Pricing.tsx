@@ -6,7 +6,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import {
   TRIAL_DAYS,
   formatPlanPrice,
@@ -69,7 +69,7 @@ export function Pricing({
 
       <div
         className={`why-wrap relative ${
-          afterIntro ? "pricing-follow-wrap" : "py-16 lg:py-20"
+          afterIntro ? "pricing-follow-wrap" : ""
         }`}
       >
         {showHeading ? (
@@ -82,10 +82,7 @@ export function Pricing({
               </p>
               <h2 id="pricing-heading" className="pricing-heading font-display">
                 Choose the plan that fits your{" "}
-                <span className="pricing-heading-accent">
-                  team
-                  <AccentUnderline className="pricing-underline" />
-                </span>
+                <HeadingAccent>team</HeadingAccent>
               </h2>
               <p className="pricing-lead">
                 Scale projects, members, and storage as you grow. Every plan includes
@@ -142,7 +139,7 @@ export function Pricing({
 
         <StaggerChildren
           className={`pricing-cards-grid grid items-stretch gap-5 lg:grid-cols-4 ${
-            afterIntro ? "mt-0" : "mt-12"
+            afterIntro ? "mt-0" : "landing-to-content"
           }`}
         >
           {pricingPlans.map((plan) => {
@@ -161,7 +158,7 @@ export function Pricing({
                 <article
                   className={`pricing-card group transition duration-300 hover:-translate-y-1 ${
                     featured
-                      ? "is-featured ring-2 ring-primary/30 shadow-[0_24px_50px_-20px_rgba(52,84,209,0.55)]"
+                      ? "is-featured ring-2 ring-primary/30 shadow-[0_24px_50px_-22px_rgba(57,104,234,0.32)]"
                       : ""
                   }`}
                 >

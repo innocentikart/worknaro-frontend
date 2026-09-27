@@ -7,7 +7,7 @@ import { fetchLandingPage } from "@/lib/landing-api";
 export const metadata: Metadata = {
   title: "Solutions",
   description:
-    "The same Organitio workspace product used by startups, agencies, freelancers, and client-service teams—not separate industry editions.",
+    "The same Worknaro workspace product used by startups, agencies, freelancers, and client-service teams—not separate industry editions.",
   alternates: { canonical: "/solutions" },
 };
 

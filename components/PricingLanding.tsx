@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { Pricing } from "@/components/Pricing";
 import {
   TRIAL_DAYS,
@@ -34,10 +34,7 @@ export function PricingLandingHero() {
           <FadeInWhenVisible delay={40}>
             <h1 id="pricing-intro-heading" className="pricing-intro-heading font-display">
               Plans that grow{" "}
-              <span className="pricing-intro-accent">
-                with your work.
-                <AccentUnderline className="pricing-underline" wide />
-              </span>
+              <HeadingAccent>with your work.</HeadingAccent>
             </h1>
           </FadeInWhenVisible>
 

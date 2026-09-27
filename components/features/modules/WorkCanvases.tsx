@@ -41,7 +41,7 @@ export function ProjectCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · New project" badge={PROJECT_STAGES[index].label} />
+      <VizChrome title="Worknaro · New project" badge={PROJECT_STAGES[index].label} />
       <div className="mst-stage mst-construct">
         <div className={`mst-project ${showLive ? "is-live" : ""}`}>
           <div className="mst-project-head">
@@ -121,7 +121,7 @@ export function BoardCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Workflow board" badge={BOARD_STAGES[index].label} />
+      <VizChrome title="Worknaro · Workflow board" badge={BOARD_STAGES[index].label} />
       <div className="mst-stage mst-board">
         <div className="mst-board-cols">
           {BOARD_COLUMNS.map((column) => (
@@ -172,7 +172,7 @@ export function CalendarCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Calendar" badge={CALENDAR_STAGES[index].label} />
+      <VizChrome title="Worknaro · Calendar" badge={CALENDAR_STAGES[index].label} />
       <div className="mst-stage mst-cal">
         <div className="mst-cal-grid">
           {CAL_DAYS.map((day) => (
@@ -211,11 +211,11 @@ const GANTT_ROWS = [
 ] as const;
 
 const GANTT_TICKS = [
-  { label: "8", at: 6 },
-  { label: "15", at: 32 },
-  { label: "22", at: 60 },
+  { label: "8", at: 6, mile: false },
+  { label: "15", at: 32, mile: false },
+  { label: "22", at: 60, mile: false },
   { label: "24", at: 80, mile: true },
-  { label: "29", at: 94 },
+  { label: "29", at: 94, mile: false },
 ] as const;
 
 function ganttElbow(fromRow: number, toRow: number, x1: number, x2: number, rows: number) {
@@ -240,7 +240,7 @@ export function GanttCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Gantt" badge={GANTT_STAGES[index].label} />
+      <VizChrome title="Worknaro · Gantt" badge={GANTT_STAGES[index].label} />
       <div className="mst-stage mst-gantt">
         <div className="mst-gantt-head">
           <p className="mst-kicker">Website Redesign</p>

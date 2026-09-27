@@ -5,16 +5,16 @@ import { problemPoints, solutionPoints } from "@/lib/content";
 export function ProblemSolution() {
   return (
     <section className="band">
-      <div className="page-wrap py-20 lg:py-24">
+      <div className="page-wrap">
         <Reveal>
           <SectionHeading
             eyebrow="The shift"
             title="Replace scattered tools with one workspace"
-            description="Organitio is for teams who need project work, client delivery, and operational tracking without jumping between disconnected products."
+            description="Worknaro is for teams who need project work, client delivery, and operational tracking without jumping between disconnected products."
             align="center"
           />
         </Reveal>
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
+        <div className="landing-to-content grid gap-5 lg:grid-cols-2">
           <Reveal>
             <article className="h-full rounded-2xl border border-line bg-surface-elevated p-7">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted">

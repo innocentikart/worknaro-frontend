@@ -11,6 +11,7 @@ import {
 } from "@/components/product-features/featureStages";
 import { StoryCanvas } from "@/components/product-features/visualization/StoryCanvas";
 import { useAutoPlayStory } from "@/components/features/story/useAutoPlayStory";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 /**
  * Homepage product story. Viewport-triggered, then plays on its own.
@@ -68,11 +69,11 @@ export function ProductFeaturesStory() {
             </p>
             <h2 className="pfs-heading font-display">
               Everything your team does{" "}
-              <span className="pfs-heading-accent">stays connected.</span>
+              <HeadingAccent>stays connected.</HeadingAccent>
             </h2>
             <p className="pfs-lead">
               From the people doing the work to the projects, tasks, time and
-              budget behind it — Organitio keeps the complete picture together.
+              budget behind it — Worknaro keeps the complete picture together.
             </p>
           </div>
 

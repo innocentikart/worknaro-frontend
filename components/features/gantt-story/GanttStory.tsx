@@ -24,6 +24,7 @@ import {
   type GanttWorkItem,
 } from "@/components/features/gantt-story/ganttStoryData";
 import { useGanttStory } from "@/components/features/gantt-story/useGanttStory";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 const ICONS = {
   tasks: ListChecks,
@@ -80,7 +81,7 @@ export function GanttStory() {
         <div className="mig-intro gnt-intro">
           <p className="audience-eyebrow mx-auto">GANTT</p>
           <h2 id="gantt-heading" className="mig-heading font-display">
-            Tasks become <span className="pfs-heading-accent">a schedule.</span>
+            Tasks become <HeadingAccent>a schedule.</HeadingAccent>
           </h2>
           <p className="mig-lead">
             Bars come from task start and due dates. Dependency lines display when they exist. You
@@ -175,7 +176,7 @@ function GanttChrome() {
         <i />
         <i />
       </span>
-      <span className="pfs-viz-title">Organitio · Gantt</span>
+      <span className="pfs-viz-title">Worknaro · Gantt</span>
       <span className="gnt-range">
         <CalendarDays size={13} strokeWidth={2.1} aria-hidden="true" />
         Sep 8 — Sep 29

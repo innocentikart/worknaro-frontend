@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 export function LandingHero({
   eyebrow,
@@ -22,7 +22,7 @@ export function LandingHero({
   return (
     <section className="features-page-hero relative overflow-hidden" aria-labelledby={headingId}>
       <div className="features-page-hero-bg" aria-hidden="true" />
-      <div className="why-wrap relative py-16 text-center lg:py-20">
+      <div className="why-wrap relative text-center">
         <FadeInWhenVisible>
           <div>
             <p className="trust-eyebrow mx-auto">
@@ -35,10 +35,7 @@ export function LandingHero({
               {titleAccent ? (
                 <>
                   {" "}
-                  <span className="features-page-heading-accent">
-                    {titleAccent}
-                    <AccentUnderline className="features-underline" wide />
-                  </span>
+                  <HeadingAccent>{titleAccent}</HeadingAccent>
                 </>
               ) : null}
             </h1>

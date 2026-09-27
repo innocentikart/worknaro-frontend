@@ -130,7 +130,7 @@ export function ImportCanvas({
           <i />
         </span>
         <span className="pfs-viz-title">
-          {index >= 4 ? "Organitio · Website Redesign" : "Bring work into Organitio"}
+          {index >= 4 ? "Worknaro · Website Redesign" : "Bring work into Worknaro"}
         </span>
         <span className="pfs-viz-badge">{IMPORT_STAGES[index].label}</span>
       </div>
@@ -182,7 +182,7 @@ export function ImportCanvas({
               ))}
             </ul>
             <div className="mig-rail">
-              <span>Organitio import</span>
+              <span>Worknaro import</span>
               <span>CSV · Excel · JSON</span>
             </div>
           </div>

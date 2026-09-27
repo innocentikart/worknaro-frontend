@@ -24,7 +24,7 @@ export function TrustBar() {
   return (
     <ConnectedServicesSection
       eyebrow="Connected services"
-      title="Connected to the services Organitio already uses"
+      title="Connected to the services Worknaro already uses"
       headingId="trust-services-heading"
       idPrefix="trust"
     />

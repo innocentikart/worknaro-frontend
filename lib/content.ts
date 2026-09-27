@@ -184,7 +184,7 @@ export const featureSections = [
     eyebrow: "AI Insights",
     title: "AI Insights",
     description:
-      "When AI Insights is enabled in the workspace, Organitio reviews project and task activity to surface risks, delays, and workload patterns—with an explanation of why each insight appeared.",
+      "When AI Insights is enabled in the workspace, Worknaro reviews project and task activity to surface risks, delays, and workload patterns—with an explanation of why each insight appeared.",
     points: [
       "Project health from schedule, overdue work, dependencies, velocity, and milestones",
       "Alerts for deadline risk, blocked tasks, velocity drops, and uneven workload",
@@ -303,7 +303,7 @@ export const solutions = [
     points: [
       "Shared workspace for programs and deliverables",
       "Tasks, files, and calendar for volunteer or staff coordination",
-      "Same Organitio product—no separate nonprofit edition",
+      "Same Worknaro product—no separate nonprofit edition",
     ],
     visual: "files" as const,
   },
@@ -359,11 +359,11 @@ export const integrations = [
   },
   {
     name: "Google",
-    description: "Optional Google sign-in through Organitio accounts when the operator has configured it.",
+    description: "Optional Google sign-in through Worknaro accounts when the operator has configured it.",
   },
   {
     name: "Apple",
-    description: "Optional Apple sign-in through Organitio accounts when the operator has configured it.",
+    description: "Optional Apple sign-in through Worknaro accounts when the operator has configured it.",
   },
   {
     name: "Resend",
@@ -396,7 +396,7 @@ export const resourceCards = [
     title: "Platform capabilities",
     category: "Product",
     excerpt:
-      "See the modules that exist in the Organitio application today—including AI Insights and import.",
+      "See the modules that exist in the Worknaro application today—including AI Insights and import.",
     href: "/features",
     image: "/product/projects.png",
     cta: "Explore platform",
@@ -428,12 +428,12 @@ export const resourceCards = [
 
 export const faqs = [
   {
-    q: "What is Organitio?",
-    a: "Organitio is a multi-tenant workspace for projects, tasks, notes, clients, leads, proposals, timesheets, finance, files, calendar, and Gantt. You sign in to the Django application; this public site does not host your workspace data.",
+    q: "What is Worknaro?",
+    a: "Worknaro is a multi-tenant workspace for projects, tasks, notes, clients, leads, proposals, timesheets, finance, files, calendar, and Gantt. You sign in to the Django application; this public site does not host your workspace data.",
   },
   {
     q: "Where do I sign in or create an account?",
-    a: "Registration, login, password reset, and optional email verification happen in the Organitio application. Google and Apple sign-in are available when the operator has configured them. This website does not create a second user system.",
+    a: "Registration, login, password reset, and optional email verification happen in the Worknaro application. Google and Apple sign-in are available when the operator has configured them. This website does not create a second user system.",
   },
   {
     q: "Can I start for free?",
@@ -449,7 +449,7 @@ export const faqs = [
   },
   {
     q: "Can my team use more than one workspace?",
-    a: "Yes. Organitio is built around tenant workspaces. People can belong to more than one workspace and switch between those they can access.",
+    a: "Yes. Worknaro is built around tenant workspaces. People can belong to more than one workspace and switch between those they can access.",
   },
   {
     q: "What does AI Insights do?",

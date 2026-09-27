@@ -10,6 +10,7 @@ import {
   ListTodo,
   MoreHorizontal,
   Paperclip,
+  Pencil,
   Settings,
   Share2,
   User,
@@ -30,6 +31,7 @@ import {
   type ClientTab,
 } from "@/components/features/client-story/clientStoryData";
 import { useClientStory } from "@/components/features/client-story/useClientStory";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 const ICONS = {
   client: User,
@@ -97,13 +99,50 @@ export function ClientStory() {
         <div className="mig-intro cls-intro">
           <p className="audience-eyebrow mx-auto">CLIENT</p>
           <h2 id="clients-heading" className="mig-heading font-display">
-            A client stays connected to <span className="pfs-heading-accent">the work.</span>
+            A client stays connected to <HeadingAccent>the work.</HeadingAccent>
           </h2>
           <p className="mig-lead">
             Client records link to projects, tasks, and proposals. The detail page is the place
             those relationships come together.
           </p>
         </div>
+
+        <LayoutGroup id="cls-tabs">
+          <div
+            className="cls-tabs"
+            role="tablist"
+            aria-label="How a client stays connected"
+            onKeyDown={onKeyDown}
+          >
+            {CLIENT_TABS.map((id) => {
+              const Icon = ICONS[id];
+              const selected = tab === id;
+              return (
+                <button
+                  key={id}
+                  type="button"
+                  role="tab"
+                  id={`cls-tab-${id}`}
+                  aria-selected={selected}
+                  aria-controls="cls-panel"
+                  tabIndex={selected ? 0 : -1}
+                  className={selected ? "is-active" : ""}
+                  onClick={() => selectTab(id)}
+                >
+                  {selected ? (
+                    <motion.span
+                      layoutId="cls-tab-pill"
+                      className="cls-tab-pill"
+                      transition={{ duration: reduce ? 0 : 0.32, ease: EASE }}
+                    />
+                  ) : null}
+                  <Icon size={14} strokeWidth={2.1} aria-hidden="true" />
+                  {CLIENT_META[id].label}
+                </button>
+              );
+            })}
+          </div>
+        </LayoutGroup>
 
         <div className="cls-stage">
           <ConnectorStrings tab={tab} />
@@ -125,43 +164,6 @@ export function ClientStory() {
               </button>
             );
           })}
-
-          <LayoutGroup id="cls-tabs">
-            <div
-              className="cls-tabs"
-              role="tablist"
-              aria-label="How a client stays connected"
-              onKeyDown={onKeyDown}
-            >
-              {CLIENT_TABS.map((id) => {
-                const Icon = ICONS[id];
-                const selected = tab === id;
-                return (
-                  <button
-                    key={id}
-                    type="button"
-                    role="tab"
-                    id={`cls-tab-${id}`}
-                    aria-selected={selected}
-                    aria-controls="cls-panel"
-                    tabIndex={selected ? 0 : -1}
-                    className={selected ? "is-active" : ""}
-                    onClick={() => selectTab(id)}
-                  >
-                    {selected ? (
-                      <motion.span
-                        layoutId="cls-tab-pill"
-                        className="cls-tab-pill"
-                        transition={{ duration: reduce ? 0 : 0.32, ease: EASE }}
-                      />
-                    ) : null}
-                    <Icon size={14} strokeWidth={2.1} aria-hidden="true" />
-                    {CLIENT_META[id].label}
-                  </button>
-                );
-              })}
-            </div>
-          </LayoutGroup>
 
           <div
             id="cls-panel"
@@ -192,7 +194,7 @@ function ClientChrome() {
         <i />
         <i />
       </span>
-      <span className="pfs-viz-title">Organitio</span>
+      <span className="pfs-viz-title">Worknaro</span>
     </div>
   );
 }
@@ -244,7 +246,10 @@ function ClientBoard({
             </p>
           </div>
           <div className="cls-actions">
-            <span>Edit</span>
+            <span>
+              <Pencil size={12} strokeWidth={2.2} aria-hidden="true" />
+              Edit
+            </span>
             <span>Manage</span>
             <b aria-hidden="true">
               <MoreHorizontal size={14} strokeWidth={2.2} />

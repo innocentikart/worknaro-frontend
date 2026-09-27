@@ -7,7 +7,7 @@ import { fetchLandingPage } from "@/lib/landing-api";
 export const metadata: Metadata = {
   title: "Features",
   description:
-    "Organitio features that exist in the application: workspaces, projects, tasks, workflow board, notes, calendar, Gantt, clients, leads, proposals, timesheets, finance, files, search, reports, AI Insights, and CSV/Excel/JSON import.",
+    "Worknaro features that exist in the application: workspaces, projects, tasks, workflow board, notes, calendar, Gantt, clients, leads, proposals, timesheets, finance, files, search, reports, AI Insights, and CSV/Excel/JSON import.",
   alternates: { canonical: "/features" },
 };
 

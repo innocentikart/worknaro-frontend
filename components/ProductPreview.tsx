@@ -15,39 +15,39 @@ export type PreviewKind =
 const shots: Record<PreviewKind, { src: string; alt: string }> = {
   dashboard: {
     src: "/product/dashboard.png",
-    alt: "Organitio dashboard with workspace overview, onboarding, and pinned projects",
+    alt: "Worknaro dashboard with workspace overview, onboarding, and pinned projects",
   },
   projects: {
     src: "/product/projects.png",
-    alt: "Organitio projects list with status, priority, and dates",
+    alt: "Worknaro projects list with status, priority, and dates",
   },
   board: {
     src: "/product/board.png",
-    alt: "Organitio workspace workflow board with status columns and task cards",
+    alt: "Worknaro workspace workflow board with status columns and task cards",
   },
   clients: {
     src: "/product/project-create.png",
-    alt: "Organitio project creation including client project type",
+    alt: "Worknaro project creation including client project type",
   },
   finance: {
     src: "/product/gantt.png",
-    alt: "Organitio Gantt chart for project timelines and task schedules",
+    alt: "Worknaro Gantt chart for project timelines and task schedules",
   },
   files: {
     src: "/product/tasks.png",
-    alt: "Organitio tasks workspace with filters, priorities, and assignments",
+    alt: "Worknaro tasks workspace with filters, priorities, and assignments",
   },
   reports: {
     src: "/product/workspaces.png",
-    alt: "Organitio workspace picker for switching between workspaces",
+    alt: "Worknaro workspace picker for switching between workspaces",
   },
   insights: {
     src: "/product/dashboard.png",
-    alt: "Organitio dashboard where AI Insights appear when enabled",
+    alt: "Worknaro dashboard where AI Insights appear when enabled",
   },
   import: {
     src: "/product/projects.png",
-    alt: "Organitio projects list that imported work can populate",
+    alt: "Worknaro projects list that imported work can populate",
   },
 };
 
@@ -89,7 +89,7 @@ export function ProductPreview({
             <span className="h-2 w-2 rounded-full bg-white/25" />
             <span className="h-2 w-2 rounded-full bg-white/25" />
             <span className="h-2 w-2 rounded-full bg-white/25" />
-            <span className="ml-2 text-[11px] font-medium text-white/65">Organitio</span>
+            <span className="ml-2 text-[11px] font-medium text-white/65">Worknaro</span>
           </div>
           <Image
             src={shot.src}

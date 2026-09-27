@@ -10,7 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { AboutSectionBackground } from "@/components/about/AboutSectionBackground";
 import { djangoRoutes, siteConfig } from "@/lib/site";
 
@@ -39,7 +39,7 @@ const CONTACT_PATHS: ContactPath[] = [
   {
     title: "Get Started",
     description:
-      "Create your account in the Organitio application. Authentication and onboarding stay on Django—no separate signup here.",
+      "Create your account in the Worknaro application. Authentication and onboarding stay on Django—no separate signup here.",
     cta: "Create account",
     href: djangoRoutes.register(),
     tone: "teal",
@@ -158,10 +158,7 @@ export function ContactIntro() {
               <h1 id="contact-hero-heading" className="contact-intro-heading font-display">
                 <span className="contact-intro-heading-line">Have a question?</span>
                 <span className="contact-intro-heading-line">
-                  <span className="contact-intro-accent">
-                    Let&apos;s talk.
-                    <AccentUnderline className="contact-intro-underline" wide />
-                  </span>
+                  <HeadingAccent>Let&apos;s talk.</HeadingAccent>
                 </span>
               </h1>
             </FadeInWhenVisible>

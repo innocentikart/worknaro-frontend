@@ -33,7 +33,7 @@ export function FilesCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Files" badge={FILE_STAGES[index].label} />
+      <VizChrome title="Worknaro · Files" badge={FILE_STAGES[index].label} />
       <div className="mst-stage mst-files">
         <p className="mst-kicker">Website Redesign</p>
         <ul>
@@ -69,7 +69,7 @@ export function TagsCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Tags" badge={TAG_STAGES[index].label} />
+      <VizChrome title="Worknaro · Tags" badge={TAG_STAGES[index].label} />
       <div className="mst-stage mst-tags">
         <ul className={grouped ? "is-grouped" : ""}>
           {TAG_ITEMS.map((item) => (
@@ -106,7 +106,7 @@ export function TrashCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Trash" badge={TRASH_STAGES[index].label} />
+      <VizChrome title="Worknaro · Trash" badge={TRASH_STAGES[index].label} />
       <div className="mst-stage mst-trash">
         <div className={`mst-trash-col ${!inTrash ? "is-active" : ""}`}>
           <p>Project files</p>
@@ -163,7 +163,7 @@ export function SearchCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Search" badge={SEARCH_STAGES[index].label} />
+      <VizChrome title="Worknaro · Search" badge={SEARCH_STAGES[index].label} />
       <div className="mst-stage mst-search">
         <div className="mst-search-box">
           <span>{q || "Search the workspace"}</span>
@@ -196,7 +196,7 @@ export function ReportsCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Reports" badge={REPORT_STAGES[index].label} />
+      <VizChrome title="Worknaro · Reports" badge={REPORT_STAGES[index].label} />
       <div className="mst-stage mst-report">
         <StageLayer active={activity}>
           <ul className="mst-mini-list">
@@ -264,7 +264,7 @@ export function AccessCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Workspace" badge={ACCESS_STAGES[index].label} />
+      <VizChrome title="Worknaro · Workspace" badge={ACCESS_STAGES[index].label} />
       <div className="mst-stage mst-access">
         <p className="mst-kicker">Northwind workspace</p>
         <ul>

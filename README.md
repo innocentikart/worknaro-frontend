@@ -1,11 +1,11 @@
-# Organitio public marketing site (Next.js)
+# Worknaro public marketing site (Next.js)
 
-Modern public-facing website for Organitio. The authenticated application remains the Django app on port 8000.
+Modern public-facing website for Worknaro. The authenticated application remains the Django app on port 8000.
 
 ## Requirements
 
 - Node.js 20+
-- Django Organitio running locally for Login / Get Started deep links
+- Django Worknaro running locally for Login / Get Started deep links
 
 ## Setup
 

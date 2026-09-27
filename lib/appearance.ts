@@ -1,5 +1,5 @@
 /**
- * Shared Appearance state with Django Organitio customizer.
+ * Shared Appearance state with Django Worknaro customizer.
  * Keys/classes must match static/assets/js/organitio-theme-skin.js + customizer.html.
  */
 

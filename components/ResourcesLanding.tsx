@@ -15,7 +15,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { ThemeProductImage } from "@/components/ui/ThemeProductImage";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
@@ -37,7 +37,7 @@ const quickLinks: Array<{
 }> = [
   {
     title: "Features",
-    description: "Modules that exist in the Organitio application today.",
+    description: "Modules that exist in the Worknaro application today.",
     href: "/features",
     icon: LayoutGrid,
     accent: "blue",
@@ -92,7 +92,7 @@ export function ResourcesLanding() {
           <span className="resources-deco-dots" />
         </div>
 
-        <div className="why-wrap relative py-16 lg:py-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
               <p className="trust-eyebrow mx-auto">
@@ -102,10 +102,7 @@ export function ResourcesLanding() {
               </p>
               <h2 id="resources-library-heading" className="resources-heading font-display">
                 Learn more about{" "}
-                <span className="resources-heading-accent">
-                  Organitio
-                  <AccentUnderline className="resources-underline" />
-                </span>
+                <HeadingAccent>Worknaro</HeadingAccent>
               </h2>
               <p className="resources-lead">
                 Explore product capabilities, plans, and guides—or continue into the authenticated application.
@@ -113,7 +110,7 @@ export function ResourcesLanding() {
             </div>
           </FadeInWhenVisible>
 
-          <StaggerChildren className="mt-12 grid gap-5 md:grid-cols-3 lg:mt-14">
+          <StaggerChildren className="landing-to-content grid gap-5 md:grid-cols-3">
             {resourceCards.map((item, index) => {
               const accent = item.accent || accents[index % accents.length];
               return (
@@ -171,7 +168,7 @@ export function ResourcesLanding() {
         className="why-section relative overflow-hidden"
         aria-labelledby="resources-links-heading"
       >
-        <div className="why-wrap relative py-16 lg:py-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
               <p className="trust-eyebrow mx-auto">
@@ -181,27 +178,12 @@ export function ResourcesLanding() {
               </p>
               <h2 id="resources-links-heading" className="why-heading font-display">
                 Continue where you need to{" "}
-                <span className="why-brand">
-                  go
-                  <svg
-                    className="why-underline"
-                    viewBox="0 0 80 12"
-                    fill="none"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M2 8.5C16 4 34 3 52 4.5C64 5.5 74 7.5 78 5"
-                      stroke="currentColor"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-                </span>
+                <HeadingAccent>go</HeadingAccent>
               </h2>
             </div>
           </FadeInWhenVisible>
 
-          <StaggerChildren className="about-pillar-grid mx-auto mt-12 grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-4 xl:gap-6">
+          <StaggerChildren className="about-pillar-grid landing-to-content mx-auto grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-4 xl:gap-6">
             {quickLinks.map((item, index) => (
               <FadeInWhenVisible key={item.title} className="h-full" delay={index * 50}>
                 <PremiumModuleCard
@@ -229,7 +211,7 @@ export function ResourcesLanding() {
               <div className="solutions-editions-copy relative z-[1]">
                 <span className="solutions-editions-copy-blur" aria-hidden="true" />
                 <h2 className="features-search-heading relative z-[1] font-display">
-                  Ready to work in Organitio?
+                  Ready to work in Worknaro?
                 </h2>
                 <p className="features-search-lead relative z-[1]">
                   Create a workspace in the application—accounts, billing, and data stay there.

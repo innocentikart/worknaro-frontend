@@ -27,7 +27,7 @@ export function TimeFinanceCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Time & finance" badge={TIME_STAGES[index].label} />
+      <VizChrome title="Worknaro · Time & finance" badge={TIME_STAGES[index].label} />
       <div className="mst-stage mst-measure">
         <StageLayer active={work}>
           <div className="mst-measure-card">
@@ -78,7 +78,7 @@ export function ClientsCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Client" badge={CLIENT_STAGES[index].label} />
+      <VizChrome title="Worknaro · Client" badge={CLIENT_STAGES[index].label} />
       <div className="mst-stage mst-client">
         <article className="mst-client-card">
           <span className="pfs-avatar pfs-avatar-teal pfs-avatar-lg">NW</span>
@@ -134,7 +134,7 @@ export function LeadsCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Leads" badge={LEAD_STAGES[index].label} />
+      <VizChrome title="Worknaro · Leads" badge={LEAD_STAGES[index].label} />
       <div className="mst-stage mst-pipe">
         <div className="mst-pipe-cols">
           {LEAD_COLUMNS.map((label, i) => (
@@ -175,7 +175,7 @@ export function ProposalsCanvas({
 
   return (
     <div className="pfs-viz mst-viz" aria-live="polite">
-      <VizChrome title="Organitio · Proposal" badge={PROPOSAL_STAGES[index].label} />
+      <VizChrome title="Worknaro · Proposal" badge={PROPOSAL_STAGES[index].label} />
       <div className="mst-stage mst-doc">
         <div className="mst-doc-page">
           <p className="mst-kicker">PR-18 · {status}</p>

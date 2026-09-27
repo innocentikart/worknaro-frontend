@@ -3,13 +3,14 @@ import { productCapabilities } from "@/lib/content";
 
 export function ProductOverview() {
   return (
-    <section className="page-wrap py-16 lg:py-20">
+    <section className="band">
+      <div className="page-wrap">
       <SectionHeading
         eyebrow="Platform"
         title="Everything your workspace needs to deliver"
-        description="Organitio connects projects, people, clients, and operations in one modern business workspace."
+        description="Worknaro connects projects, people, clients, and operations in one modern business workspace."
       />
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="landing-to-content grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {productCapabilities.map((item) => (
           <article
             key={item.title}
@@ -21,6 +22,7 @@ export function ProductOverview() {
             </p>
           </article>
         ))}
+      </div>
       </div>
     </section>
   );

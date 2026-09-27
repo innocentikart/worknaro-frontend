@@ -35,7 +35,7 @@ export function Hero({
   const line2 = (cmsHero?.headline_line2 || "work done.").replace(/\s*\n\s*/g, " ").trim();
   const description =
     cmsHero?.description ||
-    "Organitio brings projects, tasks, clients, time, finance, files, and team collaboration into one multi-tenant workspace—with roles that control who can see and change what.";
+    "Worknaro brings projects, tasks, clients, time, finance, files, and team collaboration into one multi-tenant workspace—with roles that control who can see and change what.";
   const primaryLabel = cmsHero?.primary_cta_label || "Get Started Free";
   const secondaryLabel = cmsHero?.secondary_cta_label || "Explore Features";
   const secondaryHref = cmsHero?.secondary_cta_url || "/features";
@@ -95,7 +95,7 @@ export function Hero({
               </Link>
             </div>
 
-            <ul className="animate-fade-up-delay-3 hero-trust" aria-label="Why start with Organitio">
+            <ul className="animate-fade-up-delay-3 hero-trust" aria-label="Why start with Worknaro">
               {trustItems.map((item) => (
                 <li key={item} className="hero-trust-item">
                   <span className="hero-trust-check" aria-hidden="true">

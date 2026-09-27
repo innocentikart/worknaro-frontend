@@ -12,7 +12,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import {
   FeatureCard,
   type FeatureAccentColor,
@@ -136,7 +136,7 @@ export function FeatureCardsSection({ cmsHighlights }: FeatureCardsSectionProps)
   return (
     <section
       className="why-section relative overflow-hidden"
-      aria-labelledby="why-organitio-heading"
+      aria-labelledby="why-worknaro-heading"
     >
       <div className="why-ambient" aria-hidden="true" />
 
@@ -146,7 +146,7 @@ export function FeatureCardsSection({ cmsHighlights }: FeatureCardsSectionProps)
             <p className="audience-eyebrow mx-auto">Workspace Features</p>
 
             <h2
-              id="why-organitio-heading"
+              id="why-worknaro-heading"
               className="why-heading why-heading-stack font-display mt-5"
             >
               <span className="why-heading-line">
@@ -154,10 +154,7 @@ export function FeatureCardsSection({ cmsHighlights }: FeatureCardsSectionProps)
               </span>
               <span className="why-heading-line">
                 run in{" "}
-                <span className="why-brand-gradient">
-                  Organitio
-                  <AccentUnderline />
-                </span>
+                <HeadingAccent>Worknaro</HeadingAccent>
               </span>
             </h2>
 
@@ -168,7 +165,7 @@ export function FeatureCardsSection({ cmsHighlights }: FeatureCardsSectionProps)
           </div>
         </FadeInWhenVisible>
 
-        <StaggerChildren className="mt-14 grid grid-cols-1 gap-5 md:grid-cols-2 lg:mt-16 lg:grid-cols-10 lg:gap-6">
+        <StaggerChildren className="landing-to-content grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-10 lg:gap-6">
           {slots.map((slot) => (
             <FadeInWhenVisible key={slot.key} className={`h-full ${slot.span}`}>
               <FeatureCard

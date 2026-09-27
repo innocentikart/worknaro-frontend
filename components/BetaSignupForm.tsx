@@ -15,6 +15,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { Icon } from "@/components/ui/Icon";
 import { submitBetaSignup } from "@/lib/landing-api";
 
@@ -46,12 +47,12 @@ const ROLE_OPTIONS = [
 ] as const;
 
 function renderBetaHeading(heading: string): ReactNode {
-  const match = heading.match(/^(.*?)(Organitio\.?)(.*)$/i);
+  const match = heading.match(/^(.*?)((?:Worknaro|Organitio)\.?)(.*)$/i);
   if (!match) return heading;
   return (
     <>
       {match[1]}
-      <span className="beta-brand-accent">{match[2]}</span>
+      <HeadingAccent>{match[2]}</HeadingAccent>
       {match[3]}
     </>
   );
@@ -75,7 +76,7 @@ export function BetaSignupForm({
 
   if (!enabled) return null;
 
-  const heading = config?.heading || "Be among the first to experience Organitio.";
+  const heading = config?.heading || "Be among the first to experience Worknaro.";
   const description =
     config?.description || "Join the beta and get early access to the platform.";
   const buttonLabel = config?.button_label || "Join the Beta";
@@ -119,7 +120,7 @@ export function BetaSignupForm({
         <span className="beta-deco-blob" />
       </div>
 
-      <div className="why-wrap relative py-16 lg:py-20">
+      <div className="why-wrap relative">
         <Reveal>
           <div className="beta-card">
             <div className="beta-card-grid">

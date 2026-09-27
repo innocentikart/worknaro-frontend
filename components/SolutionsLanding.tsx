@@ -18,7 +18,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { Icon } from "@/components/ui/Icon";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
@@ -60,7 +60,7 @@ const pillars: Array<{
   {
     title: "One product",
     description:
-      "Audience labels describe how teams use Organitio—not separate industry editions or SKUs.",
+      "Audience labels describe how teams use Worknaro—not separate industry editions or SKUs.",
     icon: Layers,
     accent: "blue",
     visual: "one-product",
@@ -118,25 +118,22 @@ export function SolutionsLanding() {
           <span className="why-deco-dots" />
         </div>
 
-        <div className="why-wrap relative py-16 lg:py-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
               <p className="audience-eyebrow mx-auto">One platform</p>
               <h2 id="pillars-heading" className="why-heading font-display mt-5 text-balance">
                 Built once. Used by many kinds of{" "}
-                <span className="why-brand-gradient">
-                  teams
-                  <AccentUnderline />
-                </span>
+                <HeadingAccent>teams</HeadingAccent>
               </h2>
               <p className="why-description">
-                Organitio adapts to how you organize work. Labels below are examples of
+                Worknaro adapts to how you organize work. Labels below are examples of
                 who uses the product—not separate product lines.
               </p>
             </div>
           </FadeInWhenVisible>
 
-          <StaggerChildren className="about-pillar-grid mx-auto mt-14 grid w-full gap-5 sm:grid-cols-2 xl:mt-16 xl:grid-cols-4 xl:gap-6">
+          <StaggerChildren className="about-pillar-grid landing-to-content mx-auto grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
             {pillars.map((item, index) => (
               <FadeInWhenVisible key={item.title} className="h-full" delay={index * 50}>
                 <PremiumModuleCard
@@ -162,16 +159,13 @@ export function SolutionsLanding() {
       >
         <div className="audience-ambient" aria-hidden="true" />
 
-        <div className="why-wrap relative py-16 lg:py-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
               <p className="audience-eyebrow mx-auto">Audiences</p>
               <h2 id="audiences-heading" className="solutions-heading font-display mt-5 text-balance">
                 Find the workspace shape that fits{" "}
-                <span className="solutions-heading-accent">
-                  your team
-                  <AccentUnderline className="solutions-underline" wide />
-                </span>
+                <HeadingAccent>your team</HeadingAccent>
               </h2>
               <p className="solutions-lead">
                 Jump to a deep dive below, or start a workspace and invite people when you
@@ -180,7 +174,7 @@ export function SolutionsLanding() {
             </div>
           </FadeInWhenVisible>
 
-          <StaggerChildren className="about-pillar-grid mx-auto mt-12 grid w-full gap-5 sm:grid-cols-2 xl:mt-14 xl:grid-cols-4 xl:gap-6">
+          <StaggerChildren className="about-pillar-grid landing-to-content mx-auto grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
             {solutions.map((item, index) => {
               const meta = AUDIENCE_META[item.id];
               return (
@@ -200,7 +194,7 @@ export function SolutionsLanding() {
             })}
           </StaggerChildren>
 
-          <FadeInWhenVisible delay={80} className="mt-12">
+          <FadeInWhenVisible delay={80} className="landing-to-content">
             <nav aria-label="Solution audiences" className="features-jump">
               {solutions.map((item) => {
                 const meta = AUDIENCE_META[item.id];
@@ -232,25 +226,22 @@ export function SolutionsLanding() {
           <span className="showcase-deco-dots" />
         </div>
 
-        <div className="why-wrap relative pt-16 lg:pt-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
               <p className="audience-eyebrow mx-auto">Deep dive</p>
               <h2 id="solutions-deep-dive-heading" className="int-heading font-display mt-5 text-balance">
                 How each audience uses the{" "}
-                <span className="int-heading-accent">
-                  same application
-                  <AccentUnderline className="int-underline" wide />
-                </span>
+                <HeadingAccent>same application</HeadingAccent>
               </h2>
               <p className="int-lead">
-                Screens and capabilities below are modules that already ship in Organitio.
+                Screens and capabilities below are modules that already ship in Worknaro.
               </p>
             </div>
           </FadeInWhenVisible>
         </div>
 
-        <div className="why-wrap relative space-y-20 py-14 lg:space-y-28 lg:py-20">
+        <div className="why-wrap relative landing-stack-blocks landing-to-content">
           {solutions.map((item, index) => (
             <FeatureShowcaseSection
               key={item.id}
@@ -274,7 +265,7 @@ export function SolutionsLanding() {
           <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
-        <div className="why-wrap relative py-16 lg:py-20">
+        <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="features-search-panel solutions-editions-panel relative overflow-hidden text-center">
               <div className="solutions-editions-deco" aria-hidden="true" />

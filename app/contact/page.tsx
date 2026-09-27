@@ -4,7 +4,7 @@ import { ContactLanding } from "@/components/ContactLanding";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Organitio sales or create an account to get started with your workspace.",
+    "Contact Worknaro sales or create an account to get started with your workspace.",
   alternates: { canonical: "/contact" },
 };
 

@@ -10,6 +10,7 @@ import {
   HERO_TASK,
 } from "@/components/features/board-story/boardStoryData";
 import { useBoardStory } from "@/components/features/board-story/useBoardStory";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -51,7 +52,7 @@ export function BoardStory() {
           <div className="wbs-copy">
             <p className="audience-eyebrow">Tasks and the workflow board</p>
             <h2 id="collaboration-heading" className="pfs-heading font-display">
-              Work moves <span className="pfs-heading-accent">across the board.</span>
+              Work moves <HeadingAccent>across the board.</HeadingAccent>
             </h2>
             <p className="pfs-lead">
               The workspace board uses Backlog, To Do, In Progress, Review, and Completed.
@@ -112,7 +113,7 @@ export function BoardStory() {
               <div className="wbs-chrome">
                 <span className="wbs-brand">
                   <LayoutGrid size={14} strokeWidth={2.2} aria-hidden="true" />
-                  Organitio
+                  Worknaro
                 </span>
                 <span className="wbs-chrome-actions">
                   <Search size={14} strokeWidth={2} aria-hidden="true" />

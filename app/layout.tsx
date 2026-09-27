@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { SiteShell } from "@/components/SiteShell";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { BRAND_ASSETS, BRAND_NAME } from "@/lib/branding";
 import { getSiteUrl, siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -25,6 +26,15 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  applicationName: BRAND_NAME,
+  icons: {
+    icon: [
+      { url: BRAND_ASSETS.favicon32, sizes: "32x32", type: "image/png" },
+      { url: BRAND_ASSETS.favicon192, sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: BRAND_ASSETS.favicon192, sizes: "192x192", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -32,11 +42,13 @@ export const metadata: Metadata = {
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.description,
     url: getSiteUrl(),
+    images: [{ url: BRAND_ASSETS.icon, alt: BRAND_NAME }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.name} — ${siteConfig.tagline}`,
     description: siteConfig.shortDescription,
+    images: [BRAND_ASSETS.icon],
   },
   alternates: {
     canonical: "/",

@@ -80,7 +80,7 @@ export function HeroVisual() {
       <figure className="hero-dashboard relative z-10 ml-auto w-[92%] overflow-hidden rounded-[16px] border border-white/12 shadow-[0_40px_90px_-30px_rgba(15,23,42,0.95)] sm:w-[90%]">
         <Image
           src="/product/dashboard.png"
-          alt="Organitio dashboard with workspace overview, projects, and tasks"
+          alt="Worknaro dashboard with workspace overview, projects, and tasks"
           width={1920}
           height={980}
           priority

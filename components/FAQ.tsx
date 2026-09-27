@@ -13,7 +13,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { Icon } from "@/components/ui/Icon";
 import { faqs } from "@/lib/content";
 
@@ -35,7 +35,7 @@ const FAQ_ITEM_ICONS: { icon: LucideIcon; accent: "blue" | "teal" | "purple" | "
 export function FAQ({
   items = faqs,
   heading = "Questions, answered",
-  description = "Straightforward answers about Organitio, accounts, and plans.",
+  description = "Straightforward answers about Worknaro, accounts, and plans.",
 }: {
   items?: readonly { q: string; a: string }[];
   heading?: string;
@@ -55,7 +55,7 @@ export function FAQ({
         <span className="faq-deco-dots" />
       </div>
 
-      <div className="why-wrap relative grid gap-10 py-16 md:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] md:items-start md:gap-10 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] lg:gap-14 lg:py-20">
+      <div className="why-wrap relative grid gap-10 md:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] md:items-start md:gap-10 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] lg:gap-14">
         <Reveal>
           <div className="faq-intro">
             <p className="trust-eyebrow">
@@ -67,10 +67,7 @@ export function FAQ({
               {heading.includes("answered") ? (
                 <>
                   Questions,{" "}
-                  <span className="faq-heading-accent">
-                    answered
-                    <AccentUnderline className="faq-underline" />
-                  </span>
+                  <HeadingAccent>answered</HeadingAccent>
                 </>
               ) : (
                 heading

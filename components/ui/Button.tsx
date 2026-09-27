@@ -12,9 +12,9 @@ type ButtonVariant = "primary" | "secondary" | "ghost" | "onDark" | "shine";
 
 const variants: Record<ButtonVariant, string> = {
   primary:
-    "bg-primary text-white hover:bg-primary-hover shadow-[0_8px_18px_-10px_rgba(52,84,209,0.7)] hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-12px_rgba(52,84,209,0.65)]",
+    "bg-primary text-white hover:bg-primary-hover shadow-[0_8px_18px_-12px_rgba(57,104,234,0.42)] hover:-translate-y-0.5 hover:shadow-[0_14px_28px_-14px_rgba(57,104,234,0.48)]",
   secondary:
-    "bg-surface-elevated text-ink border border-line hover:border-primary/35 hover:text-primary hover:-translate-y-0.5 hover:shadow-md",
+    "bg-surface-elevated text-primary border border-primary/30 hover:border-primary/45 hover:bg-primary/5 hover:-translate-y-0.5 hover:shadow-md dark:bg-white/[0.03] dark:text-white dark:border-primary/40 dark:hover:bg-primary/10",
   ghost: "text-slate hover:text-primary",
   onDark:
     "border border-white/20 bg-white/5 text-white hover:border-white/40 hover:bg-white/10 hover:-translate-y-0.5",

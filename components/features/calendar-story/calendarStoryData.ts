@@ -50,6 +50,7 @@ export const TIME_WORK = [
     endDay: 22,
     tone: "violet",
     dependsOn: [] as const,
+    milestone: false,
   },
   {
     id: "hero",
@@ -61,6 +62,7 @@ export const TIME_WORK = [
     endDay: 24,
     tone: "blue",
     dependsOn: ["home"] as const,
+    milestone: false,
   },
   {
     id: "api",
@@ -72,6 +74,7 @@ export const TIME_WORK = [
     endDay: 27,
     tone: "teal",
     dependsOn: ["hero"] as const,
+    milestone: false,
   },
   {
     id: "content",
@@ -83,6 +86,7 @@ export const TIME_WORK = [
     endDay: 26,
     tone: "amber",
     dependsOn: [] as const,
+    milestone: false,
   },
   {
     id: "launch",
@@ -112,21 +116,21 @@ export function workForTab(tab: CalendarTimeTab) {
 }
 
 export const WEEK_DAYS = [
-  { label: "Mon", num: 21 },
-  { label: "Tue", num: 22 },
-  { label: "Wed", num: 23 },
+  { label: "Mon", num: 21, today: false },
+  { label: "Tue", num: 22, today: false },
+  { label: "Wed", num: 23, today: false },
   { label: "Thu", num: 24, today: true },
-  { label: "Fri", num: 25 },
-  { label: "Sat", num: 26 },
-  { label: "Sun", num: 27 },
+  { label: "Fri", num: 25, today: false },
+  { label: "Sat", num: 26, today: false },
+  { label: "Sun", num: 27, today: false },
 ] as const;
 
 export const BAR_TICKS = [
-  { label: "21", day: 21 },
-  { label: "23", day: 23 },
+  { label: "21", day: 21, mile: false },
+  { label: "23", day: 23, mile: false },
   { label: "24", day: 24, mile: true },
-  { label: "26", day: 26 },
-  { label: "27", day: 27 },
+  { label: "26", day: 26, mile: false },
+  { label: "27", day: 27, mile: false },
 ] as const;
 
 type DateRange = { start: number; end: number };

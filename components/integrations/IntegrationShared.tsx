@@ -298,7 +298,7 @@ export function IntegrationCard({
 
 export function IntegrationCardsGrid({
   idPrefix,
-  className = "mt-12 grid gap-5 sm:grid-cols-2 xl:grid-cols-4",
+  className = "landing-to-content grid gap-5 sm:grid-cols-2 xl:grid-cols-4",
 }: {
   idPrefix: string;
   className?: string;

@@ -10,7 +10,7 @@ export function PageHero({
   description?: string;
 }) {
   return (
-    <section className="hero-light border-b border-line py-14 lg:py-16">
+    <section className="hero-light border-b border-line">
       <div className="page-wrap">
         <SectionHeading eyebrow={eyebrow} title={title} description={description} />
       </div>

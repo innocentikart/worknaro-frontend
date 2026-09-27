@@ -19,7 +19,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { LandingBackground } from "@/components/ui/LandingBackground";
 
 type NodeTone = "blue" | "teal" | "purple" | "orange" | "indigo" | "green";
@@ -374,10 +374,7 @@ export function FeaturesIntro() {
             >
               <span className="why-heading-line">Everything your workspace needs.</span>
               <span className="why-heading-line">
-                <span className="why-brand-gradient features-intro-accent">
-                  Connected in one place.
-                  <AccentUnderline className="features-underline" wide />
-                </span>
+                <HeadingAccent>Connected in one place.</HeadingAccent>
               </span>
             </h1>
             <p className="features-intro-lead">

@@ -18,6 +18,7 @@ import {
 } from "@/components/features/calendar-story/calendarStoryData";
 import { useCalendarTimeStory } from "@/components/features/calendar-story/useCalendarTimeStory";
 import { VizChrome } from "@/components/features/story/VizChrome";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 const ICONS = {
   tasks: ListChecks,
@@ -26,7 +27,7 @@ const ICONS = {
   schedule: CalendarDays,
 } as const;
 
-const EASE = [0.22, 1, 0.36, 1] as const;
+const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export function CalendarTimeStory() {
   const reduce = useReducedMotion();
@@ -69,7 +70,7 @@ export function CalendarTimeStory() {
           <p className="audience-eyebrow mx-auto">See work in time.</p>
           <h2 id="calendar-heading" className="mig-heading font-display">
             The calendar shows project dates,{" "}
-            <span className="pfs-heading-accent">open tasks, and milestones.</span>
+            <HeadingAccent>open tasks, and milestones.</HeadingAccent>
           </h2>
           <p className="mig-lead">
             It is a read-only schedule — you open the related record instead of creating
@@ -136,7 +137,7 @@ export function CalendarTimeStory() {
             className={`pfs-viz cts-viz is-${tab}`}
           >
             <VizChrome
-              title={`Organitio · ${CALENDAR_TIME_META[tab].chrome}`}
+              title={`Worknaro · ${CALENDAR_TIME_META[tab].chrome}`}
               badge="Read-only"
             />
             <LayoutGroup id="cts-story">
@@ -360,7 +361,7 @@ function TimeCanvas({
 }: {
   tab: CalendarTimeTab;
   motionOn: boolean;
-  transition: { duration: number; ease: readonly number[] };
+  transition: { duration: number; ease: [number, number, number, number] };
 }) {
   const showLinks = tab === "links";
   const showSchedule = tab === "schedule";
@@ -433,7 +434,7 @@ function WorkItem({
   tab: CalendarTimeTab;
   index: number;
   motionOn: boolean;
-  transition: { duration: number; ease: readonly number[] };
+  transition: { duration: number; ease: [number, number, number, number] };
 }) {
   const geo = geometryForTab(item, tab);
   const selected = tab === "schedule" && item.milestone;

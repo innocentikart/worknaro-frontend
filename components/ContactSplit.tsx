@@ -13,11 +13,11 @@ export function ContactSplit() {
         <span className="contact-deco-dots" />
       </div>
 
-      <div className="why-wrap relative grid gap-5 py-16 lg:grid-cols-2 lg:py-20">
+      <div className="why-wrap relative grid gap-5 lg:grid-cols-2">
         <Reveal>
           <article className="contact-card contact-card-light h-full">
             <p className="contact-eyebrow">Sales</p>
-            <h2 className="contact-title">Talk with the Organitio team</h2>
+            <h2 className="contact-title">Talk with the Worknaro team</h2>
             <p className="contact-copy">
               Enterprise plan quotas and commercial terms are handled through the existing contact-sales form in the application.
             </p>
@@ -34,7 +34,7 @@ export function ContactSplit() {
             <p className="contact-eyebrow contact-eyebrow-light">Start</p>
             <h2 className="contact-title contact-title-light">Create your workspace</h2>
             <p className="contact-copy contact-copy-light">
-              Registration stays in the Organitio application. This page does not collect emails or create a second account system.
+              Registration stays in the Worknaro application. This page does not collect emails or create a second account system.
             </p>
             <div className="mt-7">
               <a href={djangoRoutes.register()} className="hero-cta-primary hero-btn">

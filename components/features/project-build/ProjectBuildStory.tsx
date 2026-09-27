@@ -15,6 +15,7 @@ import {
   type ProjectBuildTab,
 } from "@/components/features/project-build/projectBuildData";
 import { useProjectBuildStory } from "@/components/features/project-build/useProjectBuildStory";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 const TAB_ICONS = {
   shell: Layers,
@@ -75,10 +76,10 @@ export function ProjectBuildStory() {
         <div className="mig-intro pbs-intro">
           <p className="audience-eyebrow mx-auto">Project management</p>
           <h2 id="projects-heading" className="mig-heading font-display">
-            Build the project <span className="pfs-heading-accent">in one place.</span>
+            Build the project <HeadingAccent>in one place.</HeadingAccent>
           </h2>
           <p className="mig-lead">
-            A project in Organitio brings people, tasks, dates, and a budget tier together.
+            A project in Worknaro brings people, tasks, dates, and a budget tier together.
             Progress is calculated from task status — it is not a field you type.
           </p>
         </div>

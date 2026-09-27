@@ -15,7 +15,7 @@ export const IMPORT_STAGES: StoryStage[] = [
     label: "Prepare",
     title: "Work is prepared",
     description:
-      "Organitio imports from CSV, Excel, or JSON. Export from another tool, then bring those objects across.",
+      "Worknaro imports from CSV, Excel, or JSON. Export from another tool, then bring those objects across.",
     start: 0.2,
     end: 0.4,
   },
@@ -24,7 +24,7 @@ export const IMPORT_STAGES: StoryStage[] = [
     label: "Map",
     title: "Fields are matched",
     description:
-      "Statuses, assignees, and due dates map to Organitio fields before anything is written.",
+      "Statuses, assignees, and due dates map to Worknaro fields before anything is written.",
     start: 0.4,
     end: 0.6,
   },
@@ -39,10 +39,10 @@ export const IMPORT_STAGES: StoryStage[] = [
   },
   {
     id: "organitio",
-    label: "Organitio",
+    label: "Worknaro",
     title: "Work lives here now",
     description:
-      "The same projects and people appear in an Organitio workspace—ready to continue, not start over.",
+      "The same projects and people appear in a Worknaro workspace—ready to continue, not start over.",
     start: 0.8,
     end: 1.01,
   },
@@ -52,5 +52,5 @@ export const IMPORT_MOBILE_STAGES = [
   { id: "existing", label: "Existing work", progress: 0.1 },
   { id: "map", label: "Map", progress: 0.5 },
   { id: "import", label: "Import", progress: 0.7 },
-  { id: "organitio", label: "Organitio", progress: 0.92 },
+  { id: "organitio", label: "Worknaro", progress: 0.92 },
 ] as const;

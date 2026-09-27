@@ -62,7 +62,7 @@ export function ShellScene({
       <SceneCopy tab="shell" progress={progress} marks={[0.16, 0.44, 0.6, 0.76]} />
       <div className="pbs-ui">
         <div className="pfs-viz pbs-viz">
-          <VizChrome title={`Organitio · ${meta.chrome}`} badge={created ? "Created" : "Draft"} />
+          <VizChrome title={`Worknaro · ${meta.chrome}`} badge={created ? "Created" : "Draft"} />
           <div className="pbs-stage">
             <div className="pbs-form">
               <Field label="Project name" value={name} show={nameOn} />
@@ -112,7 +112,7 @@ export function TeamScene({
       <SceneCopy tab="team" progress={progress} marks={[0.16, 0.32, 0.48, 0.78]} />
       <div className="pbs-ui">
         <div className="pfs-viz pbs-viz">
-          <VizChrome title={`Organitio · ${meta.chrome}`} badge={`${count} members`} />
+          <VizChrome title={`Worknaro · ${meta.chrome}`} badge={`${count} members`} />
           <div className="pbs-stage">
             <div className="pbs-team-head">
               <div>
@@ -195,7 +195,7 @@ export function WorkScene({
       <SceneCopy tab="work" progress={progress} marks={[0.18, 0.38, 0.58, 0.78]} />
       <div className="pbs-ui">
         <div className="pfs-viz pbs-viz">
-          <VizChrome title={`Organitio · ${meta.chrome}`} badge={statusLabel} />
+          <VizChrome title={`Worknaro · ${meta.chrome}`} badge={statusLabel} />
           <div className="pbs-stage">
             <div className="pbs-board" aria-hidden="false">
               {BOARD_COLUMNS.map((column, index) => (
@@ -292,7 +292,7 @@ export function LiveScene({
       <SceneCopy tab="live" progress={progress} marks={[0.16, 0.32, 0.48, 0.62]} />
       <div className="pbs-ui">
         <div className="pfs-viz pbs-viz">
-          <VizChrome title={`Organitio · ${meta.chrome}`} badge={DEMO_PROJECT.liveStatus} />
+          <VizChrome title={`Worknaro · ${meta.chrome}`} badge={DEMO_PROJECT.liveStatus} />
           <div className="pbs-stage">
             <div className="pbs-live-top">
               <div

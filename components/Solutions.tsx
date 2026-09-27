@@ -15,7 +15,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
 import { solutions } from "@/lib/content";
@@ -55,7 +55,7 @@ export function Solutions({
     >
       <div className="audience-ambient" aria-hidden="true" />
 
-      <div className="why-wrap relative py-16 lg:py-24">
+      <div className="why-wrap relative">
         {showHeading ? (
           <FadeInWhenVisible>
             <div className="mx-auto max-w-5xl text-center">
@@ -67,10 +67,7 @@ export function Solutions({
                 <span className="audience-heading-line">
                   Powerful tools and features designed to help teams
                 </span>
-                <span className="audience-heading-accent">
-                  collaborate
-                  <AccentUnderline wide />
-                </span>
+                <HeadingAccent>collaborate</HeadingAccent>
               </h2>
               <p className="audience-lead mx-auto mt-5 max-w-2xl">
                 Manage projects, and achieve more — all in one place.
@@ -82,7 +79,7 @@ export function Solutions({
         <StaggerChildren
           className={[
             "about-pillar-grid mx-auto grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6",
-            showHeading ? "mt-12 lg:mt-16" : "",
+            showHeading ? "landing-to-content" : "",
           ].join(" ")}
         >
           {items.map((item, index) => {

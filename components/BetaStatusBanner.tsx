@@ -14,7 +14,7 @@ export function BetaStatusBanner() {
     const beta = searchParams.get("beta");
     if (beta === "verified") {
       setTone("success");
-      setMessage("Email verified. You’re on the Organitio beta waitlist.");
+      setMessage("Email verified. You’re on the Worknaro beta waitlist.");
     } else if (beta === "invalid") {
       setTone("danger");
       setMessage("That verification link is invalid or expired.");

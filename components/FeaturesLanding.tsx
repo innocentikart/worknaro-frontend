@@ -22,7 +22,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { Icon } from "@/components/ui/Icon";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
@@ -40,8 +40,8 @@ const FEATURE_JUMP: Array<{ id: string; title: string; icon: LucideIcon }> = [
   { id: "collaboration", title: "Board", icon: CheckSquare },
   { id: "calendar", title: "Calendar", icon: CalendarDays },
   { id: "gantt", title: "Gantt", icon: GanttChart },
-  { id: "time-budget", title: "Time & finance", icon: Briefcase },
   { id: "clients", title: "Clients", icon: Users },
+  { id: "time-budget", title: "Time & finance", icon: Briefcase },
   { id: "leads", title: "Leads", icon: Users },
   { id: "proposals", title: "Proposals", icon: FileStack },
   { id: "files", title: "Files", icon: FileStack },
@@ -116,10 +116,7 @@ export function FeaturesLanding() {
                 <span className="audience-heading-line">
                   Everything your team runs in
                 </span>
-                <span className="audience-heading-accent">
-                  Organitio
-                  <AccentUnderline wide />
-                </span>
+                <HeadingAccent>Worknaro</HeadingAccent>
               </h2>
               <p className="audience-lead mx-auto mt-5 max-w-2xl">
                 Four pillars that cover workspace access, delivery work, client
@@ -128,7 +125,7 @@ export function FeaturesLanding() {
             </div>
           </FadeInWhenVisible>
 
-          <StaggerChildren className="about-pillar-grid mx-auto mt-12 grid w-full gap-5 sm:grid-cols-2 lg:mt-16 xl:grid-cols-4 xl:gap-6">
+          <StaggerChildren className="about-pillar-grid landing-to-content mx-auto grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
             {OVERVIEW_CARDS.map((item, index) => (
               <FadeInWhenVisible key={item.title} className="h-full" delay={index * 50}>
                 <PremiumModuleCard
@@ -177,13 +174,10 @@ export function FeaturesLanding() {
               <p className="audience-eyebrow mx-auto">Deep dive</p>
               <h2 id="deep-dive-heading" className="int-heading font-display mt-5 text-balance">
                 See how each module fits into the{" "}
-                <span className="int-heading-accent">
-                  application
-                  <AccentUnderline className="int-underline" />
-                </span>
+                <HeadingAccent>application</HeadingAccent>
               </h2>
               <p className="int-lead">
-                Watch how work moves through Organitio — from a project you
+                Watch how work moves through Worknaro — from a project you
                 build, to the board, calendar, clients, and the people who can
                 see it.
               </p>
@@ -196,7 +190,7 @@ export function FeaturesLanding() {
       <InsightsStory />
       <ImportStory />
 
-      <section className="features-search-band relative overflow-x-clip" aria-labelledby="search-heading">
+      <section className="features-search-band relative overflow-x-clip" aria-labelledby="features-search-cta-heading">
         <div className="why-deco why-deco-left" aria-hidden="true">
           <span className="why-deco-blob" />
           <span className="why-deco-dots" />
@@ -214,7 +208,7 @@ export function FeaturesLanding() {
               </span>
               <div className="solutions-editions-copy relative z-[1]">
                 <span className="solutions-editions-copy-blur" aria-hidden="true" />
-                <h2 id="search-heading" className="features-search-heading relative z-[1] font-display">
+                <h2 id="features-search-cta-heading" className="features-search-heading relative z-[1] font-display">
                   Find work across the workspace
                 </h2>
                 <p className="features-search-lead relative z-[1]">

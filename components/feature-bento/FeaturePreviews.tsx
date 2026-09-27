@@ -109,7 +109,7 @@ export function WorkspaceRolesPreview() {
         </span>
         <div className="min-w-0 flex-1">
           <p className="text-xs font-semibold text-slate-900 dark:text-slate-100">
-            Organitio HQ
+            Worknaro HQ
           </p>
           <span className="mt-1 inline-flex rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
             12 members

@@ -11,7 +11,7 @@ import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
 import { howItWorksCompact } from "@/lib/content";
@@ -86,10 +86,7 @@ export function HowItWorks({
               </span>
               <span className="how-heading-line">
                 then track time and invoices in the{" "}
-                <span className="how-heading-accent">
-                  same application.
-                  <AccentUnderline wide />
-                </span>
+                <HeadingAccent>same application.</HeadingAccent>
               </span>
             </h2>
           </div>

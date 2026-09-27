@@ -20,13 +20,13 @@ export function FeatureShowcase() {
         <span className="showcase-deco-dots" />
       </div>
 
-      <div className="why-wrap relative space-y-20 py-16 lg:space-y-28 lg:py-20">
+      <div className="why-wrap relative landing-stack-blocks">
         <FeatureShowcaseSection feature={projects} accent="blue" />
       </div>
 
       <IntegrationHub />
 
-      <div className="why-wrap relative space-y-20 py-16 lg:space-y-28 lg:py-20">
+      <div className="why-wrap relative landing-stack-blocks">
         <FeatureShowcaseSection
           feature={collaboration}
           accent="teal"

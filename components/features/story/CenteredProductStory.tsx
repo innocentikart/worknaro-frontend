@@ -7,6 +7,7 @@ import {
   type StoryStage,
 } from "@/components/features/story/storyUtils";
 import { useAutoPlayStory } from "@/components/features/story/useAutoPlayStory";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 
 export function CenteredProductStory({
   id,
@@ -56,7 +57,7 @@ export function CenteredProductStory({
               <p className="audience-eyebrow mx-auto">{eyebrow}</p>
               <h2 id={`${id}-heading`} className="mig-heading font-display">
                 {heading}{" "}
-                <span className="pfs-heading-accent">{accent}</span>
+                <HeadingAccent>{accent}</HeadingAccent>
               </h2>
               <p className="mig-lead">{lead}</p>
             </div>
@@ -86,7 +87,7 @@ export function CenteredProductStory({
             <p className="audience-eyebrow">{eyebrow}</p>
             <h2 className="mig-heading font-display">
               {heading}{" "}
-              <span className="pfs-heading-accent">{accent}</span>
+              <HeadingAccent>{accent}</HeadingAccent>
             </h2>
             <p className="mig-lead">{lead}</p>
           </div>

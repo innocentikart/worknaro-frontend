@@ -108,7 +108,7 @@ export function HeroVisual() {
       <figure className="main-dashboard">
         <Image
           src="/product/dashboard.png"
-          alt="Organitio dashboard with workspace overview, projects, and tasks"
+          alt="Worknaro dashboard with workspace overview, projects, and tasks"
           width={1920}
           height={980}
           priority

@@ -18,7 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { LandingBackground } from "@/components/ui/LandingBackground";
 
 type NodeTone = "blue" | "teal" | "purple" | "orange";
@@ -272,7 +272,7 @@ function SolutionAudienceMap() {
             <Layers className="h-5 w-5" strokeWidth={1.85} />
           </span>
           <div className="solutions-map-hub-copy">
-            <span className="solutions-map-hub-kicker">Organitio</span>
+            <span className="solutions-map-hub-kicker">Worknaro</span>
             <span className="solutions-map-hub-label">One workspace</span>
           </div>
           <span className="solutions-map-hub-pulse" aria-hidden="true" />
@@ -323,14 +323,10 @@ export function SolutionsIntro() {
             <p className="solutions-intro-eyebrow">Solutions for modern teams</p>
             <h1 id="solutions-hero-heading" className="solutions-intro-heading why-heading font-display">
               One workspace. Built around the way{" "}
-              <span className="why-brand-gradient">
-                you work
-                <AccentUnderline />
-              </span>
-              .
+              <HeadingAccent>you work</HeadingAccent>.
             </h1>
             <p className="solutions-intro-lead">
-              From growing teams to client-driven businesses, Organitio brings projects,
+              From growing teams to client-driven businesses, Worknaro brings projects,
               people, processes, and visibility together in one workspace designed around
               how you operate—not separate industry editions.
             </p>

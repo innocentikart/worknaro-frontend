@@ -138,7 +138,7 @@ export function InsightsCanvas({
           <i />
           <i />
         </span>
-        <span className="pfs-viz-title">Organitio · {STORY_PROJECT.name}</span>
+        <span className="pfs-viz-title">Worknaro · {STORY_PROJECT.name}</span>
         <span className="pfs-viz-badge">{INSIGHTS_STAGES[index].label}</span>
       </div>
 

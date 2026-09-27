@@ -10,7 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { resourceCards } from "@/lib/content";
 
 type ResourceAccent = (typeof resourceCards)[number]["accent"];
@@ -24,7 +24,7 @@ const ACCENT_ICONS: Record<ResourceAccent, LucideIcon> = {
 const HIGHLIGHTS = [
   {
     title: "Product guides",
-    description: "Learn how Organitio works",
+    description: "Learn how Worknaro works",
     href: "/features",
     icon: BookOpen,
   },
@@ -49,7 +49,7 @@ function FeaturedAppPreview() {
         <span className="resources-intro-app-dot" />
         <span className="resources-intro-app-dot" />
         <span className="resources-intro-app-dot" />
-        <span className="resources-intro-app-brand">Organitio</span>
+        <span className="resources-intro-app-brand">Worknaro</span>
       </div>
       <div className="resources-intro-app-body">
         <div className="resources-intro-app-rail">
@@ -170,7 +170,7 @@ export function ResourcesIntro() {
             <FadeInWhenVisible>
               <p className="resources-intro-eyebrow">
                 <span className="resources-intro-eyebrow-mark" aria-hidden="true" />
-                Organitio Resources
+                Worknaro Resources
               </p>
             </FadeInWhenVisible>
 
@@ -182,10 +182,7 @@ export function ResourcesIntro() {
                 <span className="resources-intro-heading-line">Resources to help</span>
                 <span className="resources-intro-heading-line">
                   you{" "}
-                  <span className="why-brand-gradient resources-intro-accent">
-                    work smarter.
-                    <AccentUnderline className="resources-underline" wide />
-                  </span>
+                  <HeadingAccent>work smarter.</HeadingAccent>
                 </span>
               </h1>
             </FadeInWhenVisible>
@@ -193,7 +190,7 @@ export function ResourcesIntro() {
             <FadeInWhenVisible delay={80}>
               <p className="resources-intro-lead">
                 Explore product capabilities, plans, and guides designed to help your
-                team get more from Organitio—or continue into the authenticated
+                team get more from Worknaro—or continue into the authenticated
                 application.
               </p>
             </FadeInWhenVisible>

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import {
   FEATURE_STAGES,
   type FeatureStageId,
@@ -25,11 +26,11 @@ export function FeatureStoryCopy({
       </p>
       <h2 id="pfs-heading" className="pfs-heading font-display">
         Everything your team does{" "}
-        <span className="pfs-heading-accent">stays connected.</span>
+        <HeadingAccent>stays connected.</HeadingAccent>
       </h2>
       <p className="pfs-lead">
         From the people doing the work to the projects, tasks, time and budget
-        behind it — Organitio keeps the complete picture together.
+        behind it — Worknaro keeps the complete picture together.
       </p>
 
       <div className="pfs-stage-list" role="list">

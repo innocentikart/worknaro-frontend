@@ -35,10 +35,10 @@ export const navLinks = [
 ] as const;
 
 export const siteConfig = {
-  name: "Organitio",
+  name: "Worknaro",
   tagline: "Plan. Manage. Deliver.",
   description:
-    "Organitio is a workspace for projects, tasks, clients, timesheets, invoices, files, calendar, and Gantt—with roles, invites, billing, AI Insights, and CSV import in the same application.",
+    "Worknaro is a workspace for projects, tasks, clients, timesheets, invoices, files, calendar, and Gantt—with roles, invites, billing, AI Insights, and CSV import in the same application.",
   shortDescription:
     "A multi-tenant workspace for projects, clients, time, and finance.",
 };
