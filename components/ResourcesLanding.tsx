@@ -217,7 +217,7 @@ export function ResourcesLanding() {
                   Create a workspace in the application—accounts, billing, and data stay there.
                 </p>
               </div>
-              <div className="relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
+              <div className="landing-cta-row relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
                 <a href={djangoRoutes.register()} className="hero-cta-primary hero-btn btn-shine">
                   Get Started
                   <span aria-hidden="true">→</span>

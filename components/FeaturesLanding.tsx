@@ -216,7 +216,7 @@ export function FeaturesLanding() {
                   who can see what.
                 </p>
               </div>
-              <div className="relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
+              <div className="landing-cta-row relative z-[1] mt-8 flex flex-wrap items-center justify-center gap-3">
                 <a href={djangoRoutes.register()} className="hero-cta-primary hero-btn btn-shine">
                   Create workspace
                   <span aria-hidden="true">→</span>

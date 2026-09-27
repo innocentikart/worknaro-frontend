@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
 import { LandingBackground } from "@/components/ui/LandingBackground";
 import { djangoRoutes, navLinks, siteConfig } from "@/lib/site";
@@ -10,13 +13,44 @@ const companyLinks = navLinks.filter((link) =>
   ["/about", "/contact", "/resources"].includes(link.href),
 );
 
+function FooterNavLink({
+  href,
+  children,
+  external = false,
+}: {
+  href: string;
+  children: string;
+  external?: boolean;
+}) {
+  const pathname = usePathname();
+  const className = "site-footer-link relative inline-flex";
+
+  if (external) {
+    return (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className={className}
+      aria-current={pathname === href ? "page" : undefined}
+    >
+      {children}
+    </Link>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="site-footer landing-nav-chrome relative overflow-x-clip">
       <div className="site-footer-bg" aria-hidden="true">
         <LandingBackground variant="home" />
       </div>
-      <div className="why-wrap relative z-10 grid gap-12 pb-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="why-wrap relative z-10 grid gap-8 pb-12 sm:grid-cols-2 sm:gap-12 sm:pb-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate">
@@ -32,15 +66,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5">
             {productLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="site-footer-link group relative inline-flex">
-                  <span className="transition-colors duration-200 group-hover:text-primary">
-                    {link.label}
-                  </span>
-                  <span
-                    className="absolute -bottom-0.5 left-0 h-px w-0 bg-primary transition-all duration-200 group-hover:w-full"
-                    aria-hidden="true"
-                  />
-                </Link>
+                <FooterNavLink href={link.href}>{link.label}</FooterNavLink>
               </li>
             ))}
           </ul>
@@ -50,15 +76,7 @@ export function Footer() {
           <ul className="mt-4 space-y-2.5">
             {companyLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="site-footer-link group relative inline-flex">
-                  <span className="transition-colors duration-200 group-hover:text-primary">
-                    {link.label}
-                  </span>
-                  <span
-                    className="absolute -bottom-0.5 left-0 h-px w-0 bg-primary transition-all duration-200 group-hover:w-full"
-                    aria-hidden="true"
-                  />
-                </Link>
+                <FooterNavLink href={link.href}>{link.label}</FooterNavLink>
               </li>
             ))}
           </ul>
@@ -67,22 +85,19 @@ export function Footer() {
           <p className="site-footer-heading">Account</p>
           <ul className="mt-4 space-y-2.5">
             <li>
-              <a href={djangoRoutes.login()} className="site-footer-link group relative inline-flex">
-                <span className="transition-colors duration-200 group-hover:text-primary">Sign In</span>
-                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-primary transition-all duration-200 group-hover:w-full" aria-hidden="true" />
-              </a>
+              <FooterNavLink href={djangoRoutes.login()} external>
+                Sign In
+              </FooterNavLink>
             </li>
             <li>
-              <a href={djangoRoutes.register()} className="site-footer-link group relative inline-flex">
-                <span className="transition-colors duration-200 group-hover:text-primary">Get Started</span>
-                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-primary transition-all duration-200 group-hover:w-full" aria-hidden="true" />
-              </a>
+              <FooterNavLink href={djangoRoutes.register()} external>
+                Get Started
+              </FooterNavLink>
             </li>
             <li>
-              <a href={djangoRoutes.contactSales()} className="site-footer-link group relative inline-flex">
-                <span className="transition-colors duration-200 group-hover:text-primary">Contact Sales</span>
-                <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-primary transition-all duration-200 group-hover:w-full" aria-hidden="true" />
-              </a>
+              <FooterNavLink href={djangoRoutes.contactSales()} external>
+                Contact Sales
+              </FooterNavLink>
             </li>
           </ul>
         </div>

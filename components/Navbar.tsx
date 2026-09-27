@@ -77,15 +77,13 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`rounded-md px-3 py-2 text-[13px] font-medium transition ${
-                  active
-                    ? "text-primary"
-                    : onDarkHero
-                      ? "text-white/70 hover:text-white"
-                      : "text-slate hover:text-primary"
+                className={`landing-nav-link rounded-md px-3 py-2 text-[13px] font-medium ${
+                  onDarkHero ? "text-white/70" : "text-slate"
                 }`}
+                aria-current={active ? "page" : undefined}
               >
-                {link.label}
+                <span className="landing-nav-mark" aria-hidden="true" />
+                <span className="landing-nav-label">{link.label}</span>
               </Link>
             );
           })}
@@ -125,23 +123,16 @@ export function Navbar() {
           />
           <button
             type="button"
-            className={`inline-flex h-10 w-10 items-center justify-center landing-icon-btn border ${
-              onDarkHero
-                ? "border-white/15 bg-white/5 text-white"
-                : "border-line bg-surface-elevated/80 text-ink backdrop-blur-sm"
-            }`}
+            className="inline-flex h-10 w-10 items-center justify-center"
             aria-expanded={open}
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              {open ? (
-                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              ) : (
-                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-              )}
-            </svg>
+            <span className={`landing-menu-toggle${open ? " is-open" : ""}`} aria-hidden="true">
+              <span className="landing-menu-toggle-line" />
+              <span className="landing-menu-toggle-line landing-menu-toggle-line-short" />
+            </span>
           </button>
         </div>
       </div>
@@ -149,31 +140,27 @@ export function Navbar() {
       {open ? (
         <div
           id="mobile-nav"
-          className="landing-nav-chrome border-t border-line bg-surface-elevated px-5 py-4 lg:hidden"
+          className="landing-nav-chrome landing-nav-panel flex flex-col gap-[var(--space-4)] border-t border-line bg-surface-elevated lg:hidden"
         >
           <nav className="flex flex-col" aria-label="Mobile">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-md px-3 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface hover:text-primary"
+                className="landing-nav-link rounded-md px-3 py-2.5 text-sm font-medium text-ink-soft"
+                aria-current={pathname === link.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
               >
-                {link.label}
+                <span className="landing-nav-mark" aria-hidden="true" />
+                <span className="landing-nav-label">{link.label}</span>
               </Link>
             ))}
           </nav>
-          <div className="mt-4 flex flex-col gap-2">
-            <a
-              href={djangoRoutes.login()}
-              className="landing-control-btn inline-flex items-center justify-center border border-line text-sm font-semibold text-ink"
-            >
+          <div className="landing-nav-actions">
+            <a href={djangoRoutes.login()} className="hero-btn hero-cta-secondary">
               Sign In
             </a>
-            <a
-              href={djangoRoutes.register()}
-              className="hero-cta-primary landing-control-btn inline-flex items-center justify-center text-sm font-semibold text-white"
-            >
+            <a href={djangoRoutes.register()} className="hero-cta-primary hero-btn btn-shine">
               Get Started
             </a>
           </div>

@@ -41,7 +41,7 @@ export function LandingHero({
             </h1>
             <p className="features-page-lead">{description}</p>
             {actions ? (
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <div className="landing-cta-row mt-8 flex flex-wrap items-center justify-center gap-3">
                 {actions}
               </div>
             ) : null}

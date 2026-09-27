@@ -23,7 +23,7 @@ const variants: Record<ButtonVariant, string> = {
 
 function buttonClasses(variant: ButtonVariant, className: string) {
   return [
-    "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold tracking-tight",
+    "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold tracking-tight sm:min-h-0",
     "transition duration-200 will-change-transform",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/45 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     variants[variant],
