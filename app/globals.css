@@ -21290,13 +21290,3 @@ html.dark .imp-viz {
   }
 }
 
-@media (max-width: 767px) {
-  .appearance-handle {
-    top: auto;
-    bottom: var(--space-4);
-    translate: 0 0;
-    height: 2.5rem;
-    width: 2.25rem;
-  }
-}
-
