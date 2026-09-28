@@ -4,6 +4,7 @@ import {
   BookOpen,
   Briefcase,
   Heart,
+  LayoutGrid,
   Rocket,
   Share2,
   Store,
@@ -17,6 +18,7 @@ import {
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
 import { solutions } from "@/lib/content";
 
@@ -59,17 +61,19 @@ export function Solutions({
         {showHeading ? (
           <FadeInWhenVisible>
             <div className="mx-auto max-w-5xl text-center">
-              <p className="audience-eyebrow mx-auto">Product Features</p>
+              <SectionBadge icon={LayoutGrid} className="mx-auto">
+                Product Features
+              </SectionBadge>
               <h2
                 id="solutions-heading"
-                className="audience-heading font-display mt-5"
+                className="audience-heading font-display"
               >
                 <span className="audience-heading-line">
                   Powerful tools and features designed to help teams
                 </span>
                 <HeadingAccent>collaborate</HeadingAccent>
               </h2>
-              <p className="audience-lead mx-auto mt-5 max-w-2xl">
+              <p className="audience-lead mx-auto max-w-2xl">
                 Manage projects, and achieve more — all in one place.
               </p>
             </div>

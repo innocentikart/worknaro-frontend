@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { resourceCards } from "@/lib/content";
 
 type ResourceAccent = (typeof resourceCards)[number]["accent"];
@@ -168,10 +169,7 @@ export function ResourcesIntro() {
         <div className="resources-intro-grid">
           <div className="resources-intro-copy">
             <FadeInWhenVisible>
-              <p className="resources-intro-eyebrow">
-                <span className="resources-intro-eyebrow-mark" aria-hidden="true" />
-                Worknaro Resources
-              </p>
+              <SectionBadge icon={BookOpen}>Worknaro Resources</SectionBadge>
             </FadeInWhenVisible>
 
             <FadeInWhenVisible delay={40}>

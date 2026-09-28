@@ -15,6 +15,7 @@ import {
 import { Reveal } from "@/components/Reveal";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { Icon } from "@/components/ui/Icon";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { faqs } from "@/lib/content";
 
 const FAQ_PILLS: { label: string; icon: LucideIcon; accent: "blue" | "teal" | "purple" }[] = [
@@ -58,11 +59,7 @@ export function FAQ({
       <div className="why-wrap relative grid gap-10 md:grid-cols-[minmax(0,0.4fr)_minmax(0,0.6fr)] md:items-start md:gap-10 lg:grid-cols-[minmax(0,0.38fr)_minmax(0,0.62fr)] lg:gap-14">
         <Reveal>
           <div className="faq-intro">
-            <p className="trust-eyebrow">
-              <span className="trust-eyebrow-line" aria-hidden="true" />
-              FAQ
-              <span className="trust-eyebrow-line" aria-hidden="true" />
-            </p>
+            <SectionBadge icon={CircleHelp}>FAQ</SectionBadge>
             <h2 id="faq-heading" className="faq-heading font-display">
               {heading.includes("answered") ? (
                 <>

@@ -8,9 +8,10 @@ import {
   useReducedMotion,
   type Variants,
 } from "framer-motion";
-import { BadgeCheck, ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { BadgeCheck, ChevronLeft, ChevronRight, MessageSquareQuote, Star } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 export type TestimonialItem = {
   quote: string;
@@ -236,11 +237,9 @@ export function Testimonials({
       <div className="stories-wrap relative">
         <FadeInWhenVisible>
           <div className="stories-header">
-            <p className="stories-eyebrow">
-              <span className="stories-eyebrow-line" aria-hidden="true" />
-              <span className="stories-eyebrow-pill">Customer Stories</span>
-              <span className="stories-eyebrow-line" aria-hidden="true" />
-            </p>
+            <SectionBadge icon={MessageSquareQuote} className="mx-auto">
+              Customer Stories
+            </SectionBadge>
 
             <h2 id="stories-heading" className="stories-heading font-display">
               <span className="block">What teams say about</span>

@@ -1,11 +1,8 @@
 "use client";
 
 import { type KeyboardEvent, type ReactNode } from "react";
-import { LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import type { LucideIcon } from "lucide-react";
 import { storyTabKeydown } from "@/components/features/story/useStoryCycle";
-
-const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export function StoryTabs<T extends string>({
   tabs,
@@ -14,6 +11,7 @@ export function StoryTabs<T extends string>({
   label,
   prefix,
   icons,
+  className,
 }: {
   tabs: readonly { id: T; label: string }[];
   tab: T;
@@ -21,8 +19,8 @@ export function StoryTabs<T extends string>({
   label: string;
   prefix: string;
   icons?: Partial<Record<T, LucideIcon>>;
+  className?: string;
 }) {
-  const reduce = useReducedMotion();
   const ids = tabs.map((item) => item.id);
 
   const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
@@ -30,42 +28,33 @@ export function StoryTabs<T extends string>({
   };
 
   return (
-    <LayoutGroup id={`${prefix}-tabs`}>
-      <div
-        className="fst-tabs"
-        role="tablist"
-        aria-label={label}
-        onKeyDown={onKeyDown}
-      >
-        {tabs.map((item) => {
-          const selected = tab === item.id;
-          const Icon = icons?.[item.id] as LucideIcon | undefined;
-          return (
-            <button
-              key={item.id}
-              type="button"
-              role="tab"
-              id={`${prefix}-tab-${item.id}`}
-              aria-selected={selected}
-              aria-controls={`${prefix}-panel`}
-              tabIndex={selected ? 0 : -1}
-              className={selected ? "is-active" : ""}
-              onClick={() => onSelect(item.id)}
-            >
-              {selected ? (
-                <motion.span
-                  layoutId={`${prefix}-pill`}
-                  className="fst-tab-pill"
-                  transition={{ duration: reduce ? 0 : 0.32, ease: EASE }}
-                />
-              ) : null}
-              {Icon ? <Icon size={14} strokeWidth={2.1} aria-hidden="true" /> : null}
-              {item.label}
-            </button>
-          );
-        })}
-      </div>
-    </LayoutGroup>
+    <div
+      className={["fst-tabs", className].filter(Boolean).join(" ")}
+      role="tablist"
+      aria-label={label}
+      onKeyDown={onKeyDown}
+    >
+      {tabs.map((item) => {
+        const selected = tab === item.id;
+        const Icon = icons?.[item.id] as LucideIcon | undefined;
+        return (
+          <button
+            key={item.id}
+            type="button"
+            role="tab"
+            id={`${prefix}-tab-${item.id}`}
+            aria-selected={selected}
+            aria-controls={`${prefix}-panel`}
+            tabIndex={selected ? 0 : -1}
+            className={selected ? "is-active" : ""}
+            onClick={() => onSelect(item.id)}
+          >
+            {Icon ? <Icon size={15} strokeWidth={2.1} aria-hidden="true" /> : null}
+            {item.label}
+          </button>
+        );
+      })}
+    </div>
   );
 }
 

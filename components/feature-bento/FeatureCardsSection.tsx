@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import {
   CalendarDays,
   CheckSquare,
+  LayoutGrid,
   UserRound,
   Users,
   type LucideIcon,
@@ -13,6 +14,7 @@ import {
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import {
   FeatureCard,
   type FeatureAccentColor,
@@ -143,11 +145,13 @@ export function FeatureCardsSection({ cmsHighlights }: FeatureCardsSectionProps)
       <div className="why-wrap relative">
         <FadeInWhenVisible>
           <div className="mx-auto max-w-5xl text-center">
-            <p className="audience-eyebrow mx-auto">Workspace Features</p>
+            <SectionBadge icon={LayoutGrid} className="mx-auto">
+              Workspace Features
+            </SectionBadge>
 
             <h2
               id="why-worknaro-heading"
-              className="why-heading why-heading-stack font-display mt-5"
+              className="why-heading why-heading-stack font-display"
             >
               <span className="why-heading-line">
                 A workspace for the work you already

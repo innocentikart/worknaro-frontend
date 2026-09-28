@@ -45,9 +45,13 @@ export function useStoryCycle<T extends string>({
     if (!el) return;
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setInView(entry.isIntersecting && entry.intersectionRatio >= 0.28);
+        setInView((was) => {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.2) return true;
+          if (!entry.isIntersecting || entry.intersectionRatio < 0.08) return false;
+          return was;
+        });
       },
-      { threshold: [0.16, 0.28, 0.45] },
+      { threshold: [0.08, 0.16, 0.2, 0.28, 0.45] },
     );
     observer.observe(el);
     return () => observer.disconnect();

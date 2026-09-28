@@ -1,6 +1,8 @@
 "use client";
 
 import { type ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   stageIndexForProgress,
@@ -8,10 +10,12 @@ import {
 } from "@/components/features/story/storyUtils";
 import { useAutoPlayStory } from "@/components/features/story/useAutoPlayStory";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 export function ScrollProductStory({
   id,
   eyebrow,
+  eyebrowIcon = Sparkles,
   heading,
   accent,
   lead,
@@ -22,6 +26,7 @@ export function ScrollProductStory({
 }: {
   id: string;
   eyebrow: string;
+  eyebrowIcon?: LucideIcon;
   heading: string;
   accent: string;
   lead: string;
@@ -51,7 +56,7 @@ export function ScrollProductStory({
             <div className="pfs-layout">
               <div className="pfs-left">
                 <div className="pfs-copy">
-                  <p className="audience-eyebrow">{eyebrow}</p>
+                  <SectionBadge icon={eyebrowIcon}>{eyebrow}</SectionBadge>
                   <h2 id={`${id}-heading`} className="pfs-heading font-display">
                     {heading}{" "}
                     <HeadingAccent>{accent}</HeadingAccent>
@@ -128,7 +133,7 @@ export function ScrollProductStory({
       <div className="pfs-mobile">
         <div className="why-wrap">
           <div className="pfs-mobile-intro">
-            <p className="audience-eyebrow">{eyebrow}</p>
+            <SectionBadge icon={eyebrowIcon}>{eyebrow}</SectionBadge>
             <h2 className="pfs-heading font-display">
               {heading}{" "}
               <HeadingAccent>{accent}</HeadingAccent>

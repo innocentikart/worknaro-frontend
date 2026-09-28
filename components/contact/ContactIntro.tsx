@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { AboutSectionBackground } from "@/components/about/AboutSectionBackground";
 import { djangoRoutes, siteConfig } from "@/lib/site";
 
@@ -76,10 +77,7 @@ const QUICK_CHANNELS: Array<{
 function ContactPathsPreview() {
   return (
     <div className="contact-intro-preview">
-      <p className="contact-intro-preview-label">
-        <span className="contact-intro-eyebrow-line" aria-hidden="true" />
-        How to reach us
-      </p>
+      <SectionBadge icon={Mail}>How to reach us</SectionBadge>
 
       <ul className="contact-intro-paths">
         {CONTACT_PATHS.map((item) => {
@@ -148,10 +146,7 @@ export function ContactIntro() {
         <div className="contact-intro-grid">
           <div className="contact-intro-copy">
             <FadeInWhenVisible>
-              <p className="contact-intro-eyebrow">
-                <span className="contact-intro-eyebrow-line" aria-hidden="true" />
-                Get in touch
-              </p>
+              <SectionBadge icon={MessageSquare}>Get in touch</SectionBadge>
             </FadeInWhenVisible>
 
             <FadeInWhenVisible delay={40}>

@@ -8,7 +8,6 @@ import { STORY_PROJECT } from "@/components/product-features/featureStages";
 type ActivityKind =
   | "completed"
   | "overdue"
-  | "comment"
   | "blocked"
   | "deadline"
   | "assign"
@@ -45,15 +44,6 @@ const ACTIVITIES: ActivityRow[] = [
     action: "is 4 days overdue",
     time: "Now",
     linked: true,
-  },
-  {
-    id: "comment",
-    kind: "comment",
-    actor: "Michael",
-    initials: "MC",
-    accent: "teal",
-    action: "commented on Mobile UI",
-    time: "8m",
   },
   {
     id: "blocked",
@@ -107,7 +97,6 @@ const ACTIVITIES: ActivityRow[] = [
 const KIND_LABEL: Record<ActivityKind, string> = {
   completed: "Done",
   overdue: "Overdue",
-  comment: "Comment",
   blocked: "Blocked",
   deadline: "Deadline",
   assign: "Assigned",

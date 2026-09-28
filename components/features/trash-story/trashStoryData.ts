@@ -29,4 +29,11 @@ export const TRASH_FILE = {
   project: "Website Redesign",
   folder: "Documents",
   retention: "30 days",
+  size: "248 KB",
+};
+
+export const TRASH_KEEP = {
+  name: "Brand-guide.pdf",
+  folder: "Documents",
+  size: "1.2 MB",
 };

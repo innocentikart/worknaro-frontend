@@ -1,6 +1,6 @@
 "use client";
 
-import { type KeyboardEvent, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { LayoutGroup, motion, useReducedMotion } from "framer-motion";
 import { CalendarDays, ChartNoAxesGantt, Link2, ListChecks } from "lucide-react";
 import {
@@ -17,8 +17,10 @@ import {
   type TimeWorkItem,
 } from "@/components/features/calendar-story/calendarStoryData";
 import { useCalendarTimeStory } from "@/components/features/calendar-story/useCalendarTimeStory";
+import { StoryTabs } from "@/components/features/story/StoryTabs";
 import { VizChrome } from "@/components/features/story/VizChrome";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 const ICONS = {
   tasks: ListChecks,
@@ -31,31 +33,11 @@ const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 export function CalendarTimeStory() {
   const reduce = useReducedMotion();
-  const { ref, tab, selectTab } = useCalendarTimeStory({
+  const { ref, tab, selectTab, pause, resume } = useCalendarTimeStory({
     reducedMotion: !!reduce,
   });
   const motionOn = !reduce;
   const transition = { duration: motionOn ? 0.52 : 0, ease: EASE };
-
-  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const index = CALENDAR_TIME_TABS.indexOf(tab);
-    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-      event.preventDefault();
-      selectTab(CALENDAR_TIME_TABS[(index + 1) % CALENDAR_TIME_TABS.length]);
-    }
-    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-      event.preventDefault();
-      selectTab(CALENDAR_TIME_TABS[(index - 1 + CALENDAR_TIME_TABS.length) % CALENDAR_TIME_TABS.length]);
-    }
-    if (event.key === "Home") {
-      event.preventDefault();
-      selectTab("tasks");
-    }
-    if (event.key === "End") {
-      event.preventDefault();
-      selectTab("schedule");
-    }
-  };
 
   return (
     <section
@@ -63,11 +45,15 @@ export function CalendarTimeStory() {
       id="calendar"
       className="cts-section mig-section scroll-mt-24"
       aria-labelledby="calendar-heading"
+      onMouseEnter={pause}
+      onMouseLeave={resume}
     >
       <div className="cts-ambient" aria-hidden="true" />
       <div className="why-wrap cts-wrap">
         <div className="mig-intro cts-intro">
-          <p className="audience-eyebrow mx-auto">See work in time.</p>
+          <SectionBadge icon={CalendarDays} className="mx-auto">
+            See work in time.
+          </SectionBadge>
           <h2 id="calendar-heading" className="mig-heading font-display">
             The calendar shows project dates,{" "}
             <HeadingAccent>open tasks, and milestones.</HeadingAccent>
@@ -101,33 +87,15 @@ export function CalendarTimeStory() {
             );
           })}
 
-          <div
+          <StoryTabs
+            tabs={CALENDAR_TIME_TABS.map((id) => ({ id, label: CALENDAR_TIME_META[id].label }))}
+            tab={tab}
+            onSelect={selectTab}
+            label="How work appears in time"
+            prefix="cts"
+            icons={ICONS}
             className="cts-tabs"
-            role="tablist"
-            aria-label="How work appears in time"
-            onKeyDown={onKeyDown}
-          >
-            {CALENDAR_TIME_TABS.map((id) => {
-              const Icon = ICONS[id];
-              const selected = tab === id;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  role="tab"
-                  id={`cts-tab-${id}`}
-                  aria-selected={selected}
-                  aria-controls="cts-panel"
-                  tabIndex={selected ? 0 : -1}
-                  className={selected ? "is-active" : ""}
-                  onClick={() => selectTab(id)}
-                >
-                  <Icon size={14} strokeWidth={2.1} aria-hidden="true" />
-                  {CALENDAR_TIME_META[id].label}
-                </button>
-              );
-            })}
-          </div>
+          />
 
           <div
             id="cts-panel"

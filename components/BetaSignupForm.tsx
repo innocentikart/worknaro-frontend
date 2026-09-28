@@ -6,6 +6,7 @@ import { BetaSignupFields, type BetaFormConfig } from "@/components/BetaSignupFi
 import { Reveal } from "@/components/Reveal";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { Icon } from "@/components/ui/Icon";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 const DEFAULT_HEADING = "Join the Worknaro Beta";
 const DEFAULT_DESCRIPTION =
@@ -65,10 +66,7 @@ export function BetaSignupForm({
           <div className="beta-card">
             <div className="beta-card-grid">
               <div className="beta-intro">
-                <span className="beta-badge">
-                  <Icon icon={Users} size={13} strokeWidth={2.25} />
-                  Early Access
-                </span>
+                <SectionBadge icon={Users}>Early Access</SectionBadge>
                 <h2 id="beta-heading" className="beta-heading font-display">
                   {renderBetaHeading(heading)}
                 </h2>

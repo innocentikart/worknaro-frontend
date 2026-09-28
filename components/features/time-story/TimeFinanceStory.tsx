@@ -1,11 +1,21 @@
 "use client";
 
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Clock3, Receipt, Timer, Wallet } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import {
+  CalendarDays,
+  ChevronRight,
+  ClipboardList,
+  Clock3,
+  FileText,
+  Receipt,
+  Timer,
+  Wallet,
+} from "lucide-react";
 import { StoryNote, StoryTabs } from "@/components/features/story/StoryTabs";
-import { VizChrome } from "@/components/features/story/VizChrome";
 import { useStoryCycle } from "@/components/features/story/useStoryCycle";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
+import { Icon } from "@/components/ui/Icon";
 import {
   TIME_FINANCE,
   TIME_LOG,
@@ -31,6 +41,14 @@ function formatTimer(seconds: number) {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
+function formatHours(value: number) {
+  return `${value.toFixed(1)}h`;
+}
+
+function money(value: number) {
+  return `$${value.toLocaleString()}`;
+}
+
 export function TimeFinanceStory() {
   const reduce = useReducedMotion();
   const { ref, tab, progress, selectTab, pause, resume } = useStoryCycle({
@@ -38,16 +56,23 @@ export function TimeFinanceStory() {
     reducedMotion: !!reduce,
   });
   const scene = reduce ? 1 : progress;
-  const running = tab === "time";
-  const seconds = reduce || tab === "finance" || tab === "budget"
-    ? 9000
-    : tab === "work"
-      ? 0
-      : Math.round(scene * 9000);
-  const weekLogged = tab === "work" ? TIME_WEEK.logged : Math.round((TIME_WEEK.logged - TIME_LOG.hours + scene * TIME_LOG.hours) * 10) / 10;
-  const billable = tab === "work" ? TIME_WEEK.billable : Math.round((TIME_WEEK.billable - TIME_LOG.hours + scene * TIME_LOG.hours) * 10) / 10;
-  const spendShown = tab === "work" || tab === "time" ? 0 : Math.round(scene * TIME_FINANCE.spend);
+  const running = tab === "time" && scene < 0.92;
+  const loggedEntry = tab === "work" ? 0 : scene * TIME_LOG.hours;
+  const seconds =
+    reduce && tab !== "work"
+      ? 9000
+      : tab === "finance" || tab === "budget"
+        ? 9000
+        : tab === "work"
+          ? 0
+          : Math.round(scene * 9000);
+  const weekLogged = Math.round((TIME_WEEK.logged - TIME_LOG.hours + loggedEntry) * 10) / 10;
+  const billable = Math.round((TIME_WEEK.billable - TIME_LOG.hours + loggedEntry) * 10) / 10;
+  const spendShown =
+    tab === "work" ? 0 : Math.round((tab === "time" ? Math.max(scene, 0.72) : scene) * TIME_FINANCE.spend);
   const spendPct = Math.round((spendShown / TIME_FINANCE.cap) * 100);
+  const financeOn = tab === "finance" || tab === "budget" || tab === "time";
+  const budgetOn = tab === "budget" || tab === "time" || tab === "finance";
 
   return (
     <section
@@ -60,14 +85,14 @@ export function TimeFinanceStory() {
     >
       <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap tmf-wrap">
-        <div className="tmf-intro">
-          <div>
-            <p className="audience-eyebrow">Time and finance</p>
-            <h2 id="time-budget-heading" className="mig-heading font-display">
-              Time spent becomes{" "}
-              <HeadingAccent>project information.</HeadingAccent>
-            </h2>
-          </div>
+        <div className="mig-intro tmf-intro">
+          <SectionBadge icon={Wallet} className="mx-auto">
+            Time and finance
+          </SectionBadge>
+          <h2 id="time-budget-heading" className="mig-heading font-display">
+            Time spent becomes{" "}
+            <HeadingAccent>project information.</HeadingAccent>
+          </h2>
           <p className="mig-lead tmf-lead">
             Log hours on a project or task. Invoices and approved expenses live in Finance
             and feed the project budget tier. Timesheets do not create invoices.
@@ -89,92 +114,139 @@ export function TimeFinanceStory() {
           aria-labelledby={`tmf-tab-${tab}`}
           aria-live="polite"
           className="pfs-viz tmf-viz"
+          data-tab={tab}
         >
-          <VizChrome title="Worknaro · Time & finance" badge={TIME_META[tab].label} />
-          <div className="tmf-split">
-            <article className="tmf-pane tmf-time">
-              <p className="tmf-kicker">{TIME_TASK.code}</p>
-              <strong>{TIME_TASK.name}</strong>
-              <p>
-                {TIME_TASK.project} · {TIME_TASK.assignee}
+          <div className="tmf-hero">
+            <span className="tmf-hero-icon" aria-hidden="true">
+              <Icon icon={Clock3} size={20} strokeWidth={1.8} />
+            </span>
+            <div>
+              <p className="tmf-hero-heading font-display">
+                Time spent becomes project information.
               </p>
-              <div className={`tmf-timer ${running ? "is-live" : ""}`}>
-                <span className="tmf-live" aria-hidden="true" />
-                <b>{formatTimer(seconds)}</b>
+              <p className="tmf-hero-lead">
+                Log hours on a project or task. Invoices and approved expenses live in Finance
+                and feed the project budget tier. Timesheets do not create invoices.
+              </p>
+            </div>
+          </div>
+
+          <div className="tmf-board">
+            <article className="tmf-card tmf-sheet">
+              <header className="tmf-card-head">
+                <span className="tmf-card-label">
+                  <Icon icon={Clock3} size={14} strokeWidth={2} />
+                  Timesheet
+                </span>
+                <button
+                  type="button"
+                  className="tmf-ghost-btn"
+                  onClick={() => selectTab("time")}
+                >
+                  View Timesheets
+                  <Icon icon={ChevronRight} size={14} strokeWidth={2.2} />
+                </button>
+              </header>
+
+              <div className={`tmf-week ${running ? "is-live" : ""}`}>
+                <p className="tmf-week-kicker">This week</p>
+                <div className="tmf-week-time">
+                  <span className="tmf-week-icon" aria-hidden="true">
+                    <Icon icon={Clock3} size={18} strokeWidth={1.8} />
+                  </span>
+                  <b>{formatTimer(seconds)}</b>
+                </div>
                 <em>{running ? "Timer running" : tab === "work" ? "Ready to log" : "Timesheet saved"}</em>
               </div>
-              <ul className="tmf-meta">
+
+              <ul className="tmf-facts">
                 <li>
+                  <Icon icon={CalendarDays} size={15} strokeWidth={1.9} />
                   <span>Work date</span>
                   <strong>{TIME_TASK.date}</strong>
                 </li>
                 <li>
-                  <span>Entry</span>
+                  <Icon icon={Timer} size={15} strokeWidth={1.9} />
+                  <span>Entry time</span>
                   <strong>{tab === "work" ? "—" : TIME_LOG.label}</strong>
                 </li>
                 <li>
+                  <Icon icon={Receipt} size={15} strokeWidth={1.9} />
                   <span>Billable</span>
                   <strong>{TIME_LOG.billable ? "Yes" : "No"}</strong>
                 </li>
               </ul>
             </article>
 
-            <article className="tmf-pane tmf-money">
-              <p className="tmf-kicker">Website Redesign</p>
-              <strong>Project performance</strong>
-              <div className="tmf-hours">
-                <div>
-                  <b>{weekLogged.toFixed(1)}h</b>
-                  <span>Logged this period</span>
-                </div>
-                <div>
-                  <b>{billable.toFixed(1)}h</b>
-                  <span>Billable</span>
-                </div>
-                <div>
-                  <b>{TIME_WEEK.nonBillable.toFixed(1)}h</b>
-                  <span>Non-billable</span>
-                </div>
+            <article className="tmf-card tmf-summary">
+              <header className="tmf-card-head">
+                <span className="tmf-card-label">
+                  <Icon icon={ClipboardList} size={14} strokeWidth={2} />
+                  Project summary
+                </span>
+              </header>
+
+              <div className="tmf-performance">
+                <p className="tmf-block-title">Project performance</p>
+                <ul className="tmf-metrics">
+                  <li>
+                    <b>{formatHours(weekLogged)}</b>
+                    <span>Logged this period</span>
+                  </li>
+                  <li>
+                    <b>{formatHours(billable)}</b>
+                    <span>Billable</span>
+                  </li>
+                  <li>
+                    <b>{formatHours(TIME_WEEK.nonBillable)}</b>
+                    <span>Non-billable</span>
+                  </li>
+                </ul>
               </div>
-              <AnimatePresence initial={false}>
-                {tab === "finance" || tab === "budget" ? (
-                  <motion.ul
-                    className="tmf-finance"
-                    initial={reduce ? false : { opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={reduce ? undefined : { opacity: 0, y: 6 }}
-                    transition={{ duration: 0.35, ease: EASE }}
-                  >
-                    <li>
-                      <span>
-                        Invoice {TIME_FINANCE.invoice}
-                        <em>{TIME_FINANCE.invoiceStatus}</em>
-                      </span>
-                      <strong>${TIME_FINANCE.invoiceAmount.toLocaleString()}</strong>
-                    </li>
-                    <li>
-                      <span>
-                        Expense · {TIME_FINANCE.expense}
-                        <em>{TIME_FINANCE.expenseStatus}</em>
-                      </span>
-                      <strong>${TIME_FINANCE.expenseAmount}</strong>
-                    </li>
-                  </motion.ul>
-                ) : (
-                  <p className="tmf-aside">Hours stay on the timesheet. Invoices are recorded in Finance.</p>
-                )}
-              </AnimatePresence>
-              <div className={`tmf-budget ${tab === "budget" ? "is-on" : ""}`}>
+
+              <ul className={`tmf-records ${financeOn ? "is-on" : ""}`}>
+                <li>
+                  <span className="tmf-record-icon" aria-hidden="true">
+                    <Icon icon={FileText} size={15} strokeWidth={1.9} />
+                  </span>
+                  <span className="tmf-record-copy">
+                    <strong>Invoice {TIME_FINANCE.invoice}</strong>
+                    <em>{TIME_FINANCE.invoiceStatus}</em>
+                  </span>
+                  <b>{money(TIME_FINANCE.invoiceAmount)}</b>
+                  <Icon icon={ChevronRight} size={14} strokeWidth={2.1} />
+                </li>
+                <li>
+                  <span className="tmf-record-icon is-expense" aria-hidden="true">
+                    <Icon icon={Receipt} size={15} strokeWidth={1.9} />
+                  </span>
+                  <span className="tmf-record-copy">
+                    <strong>Expense: {TIME_FINANCE.expense}</strong>
+                    <em>{TIME_FINANCE.expenseStatus}</em>
+                  </span>
+                  <b>{money(TIME_FINANCE.expenseAmount)}</b>
+                  <Icon icon={ChevronRight} size={14} strokeWidth={2.1} />
+                </li>
+              </ul>
+
+              <div className={`tmf-budget ${budgetOn ? "is-on" : ""}`}>
                 <div>
-                  <span>Budget tier {TIME_FINANCE.tier}</span>
+                  <span>
+                    <Icon icon={Wallet} size={14} strokeWidth={2} />
+                    Budget tier {TIME_FINANCE.tier}
+                  </span>
                   <strong>
-                    ${spendShown.toLocaleString()} of ${TIME_FINANCE.cap.toLocaleString()}
+                    {money(spendShown)} of {money(TIME_FINANCE.cap)}
                   </strong>
                 </div>
                 <span className="tmf-bar" aria-hidden="true">
-                  <span style={{ width: `${spendPct}%` }} />
+                  <motion.span
+                    initial={false}
+                    animate={{ scaleX: Math.max(0, spendPct) / 100 }}
+                    transition={{ duration: reduce ? 0 : 0.45, ease: EASE }}
+                  />
                 </span>
-                <em>Invoices + approved expenses · time is separate</em>
+                <em>Invoices + approved expenses · Time is separate</em>
               </div>
             </article>
           </div>

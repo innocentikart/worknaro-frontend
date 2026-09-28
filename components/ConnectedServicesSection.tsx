@@ -1,6 +1,9 @@
 "use client";
 
+import type { LucideIcon } from "lucide-react";
+import { Shield } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import {
   IntegrationBrandTicker,
   IntegrationCardsGrid,
@@ -13,6 +16,7 @@ export type ConnectedServicesSectionProps = {
   idPrefix: string;
   className?: string;
   compact?: boolean;
+  icon?: LucideIcon;
 };
 
 /**
@@ -26,6 +30,7 @@ export function ConnectedServicesSection({
   idPrefix,
   className = "",
   compact = false,
+  icon = Shield,
 }: ConnectedServicesSectionProps) {
   return (
     <section
@@ -42,11 +47,9 @@ export function ConnectedServicesSection({
       <div className="why-wrap relative">
         <FadeInWhenVisible>
           <div className="mx-auto max-w-[920px] text-center">
-            <p className="trust-eyebrow mx-auto">
-              <span className="trust-eyebrow-line" aria-hidden="true" />
+            <SectionBadge icon={icon} className="mx-auto">
               {eyebrow}
-              <span className="trust-eyebrow-line" aria-hidden="true" />
-            </p>
+            </SectionBadge>
             <h2 id={headingId} className="why-heading font-display">
               {title}
             </h2>

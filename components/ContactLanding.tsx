@@ -4,6 +4,8 @@ import Link from "next/link";
 import {
   Building2,
   LifeBuoy,
+  Link2,
+  LogIn,
   Mail,
   MessageSquare,
   Rocket,
@@ -15,6 +17,7 @@ import {
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
 import { djangoRoutes } from "@/lib/site";
@@ -112,11 +115,9 @@ export function ContactLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="trust-eyebrow mx-auto">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={Mail} className="mx-auto">
                 How to reach us
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
               <h2 id="contact-paths-heading" className="why-heading font-display">
                 Two clear paths—sales or{" "}
                 <HeadingAccent>self-serve</HeadingAccent>
@@ -151,11 +152,9 @@ export function ContactLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="trust-eyebrow mx-auto">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={Link2} className="mx-auto">
                 Quick links
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
               <h2 id="contact-channels-heading" className="why-heading font-display">
                 Prefer a shorter jump?
               </h2>
@@ -188,11 +187,9 @@ export function ContactLanding() {
             <div className="final-cta-panel solutions-editions-panel relative overflow-hidden text-center">
               <div className="solutions-editions-deco" aria-hidden="true" />
 
-              <p className="trust-eyebrow mx-auto relative z-[1]">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={LogIn} className="mx-auto relative z-[1]">
                 Sign in
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
 
               <div className="solutions-editions-copy relative z-[1]">
                 <span className="solutions-editions-copy-blur" aria-hidden="true" />

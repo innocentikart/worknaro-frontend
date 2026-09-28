@@ -11,6 +11,7 @@ import {
 } from "@/components/features/board-story/boardStoryData";
 import { useBoardStory } from "@/components/features/board-story/useBoardStory";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -50,7 +51,7 @@ export function BoardStory() {
       <div className="why-wrap wbs-wrap">
         <div className="wbs-layout">
           <div className="wbs-copy">
-            <p className="audience-eyebrow">Tasks and the workflow board</p>
+            <SectionBadge icon={LayoutGrid}>Tasks and the workflow board</SectionBadge>
             <h2 id="collaboration-heading" className="pfs-heading font-display">
               Work moves <HeadingAccent>across the board.</HeadingAccent>
             </h2>

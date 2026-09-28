@@ -25,9 +25,15 @@ export const INSIGHT_META: Record<InsightTab, { label: string; title: string; no
 };
 
 export const INSIGHT_ACTIVITY = [
-  { id: "done", actor: "Sarah", action: "completed Homepage design", time: "2m", linked: false },
-  { id: "overdue", actor: "Hero section", action: "is 4 days overdue", time: "Now", linked: true },
-  { id: "blocked", actor: "API checklist", action: "is blocked by Hero section", time: "Today", linked: true },
-  { id: "review", actor: "Client review", action: "has been waiting in Review", time: "3d", linked: true },
-  { id: "time", actor: "Alex", action: "logged 2h 30m on Hero section", time: "1h", linked: false },
+  { id: "done", actor: "Sarah", action: "completed Homepage design", time: "2m", linked: false, tone: "done" },
+  { id: "overdue", actor: "Hero section", action: "is 4 days overdue", time: "Now", linked: true, tone: "risk" },
+  { id: "blocked", actor: "API checklist", action: "is blocked by Hero section", time: "Today", linked: true, tone: "risk" },
+  { id: "review", actor: "Client review", action: "has been waiting in Review", time: "3d", linked: true, tone: "warn" },
+  { id: "time", actor: "Alex", action: "logged 2h 30m on Hero section", time: "1h", linked: false, tone: "done" },
+] as const;
+
+export const INSIGHT_METRICS = [
+  { value: "3", label: "tasks overdue" },
+  { value: "2", label: "dependencies blocked" },
+  { value: "1", label: "review waiting" },
 ] as const;

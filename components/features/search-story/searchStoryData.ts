@@ -24,14 +24,25 @@ export const SEARCH_META: Record<SearchTab, { label: string; title: string; note
   },
 };
 
-export const SEARCH_HITS = [
-  { kind: "Projects", title: "Website Redesign", meta: "WR-204 · Active", match: 1 },
-  { kind: "Tasks", title: "Alpha design pass", meta: "Website Redesign · Alex", match: 3 },
-  { kind: "Files", title: "alpha-brief.pdf", meta: "Project file · 1.2 MB", match: 2 },
-  { kind: "Clients", title: "Northwind Studio", meta: "Sarah · Active", match: 1 },
-  { kind: "Leads", title: "Brightline Co", meta: "Alex · $12,400", match: 1 },
-  { kind: "Proposals", title: "PR-18 Website Redesign", meta: "Viewed · Northwind", match: 1 },
+export const SEARCH_KINDS = [
+  "Projects",
+  "Tasks",
+  "Clients",
+  "Files",
+  "Leads",
+  "Proposals",
 ] as const;
+
+export const SEARCH_HITS = [
+  { id: "project", kind: "Projects", title: "Website Redesign", meta: "WR-204 · Active", match: 1 },
+  { id: "task", kind: "Tasks", title: "Alpha design pass", meta: "Website Redesign · Alex", match: 3 },
+  { id: "file", kind: "Files", title: "alpha-brief.pdf", meta: "Filename · 1.2 MB", match: 2 },
+  { id: "client", kind: "Clients", title: "Northwind Studio", meta: "Sarah · Active", match: 1 },
+  { id: "lead", kind: "Leads", title: "Brightline Co", meta: "Alex · Qualified", match: 1 },
+  { id: "proposal", kind: "Proposals", title: "PR-18 Website Redesign", meta: "Viewed · Northwind", match: 1 },
+] as const;
+
+export const SEARCH_OPEN = SEARCH_HITS[1];
 
 export function searchQuery(tab: SearchTab, progress: number) {
   if (tab === "workspace") return "";

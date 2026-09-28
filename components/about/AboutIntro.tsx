@@ -3,6 +3,7 @@
 import Link from "next/link";
 import {
   ArrowRight,
+  Compass,
   Layers,
   Shield,
   Users,
@@ -11,6 +12,7 @@ import {
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { AboutSectionBackground } from "@/components/about/AboutSectionBackground";
 import { PRINCIPLE_CARDS } from "@/components/about/PrincipleShowcaseCard";
 import { siteConfig } from "@/lib/site";
@@ -35,10 +37,7 @@ function BrandStoryVisual() {
 
   return (
     <div className="about-intro-preview">
-      <p className="about-intro-preview-label">
-        <span className="about-intro-eyebrow-line" aria-hidden="true" />
-        Our approach
-      </p>
+      <SectionBadge icon={Compass}>Our approach</SectionBadge>
 
       <Link
         href={approach.href}
@@ -103,10 +102,7 @@ export function AboutIntro() {
         <div className="about-intro-grid">
           <div className="about-intro-copy">
             <FadeInWhenVisible>
-              <p className="about-intro-eyebrow">
-                <span className="about-intro-eyebrow-line" aria-hidden="true" />
-                About {siteConfig.name}
-              </p>
+              <SectionBadge icon={Layers}>About {siteConfig.name}</SectionBadge>
             </FadeInWhenVisible>
 
             <FadeInWhenVisible delay={40}>

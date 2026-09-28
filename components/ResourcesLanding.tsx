@@ -8,6 +8,7 @@ import {
   ExternalLink,
   FileText,
   LayoutGrid,
+  Link2,
   type LucideIcon,
 } from "lucide-react";
 import { ResourcesIntro } from "@/components/resources/ResourcesIntro";
@@ -16,6 +17,7 @@ import {
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { ThemeProductImage } from "@/components/ui/ThemeProductImage";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
@@ -95,11 +97,9 @@ export function ResourcesLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="trust-eyebrow mx-auto">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={BookOpen} className="mx-auto">
                 Library
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
               <h2 id="resources-library-heading" className="resources-heading font-display">
                 Learn more about{" "}
                 <HeadingAccent>Worknaro</HeadingAccent>
@@ -171,11 +171,9 @@ export function ResourcesLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="trust-eyebrow mx-auto">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={Link2} className="mx-auto">
                 Quick links
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
               <h2 id="resources-links-heading" className="why-heading font-display">
                 Continue where you need to{" "}
                 <HeadingAccent>go</HeadingAccent>

@@ -1,4 +1,6 @@
+import { Phone, Rocket } from "lucide-react";
 import { Reveal } from "@/components/Reveal";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { djangoRoutes } from "@/lib/site";
 
 export function ContactSplit() {
@@ -16,12 +18,12 @@ export function ContactSplit() {
       <div className="why-wrap relative grid gap-5 lg:grid-cols-2">
         <Reveal>
           <article className="contact-card contact-card-light h-full">
-            <p className="contact-eyebrow">Sales</p>
+            <SectionBadge icon={Phone}>Sales</SectionBadge>
             <h2 className="contact-title">Talk with the Worknaro team</h2>
             <p className="contact-copy">
               Enterprise plan quotas and commercial terms are handled through the existing contact-sales form in the application.
             </p>
-            <div className="mt-7">
+            <div className="contact-card-actions">
               <a href={djangoRoutes.contactSales()} className="pricing-cta-secondary">
                 Contact Sales
               </a>
@@ -31,12 +33,14 @@ export function ContactSplit() {
         <Reveal delay={80}>
           <article className="contact-card contact-card-dark h-full">
             <span className="contact-glow" aria-hidden="true" />
-            <p className="contact-eyebrow contact-eyebrow-light">Start</p>
+            <SectionBadge icon={Rocket} variant="on-dark">
+              Start
+            </SectionBadge>
             <h2 className="contact-title contact-title-light">Create your workspace</h2>
             <p className="contact-copy contact-copy-light">
               Registration stays in the Worknaro application. This page does not collect emails or create a second account system.
             </p>
-            <div className="mt-7">
+            <div className="contact-card-actions">
               <a href={djangoRoutes.register()} className="hero-cta-primary hero-btn">
                 Get Started
                 <span aria-hidden="true">→</span>

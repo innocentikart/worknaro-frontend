@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import {
+  Compass,
   Layers,
+  Rocket,
   Shield,
   Users,
   Workflow,
@@ -14,6 +16,7 @@ import {
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
 import {
@@ -97,11 +100,9 @@ export function AboutLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-5xl text-center">
-              <p className="trust-eyebrow mx-auto">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={Layers} className="mx-auto">
                 What we build
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
               <h2 id="about-pillars-heading" className="why-heading font-display">
                 A workspace for the work you already{" "}
                 <HeadingAccent>run</HeadingAccent>
@@ -142,11 +143,9 @@ export function AboutLanding() {
         <div className="principle-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-4xl text-center">
-              <p className="trust-eyebrow mx-auto">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={Compass} className="mx-auto">
                 Principles
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
               <h2 id="about-principles-heading" className="int-heading font-display">
                 Clear boundaries between marketing and the{" "}
                 <HeadingAccent>application</HeadingAccent>
@@ -173,11 +172,9 @@ export function AboutLanding() {
             <div className="final-cta-panel solutions-editions-panel relative overflow-hidden text-center">
               <div className="solutions-editions-deco" aria-hidden="true" />
 
-              <p className="trust-eyebrow mx-auto relative z-[1]">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={Rocket} className="mx-auto relative z-[1]">
                 Get started
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
 
               <div className="solutions-editions-copy relative z-[1]">
                 <span className="solutions-editions-copy-blur" aria-hidden="true" />

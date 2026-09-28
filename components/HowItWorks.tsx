@@ -5,6 +5,7 @@ import {
   CalendarDays,
   CheckSquare,
   Home,
+  ListOrdered,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -13,6 +14,7 @@ import {
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
 import { howItWorksCompact } from "@/lib/content";
 import { djangoRoutes } from "@/lib/site";
@@ -79,8 +81,10 @@ export function HowItWorks({
       <div className="how-wrap">
         <FadeInWhenVisible>
           <div className="how-intro">
-            <p className="audience-eyebrow mx-auto">How it works</p>
-            <h2 id="how-heading" className="how-heading how-heading-stack font-display mt-5">
+            <SectionBadge icon={ListOrdered} className="mx-auto">
+              How it works
+            </SectionBadge>
+            <h2 id="how-heading" className="how-heading how-heading-stack font-display">
               <span className="how-heading-line">
                 Create a tenant workspace, organize projects and tasks,
               </span>

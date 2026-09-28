@@ -6,7 +6,7 @@ export const INSIGHTS_STAGES: StoryStage[] = [
     label: "Activity",
     title: "Project activity",
     description:
-      "Completed work, overdue tasks, comments, assignments, and milestones accumulate on the project.",
+      "Completed work, overdue tasks, assignments, and milestones accumulate on the project.",
     start: 0,
     end: 0.2,
   },

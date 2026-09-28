@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { LayoutGrid } from "lucide-react";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import {
   FEATURE_STAGES,
   type FeatureStageId,
@@ -19,11 +21,7 @@ export function FeatureStoryCopy({
 
   return (
     <div className="pfs-copy">
-      <p className="trust-eyebrow">
-        <span className="trust-eyebrow-line" aria-hidden="true" />
-        Product Features
-        <span className="trust-eyebrow-line" aria-hidden="true" />
-      </p>
+      <SectionBadge icon={LayoutGrid}>Product Features</SectionBadge>
       <h2 id="pfs-heading" className="pfs-heading font-display">
         Everything your team does{" "}
         <HeadingAccent>stays connected.</HeadingAccent>

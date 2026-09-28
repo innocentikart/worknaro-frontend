@@ -1,6 +1,7 @@
 "use client";
 
 import { useReducedMotion } from "framer-motion";
+import { LayoutGrid } from "lucide-react";
 import {
   FeatureStoryCopy,
   FeatureStoryProgress,
@@ -12,6 +13,7 @@ import {
 import { StoryCanvas } from "@/components/product-features/visualization/StoryCanvas";
 import { useAutoPlayStory } from "@/components/features/story/useAutoPlayStory";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 /**
  * Homepage product story. Viewport-triggered, then plays on its own.
@@ -62,11 +64,7 @@ export function ProductFeaturesStory() {
       <div className="pfs-mobile">
         <div className="why-wrap">
           <div className="pfs-mobile-intro">
-            <p className="trust-eyebrow">
-              <span className="trust-eyebrow-line" aria-hidden="true" />
-              Product Features
-              <span className="trust-eyebrow-line" aria-hidden="true" />
-            </p>
+            <SectionBadge icon={LayoutGrid}>Product Features</SectionBadge>
             <h2 className="pfs-heading font-display">
               Everything your team does{" "}
               <HeadingAccent>stays connected.</HeadingAccent>

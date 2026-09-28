@@ -31,10 +31,11 @@ export const TAG_RECORDS: ReadonlyArray<{
   name: string;
   project: string;
   who: string;
+  kind: "Task";
   tags: readonly string[];
 }> = [
-  { id: "hero", name: "Hero section", project: "Website Redesign", who: "Alex", tags: ["Urgent", "Design"] },
-  { id: "api", name: "API checklist", project: "Website Redesign", who: "Alex", tags: ["Urgent", "Development"] },
-  { id: "review", name: "Client review", project: "Website Redesign", who: "Sarah", tags: ["Client"] },
-  { id: "notes", name: "Kickoff notes", project: "Website Redesign", who: "David", tags: ["Design"] },
+  { id: "hero", name: "Hero section", project: "Website Redesign", who: "Alex", kind: "Task", tags: ["Urgent", "Design"] },
+  { id: "api", name: "API checklist", project: "Website Redesign", who: "Alex", kind: "Task", tags: ["Urgent", "Development"] },
+  { id: "review", name: "Client review", project: "Website Redesign", who: "Sarah", kind: "Task", tags: ["Client"] },
+  { id: "notes", name: "Kickoff checklist", project: "Website Redesign", who: "David", kind: "Task", tags: ["Design"] },
 ];

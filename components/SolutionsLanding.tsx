@@ -7,6 +7,7 @@ import {
   Building2,
   Heart,
   Layers,
+  ScanSearch,
   Rocket,
   Share2,
   Store,
@@ -19,6 +20,7 @@ import {
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { Icon } from "@/components/ui/Icon";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
@@ -121,7 +123,9 @@ export function SolutionsLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="audience-eyebrow mx-auto">One platform</p>
+              <SectionBadge icon={Layers} className="mx-auto">
+                One platform
+              </SectionBadge>
               <h2 id="pillars-heading" className="why-heading font-display mt-5 text-balance">
                 Built once. Used by many kinds of{" "}
                 <HeadingAccent>teams</HeadingAccent>
@@ -162,7 +166,9 @@ export function SolutionsLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="audience-eyebrow mx-auto">Audiences</p>
+              <SectionBadge icon={Users} className="mx-auto">
+                Audiences
+              </SectionBadge>
               <h2 id="audiences-heading" className="solutions-heading font-display mt-5 text-balance">
                 Find the workspace shape that fits{" "}
                 <HeadingAccent>your team</HeadingAccent>
@@ -229,7 +235,9 @@ export function SolutionsLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="audience-eyebrow mx-auto">Deep dive</p>
+              <SectionBadge icon={ScanSearch} className="mx-auto">
+                Deep dive
+              </SectionBadge>
               <h2 id="solutions-deep-dive-heading" className="int-heading font-display mt-5 text-balance">
                 How each audience uses the{" "}
                 <HeadingAccent>same application</HeadingAccent>
@@ -269,7 +277,9 @@ export function SolutionsLanding() {
           <FadeInWhenVisible>
             <div className="features-search-panel solutions-editions-panel relative overflow-hidden text-center">
               <div className="solutions-editions-deco" aria-hidden="true" />
-              <p className="audience-eyebrow mx-auto relative z-[1]">Same product</p>
+              <SectionBadge icon={Layers} className="mx-auto relative z-[1]">
+                Same product
+              </SectionBadge>
               <div className="solutions-editions-copy relative z-[1]">
                 <span className="solutions-editions-copy-blur" aria-hidden="true" />
                 <h2 className="features-search-heading relative z-[1] font-display">

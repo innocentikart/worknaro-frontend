@@ -1,26 +1,24 @@
-export const IMPORT_TABS = ["source", "map", "import", "ready"] as const;
+export const IMPORT_TABS = ["preparing", "importing", "organizing", "complete"] as const;
 export type ImportTab = (typeof IMPORT_TABS)[number];
 
-export const IMPORT_META: Record<ImportTab, { label: string; title: string; note: string }> = {
-  source: {
-    label: "Source",
-    title: "Choose a file",
+export const IMPORT_STEPS = ["Preparing", "Importing", "Organizing", "Complete"] as const;
+
+export const IMPORT_META: Record<ImportTab, { label: string; note: string }> = {
+  preparing: {
+    label: "Preparing",
+    note: "Your existing workspace is ready to move — nothing needs to be rebuilt by hand.",
+  },
+  importing: {
+    label: "Importing",
     note: "Worknaro imports from CSV, Excel, or JSON. Native connectors are not available yet.",
   },
-  map: {
-    label: "Map",
-    title: "Fields are matched",
-    note: "Statuses, assignees, and due dates map to Worknaro fields before anything is written.",
+  organizing: {
+    label: "Organizing",
+    note: "Projects, tasks, workflows, and files land in their Worknaro structures.",
   },
-  import: {
-    label: "Import",
-    title: "The workspace is built",
-    note: "Projects, tasks, members, and files import with progress and validation.",
-  },
-  ready: {
-    label: "Ready",
-    title: "Work lives here now",
-    note: "The same projects and people appear in a Worknaro workspace — ready to continue.",
+  complete: {
+    label: "Complete",
+    note: "Your workspace is ready to keep going.",
   },
 };
 
@@ -30,17 +28,23 @@ export const IMPORT_SOURCES = [
   { id: "json", ext: "JSON", name: "export.json", meta: "Structured export" },
 ] as const;
 
-export const IMPORT_MAP = [
-  { from: "To Do", to: "To Do" },
-  { from: "Doing", to: "In Progress" },
-  { from: "Done", to: "Completed" },
+export const IMPORT_COUNTS = [
+  { id: "projects", label: "Projects", count: 12 },
+  { id: "tasks", label: "Tasks", count: 248 },
+  { id: "workflows", label: "Team workflows", count: 6 },
+  { id: "files", label: "Files/attachments", count: 53 },
 ] as const;
 
-export const IMPORT_STEPS = ["Preparing", "Importing", "Organizing", "Complete"] as const;
-
-export const IMPORT_ROWS = [
-  { label: "Projects", target: 100 },
-  { label: "Tasks", target: 100 },
-  { label: "Members", target: 100 },
-  { label: "Files", target: 78 },
+export const IMPORT_PREVIEW_ROWS = [
+  { id: "alpha", title: "Website redesign", tone: "blue", status: "In progress" },
+  { id: "bravo", title: "Q3 onboarding", tone: "teal", status: "To do" },
+  { id: "charlie", title: "API checklist", tone: "violet", status: "In progress" },
+  { id: "delta", title: "Client portal", tone: "amber", status: "To do" },
 ] as const;
+
+export const IMPORT_STAGE_RANGES: Record<ImportTab, { start: number; end: number }> = {
+  preparing: { start: 0, end: 0.24 },
+  importing: { start: 0.24, end: 0.5 },
+  organizing: { start: 0.5, end: 0.74 },
+  complete: { start: 0.74, end: 1.05 },
+};

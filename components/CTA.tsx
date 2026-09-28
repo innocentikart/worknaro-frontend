@@ -1,7 +1,9 @@
 "use client";
 
+import { Rocket } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { djangoRoutes } from "@/lib/site";
 
 export function CTA({
@@ -40,11 +42,9 @@ export function CTA({
           <div className="final-cta-panel solutions-editions-panel relative overflow-hidden text-center">
             <div className="solutions-editions-deco" aria-hidden="true" />
 
-            <p className="trust-eyebrow mx-auto relative z-[1]">
-              <span className="trust-eyebrow-line" aria-hidden="true" />
+            <SectionBadge icon={Rocket} className="mx-auto relative z-[1]">
               Get started
-              <span className="trust-eyebrow-line" aria-hidden="true" />
-            </p>
+            </SectionBadge>
 
             <div className="solutions-editions-copy relative z-[1]">
               <span className="solutions-editions-copy-blur" aria-hidden="true" />

@@ -1,7 +1,7 @@
 "use client";
 
-import { type KeyboardEvent, useLayoutEffect, useRef, useState } from "react";
-import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { useLayoutEffect, useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   CalendarDays,
   CheckCircle2,
@@ -31,7 +31,9 @@ import {
   type ClientTab,
 } from "@/components/features/client-story/clientStoryData";
 import { useClientStory } from "@/components/features/client-story/useClientStory";
+import { StoryTabs } from "@/components/features/story/StoryTabs";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 const ICONS = {
   client: User,
@@ -65,26 +67,6 @@ export function ClientStory() {
   });
   const scene = reduce ? 1 : progress;
 
-  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const index = CLIENT_TABS.indexOf(tab);
-    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-      event.preventDefault();
-      selectTab(CLIENT_TABS[(index + 1) % CLIENT_TABS.length]);
-    }
-    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-      event.preventDefault();
-      selectTab(CLIENT_TABS[(index - 1 + CLIENT_TABS.length) % CLIENT_TABS.length]);
-    }
-    if (event.key === "Home") {
-      event.preventDefault();
-      selectTab("client");
-    }
-    if (event.key === "End") {
-      event.preventDefault();
-      selectTab("connected");
-    }
-  };
-
   return (
     <section
       ref={ref}
@@ -97,7 +79,9 @@ export function ClientStory() {
       <div className="cls-ambient" aria-hidden="true" />
       <div className="why-wrap cls-wrap">
         <div className="mig-intro cls-intro">
-          <p className="audience-eyebrow mx-auto">CLIENT</p>
+          <SectionBadge icon={User} className="mx-auto">
+            CLIENT
+          </SectionBadge>
           <h2 id="clients-heading" className="mig-heading font-display">
             A client stays connected to <HeadingAccent>the work.</HeadingAccent>
           </h2>
@@ -107,42 +91,15 @@ export function ClientStory() {
           </p>
         </div>
 
-        <LayoutGroup id="cls-tabs">
-          <div
-            className="cls-tabs"
-            role="tablist"
-            aria-label="How a client stays connected"
-            onKeyDown={onKeyDown}
-          >
-            {CLIENT_TABS.map((id) => {
-              const Icon = ICONS[id];
-              const selected = tab === id;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  role="tab"
-                  id={`cls-tab-${id}`}
-                  aria-selected={selected}
-                  aria-controls="cls-panel"
-                  tabIndex={selected ? 0 : -1}
-                  className={selected ? "is-active" : ""}
-                  onClick={() => selectTab(id)}
-                >
-                  {selected ? (
-                    <motion.span
-                      layoutId="cls-tab-pill"
-                      className="cls-tab-pill"
-                      transition={{ duration: reduce ? 0 : 0.32, ease: EASE }}
-                    />
-                  ) : null}
-                  <Icon size={14} strokeWidth={2.1} aria-hidden="true" />
-                  {CLIENT_META[id].label}
-                </button>
-              );
-            })}
-          </div>
-        </LayoutGroup>
+        <StoryTabs
+          tabs={CLIENT_TABS.map((id) => ({ id, label: CLIENT_META[id].label }))}
+          tab={tab}
+          onSelect={selectTab}
+          label="How a client stays connected"
+          prefix="cls"
+          icons={ICONS}
+          className="cls-tabs"
+        />
 
         <div className="cls-stage">
           <ConnectorStrings tab={tab} />

@@ -6,6 +6,7 @@ import { StoryNote, StoryTabs } from "@/components/features/story/StoryTabs";
 import { VizChrome } from "@/components/features/story/VizChrome";
 import { useStoryCycle } from "@/components/features/story/useStoryCycle";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import {
   LEAD_CARD,
   LEAD_COLUMNS,
@@ -47,7 +48,9 @@ export function LeadsStory() {
       <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap lds-wrap">
         <div className="mig-intro lds-intro">
-          <p className="audience-eyebrow mx-auto">Leads</p>
+          <SectionBadge icon={Kanban} className="mx-auto">
+            Leads
+          </SectionBadge>
           <h2 id="leads-heading" className="mig-heading font-display">
             From first contact{" "}
             <HeadingAccent>to a client record.</HeadingAccent>
@@ -105,11 +108,12 @@ export function LeadsStory() {
                 <strong>Converted · Northwind Studio</strong>
                 <span>Client created · Website Redesign ready as a client project</span>
               </motion.div>
-            ) : (
-              <StoryNote>{LEAD_META[tab].note}</StoryNote>
-            )}
+            ) : null}
           </AnimatePresence>
         </div>
+        <StoryNote>
+          Stages are New, Contacted, Qualified, Proposal, Negotiation, Won, and Lost.
+        </StoryNote>
       </div>
     </section>
   );

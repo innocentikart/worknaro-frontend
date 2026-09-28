@@ -1,5 +1,6 @@
 "use client";
 
+import { Shield } from "lucide-react";
 import { ConnectedServicesSection } from "@/components/ConnectedServicesSection";
 
 /**
@@ -9,7 +10,9 @@ import { ConnectedServicesSection } from "@/components/ConnectedServicesSection"
 export function BuiltOnServicesSection() {
   return (
     <ConnectedServicesSection
+      className="trust-section-continue"
       eyebrow="Trusted infrastructure"
+      icon={Shield}
       title="Built on services teams already trust"
       headingId="built-on-services-heading"
       idPrefix="built"

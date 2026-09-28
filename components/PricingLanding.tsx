@@ -1,8 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CreditCard } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { Pricing } from "@/components/Pricing";
 import {
   TRIAL_DAYS,
@@ -28,7 +30,9 @@ export function PricingLandingHero() {
 
         <div className="pricing-intro-wrap relative">
           <FadeInWhenVisible>
-            <p className="pricing-intro-eyebrow">Plans &amp; Pricing</p>
+            <SectionBadge icon={CreditCard} className="mx-auto">
+              Plans &amp; Pricing
+            </SectionBadge>
           </FadeInWhenVisible>
 
           <FadeInWhenVisible delay={40}>

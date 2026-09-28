@@ -1,10 +1,18 @@
 "use client";
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import {
+  CalendarDays,
+  ChevronRight,
+  FileText,
+  FolderKanban,
+  UserRound,
+} from "lucide-react";
 import { StoryNote, StorySteps } from "@/components/features/story/StoryTabs";
-import { VizChrome } from "@/components/features/story/VizChrome";
 import { useStoryCycle } from "@/components/features/story/useStoryCycle";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
+import { Icon } from "@/components/ui/Icon";
 import {
   PROPOSAL_DOC,
   PROPOSAL_ITEMS,
@@ -12,9 +20,17 @@ import {
   PROPOSAL_STEPS,
   PROPOSAL_TABS,
   PROPOSAL_TOTAL,
+  type ProposalTab,
 } from "@/components/features/proposals-story/proposalsStoryData";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const STATUS_COPY: Record<ProposalTab, string> = {
+  draft: "Items and pricing sit on the draft.",
+  send: "Public link sent. The client can open it without a login.",
+  viewed: "The client opened the proposal. Status is now Viewed.",
+  convert: "Approved. Convert creates the project from this quote.",
+};
 
 export function ProposalsStory() {
   const reduce = useReducedMotion();
@@ -23,6 +39,8 @@ export function ProposalsStory() {
     reducedMotion: !!reduce,
   });
   const itemsVisible = tab === "draft" ? Math.max(1, Math.round((reduce ? 1 : progress) * 3)) : 3;
+  const approved = tab === "convert";
+  const status = PROPOSAL_META[tab].status;
 
   return (
     <section
@@ -36,7 +54,7 @@ export function ProposalsStory() {
       <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap prp-wrap">
         <div className="prp-intro">
-          <p className="audience-eyebrow">Proposals</p>
+          <SectionBadge icon={FileText}>Proposals</SectionBadge>
           <h2 id="proposals-heading" className="mig-heading font-display">
             A quote the client can{" "}
             <HeadingAccent>approve.</HeadingAccent>
@@ -59,16 +77,38 @@ export function ProposalsStory() {
           role="tabpanel"
           aria-live="polite"
           className="pfs-viz prp-viz"
+          data-tab={tab}
         >
-          <VizChrome title="Worknaro · Proposal" badge={PROPOSAL_META[tab].status} />
-          <div className="prp-board">
-            <article className="prp-doc">
-              <p className="prp-kicker">
-                {PROPOSAL_DOC.code} · {PROPOSAL_META[tab].status}
+          <div className="prp-hero">
+            <span className="prp-hero-icon" aria-hidden="true">
+              <Icon icon={FileText} size={20} strokeWidth={1.8} />
+            </span>
+            <div>
+              <p className="prp-hero-heading font-display">A quote the client can approve.</p>
+              <p className="prp-hero-lead">
+                Draft a proposal for a client, send a public link, and let the client approve or
+                reject. An approved proposal can convert into a project.
               </p>
-              <strong>{PROPOSAL_DOC.title}</strong>
-              <p>{PROPOSAL_DOC.client}</p>
-              <ul>
+            </div>
+          </div>
+
+          <div className="prp-stage">
+            <article className="prp-card prp-quote">
+              <header className="prp-quote-head">
+                <span className="prp-quote-icon" aria-hidden="true">
+                  <Icon icon={FileText} size={16} strokeWidth={1.9} />
+                </span>
+                <div className="prp-quote-copy">
+                  <p className="prp-quote-ref">
+                    {PROPOSAL_DOC.code} · {status}
+                  </p>
+                  <h3>{PROPOSAL_DOC.title}</h3>
+                  <p>{PROPOSAL_DOC.client}</p>
+                </div>
+                <span className={`prp-badge is-${tab}`}>{status}</span>
+              </header>
+
+              <ul className="prp-lines">
                 {PROPOSAL_ITEMS.slice(0, itemsVisible).map((item) => (
                   <motion.li
                     key={item.name}
@@ -81,6 +121,7 @@ export function ProposalsStory() {
                   </motion.li>
                 ))}
               </ul>
+
               {itemsVisible >= 3 ? (
                 <div className="prp-total">
                   <span>Total</span>
@@ -89,20 +130,35 @@ export function ProposalsStory() {
               ) : null}
             </article>
 
-            <aside className="prp-side">
-              <p className="prp-kicker">Client</p>
-              <strong>{PROPOSAL_DOC.client}</strong>
-              <p>{PROPOSAL_DOC.contact}</p>
-              <dl>
+            <aside className="prp-card prp-client">
+              <header className="prp-client-head">
+                <span className="prp-client-avatar" aria-hidden="true">
+                  <Icon icon={UserRound} size={16} strokeWidth={1.9} />
+                </span>
                 <div>
-                  <dt>Valid until</dt>
-                  <dd>{PROPOSAL_DOC.valid}</dd>
+                  <p className="prp-client-kicker">Client</p>
+                  <strong>{PROPOSAL_DOC.client}</strong>
+                  <p>{PROPOSAL_DOC.contact}</p>
                 </div>
-                <div>
-                  <dt>Project</dt>
-                  <dd>{tab === "convert" ? "Website Redesign" : "Optional"}</dd>
-                </div>
-              </dl>
+              </header>
+
+              <ul className="prp-meta">
+                <li>
+                  <Icon icon={CalendarDays} size={15} strokeWidth={1.9} />
+                  <span>
+                    <em>Valid until</em>
+                    <b>{PROPOSAL_DOC.valid}</b>
+                  </span>
+                </li>
+                <li>
+                  <Icon icon={FolderKanban} size={15} strokeWidth={1.9} />
+                  <span>
+                    <em>Project</em>
+                    <b>{approved ? "Website Redesign" : "Optional"}</b>
+                  </span>
+                </li>
+              </ul>
+
               <AnimatePresence initial={false} mode="wait">
                 <motion.p
                   key={tab}
@@ -112,13 +168,16 @@ export function ProposalsStory() {
                   exit={reduce ? undefined : { opacity: 0 }}
                   transition={{ duration: 0.28, ease: EASE }}
                 >
-                  {tab === "draft" && "Items and pricing sit on the draft."}
-                  {tab === "send" && "Public link sent · the client can open it without a login."}
-                  {tab === "viewed" && "The client opened the proposal. Status is now Viewed."}
-                  {tab === "convert" && "Approved. Convert creates the project from this quote."}
+                  {STATUS_COPY[tab]}
                 </motion.p>
               </AnimatePresence>
-              {tab === "convert" ? <span className="ffs-action-btn">Convert to project</span> : null}
+
+              {approved ? (
+                <button type="button" className="prp-convert" tabIndex={-1}>
+                  Convert to project
+                  <Icon icon={ChevronRight} size={14} strokeWidth={2.2} />
+                </button>
+              ) : null}
             </aside>
           </div>
         </div>

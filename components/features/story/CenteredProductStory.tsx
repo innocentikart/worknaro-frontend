@@ -1,6 +1,8 @@
 "use client";
 
 import { type ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { useReducedMotion } from "framer-motion";
 import {
   stageIndexForProgress,
@@ -8,10 +10,12 @@ import {
 } from "@/components/features/story/storyUtils";
 import { useAutoPlayStory } from "@/components/features/story/useAutoPlayStory";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 export function CenteredProductStory({
   id,
   eyebrow,
+  eyebrowIcon = Sparkles,
   heading,
   accent,
   lead,
@@ -22,6 +26,7 @@ export function CenteredProductStory({
 }: {
   id: string;
   eyebrow: string;
+  eyebrowIcon?: LucideIcon;
   heading: string;
   accent: string;
   lead: string;
@@ -54,7 +59,9 @@ export function CenteredProductStory({
         <div className="mig-sticky">
           <div className="why-wrap mig-shell">
             <div className="mig-intro">
-              <p className="audience-eyebrow mx-auto">{eyebrow}</p>
+              <SectionBadge icon={eyebrowIcon} className="mx-auto">
+                {eyebrow}
+              </SectionBadge>
               <h2 id={`${id}-heading`} className="mig-heading font-display">
                 {heading}{" "}
                 <HeadingAccent>{accent}</HeadingAccent>
@@ -84,7 +91,7 @@ export function CenteredProductStory({
       <div className="mig-mobile">
         <div className="why-wrap">
           <div className="mig-intro">
-            <p className="audience-eyebrow">{eyebrow}</p>
+            <SectionBadge icon={eyebrowIcon}>{eyebrow}</SectionBadge>
             <h2 className="mig-heading font-display">
               {heading}{" "}
               <HeadingAccent>{accent}</HeadingAccent>

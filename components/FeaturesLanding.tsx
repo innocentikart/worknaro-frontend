@@ -9,6 +9,7 @@ import {
   FileStack,
   FolderKanban,
   GanttChart,
+  LayoutGrid,
   Search,
   Shield,
   Sparkles,
@@ -23,9 +24,11 @@ import {
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { Icon } from "@/components/ui/Icon";
 import { PremiumModuleCard } from "@/components/cards/PremiumModuleCard";
 import type { ModuleVisualKind } from "@/components/cards/ModuleCardVisuals";
+import { DeepDiveStory } from "@/components/features/deep-dive/DeepDiveStory";
 import { FeaturesIntro } from "@/components/features/FeaturesIntro";
 import { InsightsStory } from "@/components/features/insights/InsightsStory";
 import { ImportStory } from "@/components/features/import/ImportStory";
@@ -111,7 +114,9 @@ export function FeaturesLanding() {
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-5xl text-center">
-              <p className="audience-eyebrow mx-auto">Product Features</p>
+              <SectionBadge icon={LayoutGrid} className="mx-auto">
+                Product Features
+              </SectionBadge>
               <h2 id="modules-heading" className="audience-heading font-display mt-5">
                 <span className="audience-heading-line">
                   Everything your team runs in
@@ -157,34 +162,7 @@ export function FeaturesLanding() {
         </div>
       </section>
 
-      <section className="showcase-section features-chapter relative overflow-hidden" aria-labelledby="deep-dive-heading">
-        <div className="showcase-ambient" aria-hidden="true" />
-        <div className="showcase-deco showcase-deco-left" aria-hidden="true">
-          <span className="showcase-deco-blob" />
-          <span className="showcase-deco-dots" />
-        </div>
-        <div className="showcase-deco showcase-deco-right" aria-hidden="true">
-          <span className="showcase-deco-blob" />
-          <span className="showcase-deco-dots" />
-        </div>
-
-        <div className="why-wrap relative">
-          <FadeInWhenVisible>
-            <div className="mx-auto max-w-3xl text-center">
-              <p className="audience-eyebrow mx-auto">Deep dive</p>
-              <h2 id="deep-dive-heading" className="int-heading font-display mt-5 text-balance">
-                See how each module fits into the{" "}
-                <HeadingAccent>application</HeadingAccent>
-              </h2>
-              <p className="int-lead">
-                Watch how work moves through Worknaro — from a project you
-                build, to the board, calendar, clients, and the people who can
-                see it.
-              </p>
-            </div>
-          </FadeInWhenVisible>
-        </div>
-      </section>
+      <DeepDiveStory />
 
       <ModuleStories />
       <InsightsStory />

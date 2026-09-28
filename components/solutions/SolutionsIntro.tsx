@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { LandingBackground } from "@/components/ui/LandingBackground";
 
 type NodeTone = "blue" | "teal" | "purple" | "orange";
@@ -320,7 +321,7 @@ export function SolutionsIntro() {
       <div className="solutions-intro-wrap relative">
         <div className="solutions-intro-grid">
           <FadeInWhenVisible className="solutions-intro-copy">
-            <p className="solutions-intro-eyebrow">Solutions for modern teams</p>
+            <SectionBadge icon={Users}>Solutions for modern teams</SectionBadge>
             <h1 id="solutions-hero-heading" className="solutions-intro-heading why-heading font-display">
               One workspace. Built around the way{" "}
               <HeadingAccent>you work</HeadingAccent>.

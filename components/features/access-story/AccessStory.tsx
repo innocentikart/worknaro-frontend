@@ -6,6 +6,7 @@ import { StoryNote, StoryTabs } from "@/components/features/story/StoryTabs";
 import { VizChrome } from "@/components/features/story/VizChrome";
 import { useStoryCycle } from "@/components/features/story/useStoryCycle";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import {
   ACCESS_MATRIX,
   ACCESS_META,
@@ -51,7 +52,9 @@ export function AccessStory() {
       <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap acc-wrap">
         <div className="mig-intro acc-intro">
-          <p className="audience-eyebrow mx-auto">Workspace access</p>
+          <SectionBadge icon={Shield} className="mx-auto">
+            Workspace access
+          </SectionBadge>
           <h2 id="access-heading" className="mig-heading font-display">
             People, roles, and{" "}
             <HeadingAccent>what they can see.</HeadingAccent>

@@ -1,7 +1,7 @@
 "use client";
 
-import { type KeyboardEvent, useLayoutEffect, useRef, useState } from "react";
-import { LayoutGroup, motion, useReducedMotion } from "framer-motion";
+import { useLayoutEffect, useRef, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   CalendarDays,
   ChartNoAxesGantt,
@@ -24,7 +24,9 @@ import {
   type GanttWorkItem,
 } from "@/components/features/gantt-story/ganttStoryData";
 import { useGanttStory } from "@/components/features/gantt-story/useGanttStory";
+import { StoryTabs } from "@/components/features/story/StoryTabs";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 const ICONS = {
   tasks: ListChecks,
@@ -43,26 +45,6 @@ export function GanttStory() {
   });
   const scene = reduce ? 1 : progress;
 
-  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const index = GANTT_TABS.indexOf(tab);
-    if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-      event.preventDefault();
-      selectTab(GANTT_TABS[(index + 1) % GANTT_TABS.length]);
-    }
-    if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-      event.preventDefault();
-      selectTab(GANTT_TABS[(index - 1 + GANTT_TABS.length) % GANTT_TABS.length]);
-    }
-    if (event.key === "Home") {
-      event.preventDefault();
-      selectTab("tasks");
-    }
-    if (event.key === "End") {
-      event.preventDefault();
-      selectTab("schedule");
-    }
-  };
-
   const leftMeta = tab === "bars" ? GANTT_META.bars : GANTT_META.tasks;
   const leftActive = tab === "tasks" || tab === "bars" || tab === "schedule";
   const rightActive = tab === "links" || tab === "schedule";
@@ -79,7 +61,9 @@ export function GanttStory() {
       <div className="gnt-ambient" aria-hidden="true" />
       <div className="why-wrap gnt-wrap">
         <div className="mig-intro gnt-intro">
-          <p className="audience-eyebrow mx-auto">GANTT</p>
+          <SectionBadge icon={ChartNoAxesGantt} className="mx-auto">
+            GANTT
+          </SectionBadge>
           <h2 id="gantt-heading" className="mig-heading font-display">
             Tasks become <HeadingAccent>a schedule.</HeadingAccent>
           </h2>
@@ -89,42 +73,15 @@ export function GanttStory() {
           </p>
         </div>
 
-        <LayoutGroup id="gnt-tabs">
-          <div
-            className="gnt-tabs"
-            role="tablist"
-            aria-label="How a Gantt is built"
-            onKeyDown={onKeyDown}
-          >
-            {GANTT_TABS.map((id) => {
-              const Icon = ICONS[id];
-              const selected = tab === id;
-              return (
-                <button
-                  key={id}
-                  type="button"
-                  role="tab"
-                  id={`gnt-tab-${id}`}
-                  aria-selected={selected}
-                  aria-controls="gnt-panel"
-                  tabIndex={selected ? 0 : -1}
-                  className={selected ? "is-active" : ""}
-                  onClick={() => selectTab(id)}
-                >
-                  {selected ? (
-                    <motion.span
-                      layoutId="gnt-tab-pill"
-                      className="gnt-tab-pill"
-                      transition={{ duration: reduce ? 0 : 0.32, ease: EASE }}
-                    />
-                  ) : null}
-                  <Icon size={14} strokeWidth={2.1} aria-hidden="true" />
-                  {GANTT_META[id].label}
-                </button>
-              );
-            })}
-          </div>
-        </LayoutGroup>
+        <StoryTabs
+          tabs={GANTT_TABS.map((id) => ({ id, label: GANTT_META[id].label }))}
+          tab={tab}
+          onSelect={selectTab}
+          label="How a Gantt is built"
+          prefix="gnt"
+          icons={ICONS}
+          className="gnt-tabs"
+        />
 
         <div className="gnt-stage">
           <aside className={`gnt-float gnt-float-left ${leftActive ? "is-active" : ""}`}>

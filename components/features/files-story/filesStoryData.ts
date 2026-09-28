@@ -25,13 +25,46 @@ export const FILE_META: Record<FileTab, { label: string; title: string; note: st
 };
 
 export const FILE_FOLDERS = [
-  { id: "design", name: "Design", count: 4 },
-  { id: "docs", name: "Documents", count: 3 },
-  { id: "shared", name: "Shared", count: 2 },
+  { id: "design", name: "Design", count: "1 file" },
+  { id: "docs", name: "Documents", count: "2 files" },
 ] as const;
 
 export const FILE_ITEMS = [
-  { id: "proposal", name: "Proposal.pdf", kind: "PDF", size: "2.4 MB", folder: "Documents", owner: "Sarah" },
-  { id: "contract", name: "Contract.pdf", kind: "PDF", size: "1.1 MB", folder: "Documents", owner: "Sarah" },
-  { id: "fig", name: "Homepage.fig", kind: "FIG", size: "8.6 MB", folder: "Design", owner: "Alex" },
+  {
+    id: "proposal",
+    name: "Proposal.pdf",
+    kind: "PDF",
+    size: "2.4 MB",
+    folder: "Documents",
+    folderId: "docs",
+    attached: "Proposal",
+  },
+  {
+    id: "contract",
+    name: "Contract.pdf",
+    kind: "PDF",
+    size: "1.1 MB",
+    folder: "Documents",
+    folderId: "docs",
+    attached: "Website Redesign",
+  },
+  {
+    id: "fig",
+    name: "Homepage.fig",
+    kind: "FIG",
+    size: "8.6 MB",
+    folder: "Design",
+    folderId: "design",
+    attached: "Task · Hero section",
+  },
+] as const;
+
+export const FILE_RECORD = FILE_ITEMS[1];
+
+export const FILE_ACTIONS = [
+  { id: "download", label: "Download" },
+  { id: "version", label: "Version" },
+  { id: "share", label: "Share" },
+  { id: "favorite", label: "Favorite" },
+  { id: "archive", label: "Archive" },
 ] as const;

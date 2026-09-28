@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import { LandingBackground } from "@/components/ui/LandingBackground";
 
 type NodeTone = "blue" | "teal" | "purple" | "orange" | "indigo" | "green";
@@ -367,7 +368,9 @@ export function FeaturesIntro() {
       <div className="features-intro-wrap relative">
         <FadeInWhenVisible>
           <div className="features-intro-copy">
-            <p className="features-intro-eyebrow">Built for the way you work</p>
+            <SectionBadge icon={Layers} className="mx-auto">
+              Built for the way you work
+            </SectionBadge>
             <h1
               id="features-hero-heading"
               className="features-intro-heading why-heading why-heading-stack font-display"

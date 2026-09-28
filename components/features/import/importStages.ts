@@ -1,56 +1,36 @@
 import type { StoryStage } from "@/components/features/story/storyUtils";
+import { IMPORT_STAGE_RANGES } from "@/components/features/import/importStoryData";
 
 export const IMPORT_STAGES: StoryStage[] = [
   {
-    id: "existing",
-    label: "Existing work",
-    title: "Your current workspace",
+    id: "preparing",
+    label: "Preparing",
+    title: "Ready to migrate",
     description:
-      "Projects, tasks, members, comments, files, labels, statuses, and due dates already exist somewhere else.",
-    start: 0,
-    end: 0.2,
+      "Existing projects, tasks, and workflows are collected so they can move into Worknaro together.",
+    ...IMPORT_STAGE_RANGES.preparing,
   },
   {
-    id: "prepare",
-    label: "Prepare",
-    title: "Work is prepared",
+    id: "importing",
+    label: "Importing",
+    title: "Bring the file in",
     description:
-      "Worknaro imports from CSV, Excel, or JSON. Export from another tool, then bring those objects across.",
-    start: 0.2,
-    end: 0.4,
+      "Import CSV, Excel, or JSON today — native connectors are not available yet.",
+    ...IMPORT_STAGE_RANGES.importing,
   },
   {
-    id: "map",
-    label: "Map",
-    title: "Fields are matched",
+    id: "organizing",
+    label: "Organizing",
+    title: "Mapped into Worknaro",
     description:
-      "Statuses, assignees, and due dates map to Worknaro fields before anything is written.",
-    start: 0.4,
-    end: 0.6,
+      "Imported work is placed into projects, tasks, team workflows, and files.",
+    ...IMPORT_STAGE_RANGES.organizing,
   },
   {
-    id: "import",
-    label: "Import",
-    title: "The workspace is built",
-    description:
-      "Projects, tasks, members, comments, and files import with progress, validation, and rollback.",
-    start: 0.6,
-    end: 0.8,
-  },
-  {
-    id: "organitio",
-    label: "Worknaro",
-    title: "Work lives here now",
-    description:
-      "The same projects and people appear in a Worknaro workspace—ready to continue, not start over.",
-    start: 0.8,
-    end: 1.01,
+    id: "complete",
+    label: "Complete",
+    title: "Keep going",
+    description: "Your workspace is ready to keep going.",
+    ...IMPORT_STAGE_RANGES.complete,
   },
 ];
-
-export const IMPORT_MOBILE_STAGES = [
-  { id: "existing", label: "Existing work", progress: 0.1 },
-  { id: "map", label: "Map", progress: 0.5 },
-  { id: "import", label: "Import", progress: 0.7 },
-  { id: "organitio", label: "Worknaro", progress: 0.92 },
-] as const;

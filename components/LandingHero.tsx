@@ -1,8 +1,11 @@
 "use client";
 
 import type { ReactNode } from "react";
+import type { LucideIcon } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 
 export function LandingHero({
   eyebrow,
@@ -11,6 +14,7 @@ export function LandingHero({
   description,
   actions,
   headingId,
+  icon = Sparkles,
 }: {
   eyebrow: string;
   title: string;
@@ -18,6 +22,7 @@ export function LandingHero({
   description: string;
   actions?: ReactNode;
   headingId: string;
+  icon?: LucideIcon;
 }) {
   return (
     <section className="features-page-hero relative overflow-hidden" aria-labelledby={headingId}>
@@ -25,11 +30,9 @@ export function LandingHero({
       <div className="why-wrap relative text-center">
         <FadeInWhenVisible>
           <div>
-            <p className="trust-eyebrow mx-auto">
-              <span className="trust-eyebrow-line" aria-hidden="true" />
+            <SectionBadge icon={icon} className="mx-auto">
               {eyebrow}
-              <span className="trust-eyebrow-line" aria-hidden="true" />
-            </p>
+            </SectionBadge>
             <h1 id={headingId} className="features-page-heading font-display">
               {title}
               {titleAccent ? (

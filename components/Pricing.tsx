@@ -1,12 +1,13 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { Check, Star } from "lucide-react";
+import { Check, CreditCard, Star } from "lucide-react";
 import {
   FadeInWhenVisible,
   StaggerChildren,
 } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
+import { SectionBadge } from "@/components/ui/SectionBadge";
 import {
   TRIAL_DAYS,
   formatPlanPrice,
@@ -75,11 +76,9 @@ export function Pricing({
         {showHeading ? (
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
-              <p className="trust-eyebrow mx-auto">
-                <span className="trust-eyebrow-line" aria-hidden="true" />
+              <SectionBadge icon={CreditCard} className="mx-auto">
                 Plan & Pricing
-                <span className="trust-eyebrow-line" aria-hidden="true" />
-              </p>
+              </SectionBadge>
               <h2 id="pricing-heading" className="pricing-heading font-display">
                 Choose the plan that fits your{" "}
                 <HeadingAccent>team</HeadingAccent>

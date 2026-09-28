@@ -7,8 +7,7 @@ import { FAQ } from "@/components/FAQ";
 import { FeatureIntro } from "@/components/FeatureIntro";
 import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
-import { IntegrationHub } from "@/components/IntegrationHub";
-import { Pricing } from "@/components/Pricing";
+import { PricingCta } from "@/components/PricingCta";
 import { InsightsStory } from "@/components/features/insights/InsightsStory";
 import { ImportStory } from "@/components/features/import/ImportStory";
 import { ProductFeaturesStory } from "@/components/product-features/ProductFeaturesStory";
@@ -48,10 +47,9 @@ export default async function HomePage() {
       <ProductFeaturesStory />
       <InsightsStory id="home-insights" compact />
       <ImportStory id="home-import" compact />
-      <IntegrationHub />
       <HowItWorks cmsSteps={landing?.how_it_works ?? null} />
       <Solutions />
-      {toggles?.show_pricing === false ? null : <Pricing />}
+      {toggles?.show_pricing === false ? null : <PricingCta />}
       {toggles?.show_testimonials === false ? null : (
         <Testimonials cmsItems={testimonials ?? null} />
       )}

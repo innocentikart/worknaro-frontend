@@ -26,8 +26,14 @@ export const REPORT_META: Record<ReportTab, { label: string; title: string; note
 
 export const REPORT_POINTS = [28, 34, 41, 48, 52, 58, 64] as const;
 
+export const REPORT_ACTIVITY = [
+  { label: "Hero section completed", when: "Today" },
+  { label: "2h 30m logged · Alex", when: "18 Sep" },
+  { label: "Client review waiting", when: "3 days" },
+] as const;
+
 export const REPORT_GROUPS = [
-  { name: "Website Redesign", tasks: "12 tasks", hours: "18.5h" },
-  { name: "Alex", tasks: "Timesheet", hours: "12.0h" },
-  { name: "Sarah", tasks: "Timesheet", hours: "6.5h" },
+  { name: "Website Redesign", kind: "Project", detail: "12 tasks", hours: "18.5h" },
+  { name: "Alex", kind: "Person", detail: "Timesheet", hours: "12.0h" },
+  { name: "18–24 Sep", kind: "Period", detail: "This week", hours: "18.5h" },
 ] as const;
