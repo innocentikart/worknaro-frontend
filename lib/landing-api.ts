@@ -115,7 +115,7 @@ export async function fetchLandingPage(): Promise<LandingPayload | null> {
   }
 }
 
-export async function fetchPublicBetaConfig(): Promise<LandingPayload["beta"] | null> {
+export async function fetchPublicBetaConfig(): Promise<NonNullable<LandingPayload["beta"]> | null> {
   try {
     const res = await fetch(`${getAppUrl()}/api/v1/public/landing-page/`, {
       cache: "no-store",
