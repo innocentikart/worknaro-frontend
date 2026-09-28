@@ -74,14 +74,31 @@ export type LandingPayload = {
     success_message?: string;
     show_company_field?: boolean;
     show_role_field?: boolean;
+    role_options?: string[];
+    team_size_options?: string[];
+    updated_at?: string;
+    campaign?: BetaCampaignConfig;
   };
   pricing?: unknown[];
+};
+
+export type BetaCampaignConfig = {
+  show_notification_bar?: boolean;
+  notification_message?: string;
+  notification_cta?: string;
+  show_popup?: boolean;
+  popup_heading?: string;
+  popup_description?: string;
+  popup_button_label?: string;
+  popup_trigger?: "disabled" | "delay" | "scroll" | string;
+  popup_delay_seconds?: number;
+  popup_scroll_percent?: number;
 };
 
 export async function fetchLandingPage(): Promise<LandingPayload | null> {
   try {
     const res = await fetch(`${getAppUrl()}/api/v1/public/landing-page/`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 10 },
       headers: { Accept: "application/json" },
     });
     if (!res.ok) {
@@ -98,39 +115,65 @@ export async function fetchLandingPage(): Promise<LandingPayload | null> {
   }
 }
 
+export async function fetchPublicBetaConfig(): Promise<LandingPayload["beta"] | null> {
+  try {
+    const res = await fetch(`${getAppUrl()}/api/v1/public/landing-page/`, {
+      cache: "no-store",
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) return null;
+    const payload = (await res.json()) as LandingPayload;
+    if (payload.maintenance) return null;
+    return payload.beta ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export async function submitBetaSignup(input: {
   first_name: string;
   email: string;
   company?: string;
   role?: string;
+  team_size?: string;
+  notes?: string;
 }): Promise<{ ok: boolean; message: string }> {
-  const res = await fetch(`${getAppUrl()}/api/v1/public/beta-signups/`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      first_name: input.first_name,
-      email: input.email,
-      company: input.company || "",
-      role: input.role || "",
-      website: "", // honeypot
-    }),
-  });
-  const data = (await res.json().catch(() => ({}))) as {
-    ok?: boolean;
-    message?: string;
-    detail?: string;
-  };
-  if (!res.ok) {
+  try {
+    const res = await fetch(`${getAppUrl()}/api/v1/public/beta-signups/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: input.first_name,
+        email: input.email,
+        company: input.company || "",
+        role: input.role || "",
+        team_size: input.team_size || "",
+        notes: input.notes || "",
+        website: "", // honeypot
+      }),
+    });
+    const data = (await res.json().catch(() => ({}))) as {
+      ok?: boolean;
+      message?: string;
+      detail?: string;
+    };
+    if (!res.ok) {
+      return {
+        ok: false,
+        message: data.detail || "Unable to submit right now. Please try again.",
+      };
+    }
+    return {
+      ok: true,
+      message: data.message || "Thanks for joining the beta.",
+    };
+  } catch {
     return {
       ok: false,
-      message: data.detail || "Unable to submit right now. Please try again.",
+      message: "Unable to submit right now. Please try again.",
     };
   }
-  return {
-    ok: true,
-    message: data.message || "Thanks for joining the beta.",
-  };
 }

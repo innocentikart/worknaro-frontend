@@ -55,7 +55,7 @@ export function Navbar() {
   return (
     <header
       ref={headerRef}
-      className={`landing-header sticky top-0 z-50 transition duration-300 ${
+      className={`landing-header transition duration-300 ${
         overlay
           ? "border-b border-transparent bg-transparent"
           : "border-b border-line bg-background/90 backdrop-blur-xl shadow-[0_8px_24px_-20px_rgba(40,60,80,0.45)]"
