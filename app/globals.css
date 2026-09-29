@@ -1296,13 +1296,16 @@ html.dark .hero-headline {
 .hero-headline-accent-wrap {
   position: relative;
   display: inline-block;
-  padding-bottom: 0.08em;
+  max-width: 100%;
+  padding-bottom: 0.18em;
+  vertical-align: baseline;
 }
 
 .hero-headline-underline {
   position: absolute;
   left: 0;
-  bottom: -0.05em;
+  right: 0;
+  bottom: 0;
   width: 100%;
   height: 0.28em;
   color: var(--primary);
@@ -20599,7 +20602,7 @@ html.dark .cls-profile-copy em {
   gap: 0.3rem;
   width: max-content;
   max-width: 100%;
-  margin: var(--fs-to-ui, var(--space-7)) auto 0;
+  margin: var(--fs-to-ui, var(--space-7)) auto var(--landing-to-content);
   padding: 0.28rem;
   overflow-x: auto;
   border-radius: 999px;
@@ -20668,7 +20671,13 @@ html.dark .cls-profile-copy em {
 }
 
 .cts-stage .fst-tabs {
-  margin: 0 auto;
+  margin: 0 auto var(--landing-to-content);
+}
+
+@media (min-width: 1100px) {
+  .cts-stage .fst-tabs {
+    margin-bottom: 0;
+  }
 }
 
 .fst-steps {
@@ -21721,7 +21730,11 @@ html.dark .imp-viz {
   .gnt-tabs,
   .cls-tabs {
     width: 100%;
-    justify-content: stretch;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: visible;
+    border-radius: 1.15rem;
   }
 
   .fst-tabs button,
@@ -21729,9 +21742,9 @@ html.dark .imp-viz {
   .cts-tabs button,
   .gnt-tabs button,
   .cls-tabs button {
-    flex: 1 1 0;
+    flex: 0 0 auto;
     justify-content: center;
-    padding-inline: 0.45rem;
+    padding-inline: 0.7rem;
     font-size: 0.72rem;
   }
 }
@@ -22007,6 +22020,47 @@ main {
     line-height: 1.16;
     letter-spacing: -0.03em;
     text-wrap: balance;
+    overflow: visible;
+    padding-bottom: 0.14em;
+  }
+
+  .cts-section .mig-heading {
+    text-wrap: pretty;
+    font-size: clamp(1.55rem, 6.6vw, 1.95rem);
+    line-height: 1.2;
+  }
+
+  .cts-section .cts-heading-lead {
+    display: block;
+  }
+
+  /* Multi-line accents: per-line underline (absolute SVG only tracks the last line). */
+  .mig-heading .hero-headline-accent-wrap,
+  .pfs-heading .hero-headline-accent-wrap,
+  .audience-heading .hero-headline-accent-wrap,
+  .features-page-heading .hero-headline-accent-wrap,
+  .features-intro-heading .hero-headline-accent-wrap {
+    display: inline;
+    padding-bottom: 0.08em;
+  }
+
+  .mig-heading .hero-headline-accent,
+  .pfs-heading .hero-headline-accent,
+  .audience-heading .hero-headline-accent,
+  .features-page-heading .hero-headline-accent,
+  .features-intro-heading .hero-headline-accent {
+    padding-bottom: 0.08em;
+    border-bottom: 0.11em solid var(--primary);
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
+
+  .mig-heading .hero-headline-underline,
+  .pfs-heading .hero-headline-underline,
+  .audience-heading .hero-headline-underline,
+  .features-page-heading .hero-headline-underline,
+  .features-intro-heading .hero-headline-underline {
+    display: none;
   }
 
   .hero-description,
@@ -25422,6 +25476,11 @@ html.dark .srh-section .srh-box {
 }
 
 .ddv-section .fst-tabs {
+  margin-bottom: var(--landing-to-content);
+}
+
+.tmf-section .fst-tabs,
+.fls-section .fst-tabs {
   margin-bottom: var(--landing-to-content);
 }
 

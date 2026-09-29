@@ -101,7 +101,7 @@ const OVERVIEW_CARDS: Array<{
 
 export function FeaturesLanding() {
   return (
-    <>
+    <div className="features-page">
       <FeaturesIntro />
 
       <div className="features-page-body">
@@ -153,7 +153,7 @@ export function FeaturesLanding() {
             ))}
           </StaggerChildren>
 
-          <FadeInWhenVisible delay={80} className="features-page-nav">
+          <FadeInWhenVisible delay={80} className="features-page-nav landing-to-content">
             <nav aria-label="Feature modules" className="features-jump">
               {FEATURE_JUMP.map((feature) => (
                 <a key={feature.id} href={`#${feature.id}`} className="features-jump-link">
@@ -211,6 +211,6 @@ export function FeaturesLanding() {
         </div>
       </section>
       </div>
-    </>
+    </div>
   );
 }

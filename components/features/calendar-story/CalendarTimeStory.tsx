@@ -56,7 +56,7 @@ export function CalendarTimeStory() {
             See work in time.
           </SectionBadge>
           <h2 id="calendar-heading" className="mig-heading font-display">
-            The calendar shows project dates,{" "}
+            <span className="cts-heading-lead">The calendar shows project dates,</span>{" "}
             <HeadingAccent>open tasks, and milestones.</HeadingAccent>
           </h2>
           <p className="mig-lead">

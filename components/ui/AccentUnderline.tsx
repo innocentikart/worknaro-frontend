@@ -13,6 +13,7 @@ export function AccentUnderline({
         className={className}
         viewBox="0 0 220 12"
         fill="none"
+        preserveAspectRatio="none"
         aria-hidden="true"
       >
         <path
@@ -20,6 +21,7 @@ export function AccentUnderline({
           stroke="currentColor"
           strokeWidth="3"
           strokeLinecap="round"
+          vectorEffect="non-scaling-stroke"
         />
       </svg>
     );
@@ -30,6 +32,7 @@ export function AccentUnderline({
       className={className}
       viewBox="0 0 180 12"
       fill="none"
+      preserveAspectRatio="none"
       aria-hidden="true"
     >
       <path
@@ -37,6 +40,7 @@ export function AccentUnderline({
         stroke="currentColor"
         strokeWidth="3"
         strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
       />
     </svg>
   );
