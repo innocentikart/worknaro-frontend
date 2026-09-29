@@ -47,7 +47,6 @@ export function SearchStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap srh-wrap">
         <div className="mig-intro srh-intro">
           <SectionBadge icon={Search} className="mx-auto">

@@ -49,7 +49,6 @@ export function InsightsStory({
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap ais-wrap">
         <div className="mig-intro ais-intro">
           <SectionBadge icon={Sparkles} className="mx-auto">

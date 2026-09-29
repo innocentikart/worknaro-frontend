@@ -15,6 +15,8 @@ import {
   workCompletedCount,
   type ProjectBuildTab,
 } from "@/components/features/project-build/projectBuildData";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
+import { visitorAvatarForKey } from "@/lib/visitor-avatars";
 
 function appear(progress: number, start: number, reducedMotion?: boolean) {
   if (reducedMotion) return progress >= start ? 1 : 0;
@@ -133,7 +135,9 @@ export function TeamScene({
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: reducedMotion ? 0 : 0.35 }}
                   >
-                    <span className={`pfs-avatar pfs-avatar-${member.tone}`}>{member.initials}</span>
+                    <span className="pfs-avatar has-image" aria-hidden="true">
+                      <VisitorAvatar src={member.avatar} />
+                    </span>
                     <span>
                       <strong>{member.name}</strong>
                       <em>{member.email}</em>
@@ -344,7 +348,9 @@ export function LiveScene({
                 <ul className="pbs-activity">
                   {items.map((item) => (
                     <li key={`${item.action}-${item.at}`}>
-                      <span className="pfs-avatar pfs-avatar-blue">{item.who}</span>
+                      <span className="pfs-avatar has-image" aria-hidden="true">
+                        <VisitorAvatar src={visitorAvatarForKey(item.who)} />
+                      </span>
                       <span>
                         <strong>{item.name}</strong> {item.action}
                         <em>{item.at}</em>

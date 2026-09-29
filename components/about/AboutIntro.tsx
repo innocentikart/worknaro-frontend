@@ -13,7 +13,7 @@ import {
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { SectionBadge } from "@/components/ui/SectionBadge";
-import { AboutSectionBackground } from "@/components/about/AboutSectionBackground";
+import { SectionDotsFrame } from "@/components/ui/SectionDotsFrame";
 import { PRINCIPLE_CARDS } from "@/components/about/PrincipleShowcaseCard";
 import { siteConfig } from "@/lib/site";
 
@@ -96,7 +96,7 @@ export function AboutIntro() {
       className="about-intro relative"
       aria-labelledby="about-hero-heading"
     >
-      <AboutSectionBackground />
+      <SectionDotsFrame variant="about" />
 
       <div className="about-intro-wrap relative z-10">
         <div className="about-intro-grid">

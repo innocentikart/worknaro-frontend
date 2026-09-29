@@ -12,7 +12,7 @@ import {
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { SectionBadge } from "@/components/ui/SectionBadge";
-import { AboutSectionBackground } from "@/components/about/AboutSectionBackground";
+import { SectionDotsFrame } from "@/components/ui/SectionDotsFrame";
 import { djangoRoutes, siteConfig } from "@/lib/site";
 
 type PathTone = "blue" | "teal";
@@ -140,7 +140,7 @@ export function ContactIntro() {
       className="contact-intro relative"
       aria-labelledby="contact-hero-heading"
     >
-      <AboutSectionBackground />
+      <SectionDotsFrame variant="contact" />
 
       <div className="contact-intro-wrap relative z-10">
         <div className="contact-intro-grid">

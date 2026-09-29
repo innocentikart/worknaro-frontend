@@ -83,17 +83,16 @@ export function AboutLanding() {
     <>
       <AboutIntro />
 
+      <div className="landing-page-body">
       <section
         id="what-we-build"
         className="why-section about-pillars-section relative overflow-hidden scroll-mt-28"
         aria-labelledby="about-pillars-heading"
       >
         <div className="why-deco why-deco-left" aria-hidden="true">
-          <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
         <div className="why-deco why-deco-right" aria-hidden="true">
-          <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
 
@@ -177,7 +176,6 @@ export function AboutLanding() {
               </SectionBadge>
 
               <div className="solutions-editions-copy relative z-[1]">
-                <span className="solutions-editions-copy-blur" aria-hidden="true" />
                 <h2 id="about-source-heading" className="final-cta-heading relative z-[1] font-display">
                   The application is the{" "}
                   <HeadingAccent>source of truth</HeadingAccent>
@@ -202,6 +200,7 @@ export function AboutLanding() {
           </FadeInWhenVisible>
         </div>
       </section>
+      </div>
     </>
   );
 }

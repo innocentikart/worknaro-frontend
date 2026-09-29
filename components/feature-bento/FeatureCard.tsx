@@ -66,7 +66,7 @@ export function FeatureCard({
       <div
         aria-hidden="true"
         className={cx(
-          "pointer-events-none absolute inset-0 bg-gradient-to-br opacity-90",
+          "feature-card-glow pointer-events-none absolute inset-0 bg-gradient-to-br opacity-90",
           styles.glow,
         )}
       />
@@ -81,7 +81,7 @@ export function FeatureCard({
           <span
             aria-hidden="true"
             className={cx(
-              "inline-flex h-14 w-14 items-center justify-center rounded-2xl shadow-lg",
+              "inline-flex h-14 w-14 items-center justify-center rounded-2xl",
               "transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-2",
               styles.icon,
             )}

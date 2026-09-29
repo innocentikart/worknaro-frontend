@@ -10,6 +10,8 @@ import {
   TrendingUp,
   Users,
 } from "lucide-react";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
+import { visitorAvatarAt } from "@/lib/visitor-avatars";
 
 export type ModuleVisualKind =
   | "product"
@@ -82,14 +84,14 @@ function DotRow({
 function AvatarRow({
   items,
 }: {
-  items: Array<{ label: string; initial: string; tone: "blue" | "teal" | "purple" | "orange" }>;
+  items: Array<{ label: string; avatar: string }>;
 }) {
   return (
     <ul className="about-viz-list about-viz-list-avatar">
       {items.map((item) => (
         <li key={item.label}>
-          <span className={`about-viz-avatar about-viz-avatar-${item.tone}`}>
-            {item.initial}
+          <span className="about-viz-avatar has-image">
+            <VisitorAvatar src={item.avatar} />
           </span>
           {item.label}
         </li>
@@ -133,18 +135,20 @@ export function VisualTeam({
       <Shell title="Team">
         <AvatarRow
           items={[
-            { label: "Admin", initial: "A", tone: "blue" },
-            { label: "Member", initial: "M", tone: "teal" },
-            { label: "Viewer", initial: "V", tone: "purple" },
+            { label: "Admin", avatar: visitorAvatarAt(0) },
+            { label: "Member", avatar: visitorAvatarAt(1) },
+            { label: "Viewer", avatar: visitorAvatarAt(2) },
           ]}
         />
       </Shell>
       {online ? (
         <div className="about-viz-float about-viz-float-online" aria-hidden="true">
           <span className="about-viz-online-stack">
-            <i className="about-viz-avatar-sm about-viz-avatar-blue" />
-            <i className="about-viz-avatar-sm about-viz-avatar-teal" />
-            <i className="about-viz-avatar-sm about-viz-avatar-purple" />
+            {[0, 1, 2].map((index) => (
+              <i key={index} className="about-viz-avatar-sm has-image">
+                <VisitorAvatar src={visitorAvatarAt(index)} />
+              </i>
+            ))}
           </span>
           <span className="about-viz-online-label">3 online</span>
         </div>
@@ -159,7 +163,9 @@ export function VisualCollab() {
       <div className="about-viz-shell about-viz-shell-feed">
         <div className="about-viz-feed-item">
           <div className="about-viz-feed-head">
-            <span className="about-viz-avatar about-viz-avatar-purple">S</span>
+            <span className="about-viz-avatar has-image">
+              <VisitorAvatar src={visitorAvatarAt(0)} />
+            </span>
             <div>
               <p className="about-viz-feed-name">Sarah Johnson</p>
               <p className="about-viz-feed-time">2m ago</p>
@@ -173,7 +179,9 @@ export function VisualCollab() {
         </div>
         <div className="about-viz-feed-item">
           <div className="about-viz-feed-head">
-            <span className="about-viz-avatar about-viz-avatar-blue">M</span>
+            <span className="about-viz-avatar has-image">
+              <VisitorAvatar src={visitorAvatarAt(1)} />
+            </span>
             <div>
               <p className="about-viz-feed-name">Michael Chen</p>
               <p className="about-viz-feed-time">5m ago</p>
@@ -248,9 +256,9 @@ export function VisualClients({ handshake = false }: { handshake?: boolean }) {
       <Shell title="Clients">
         <AvatarRow
           items={[
-            { label: "Client A", initial: "A", tone: "blue" },
-            { label: "Client B", initial: "B", tone: "teal" },
-            { label: "Client C", initial: "C", tone: "orange" },
+            { label: "Client A", avatar: visitorAvatarAt(0) },
+            { label: "Client B", avatar: visitorAvatarAt(1) },
+            { label: "Client C", avatar: visitorAvatarAt(2) },
           ]}
         />
       </Shell>

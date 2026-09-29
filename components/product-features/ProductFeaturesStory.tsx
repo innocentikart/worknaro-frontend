@@ -37,13 +37,6 @@ export function ProductFeaturesStory() {
     >
       <div className="pfs-scroll-track is-autoplay">
         <div className="pfs-sticky">
-          <div className="pfs-deco pfs-deco-left" aria-hidden="true">
-            <span className="pfs-deco-blob" />
-          </div>
-          <div className="pfs-deco pfs-deco-right" aria-hidden="true">
-            <span className="pfs-deco-blob" />
-          </div>
-
           <div className="why-wrap pfs-shell">
             <div className="pfs-layout">
               <div className="pfs-left">

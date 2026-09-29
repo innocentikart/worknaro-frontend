@@ -106,17 +106,15 @@ export function SolutionsLanding() {
     <>
       <SolutionsIntro />
 
+      <div className="solutions-page-body">
       <section
         className="why-section relative overflow-hidden"
         aria-labelledby="pillars-heading"
       >
-        <div className="why-ambient" aria-hidden="true" />
         <div className="why-deco why-deco-left" aria-hidden="true">
-          <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
         <div className="why-deco why-deco-right" aria-hidden="true">
-          <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
 
@@ -161,8 +159,6 @@ export function SolutionsLanding() {
         className="solutions-section relative overflow-hidden scroll-mt-24"
         aria-labelledby="audiences-heading"
       >
-        <div className="audience-ambient" aria-hidden="true" />
-
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
@@ -219,19 +215,9 @@ export function SolutionsLanding() {
       </section>
 
       <section
-        className="showcase-section relative overflow-hidden"
+        className="showcase-section showcase-section--plain relative overflow-hidden"
         aria-labelledby="solutions-deep-dive-heading"
       >
-        <div className="showcase-ambient" aria-hidden="true" />
-        <div className="showcase-deco showcase-deco-left" aria-hidden="true">
-          <span className="showcase-deco-blob" />
-          <span className="showcase-deco-dots" />
-        </div>
-        <div className="showcase-deco showcase-deco-right" aria-hidden="true">
-          <span className="showcase-deco-blob" />
-          <span className="showcase-deco-dots" />
-        </div>
-
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
@@ -259,6 +245,7 @@ export function SolutionsLanding() {
               cta={index === solutions.length - 1}
               secondaryCta={{ href: "/features", label: "Explore features" }}
               showDescription
+              hideGlow
             />
           ))}
         </div>
@@ -266,11 +253,9 @@ export function SolutionsLanding() {
 
       <section className="features-search-band relative overflow-x-clip">
         <div className="why-deco why-deco-left" aria-hidden="true">
-          <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
         <div className="why-deco why-deco-right" aria-hidden="true">
-          <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
         <div className="why-wrap relative">
@@ -281,7 +266,6 @@ export function SolutionsLanding() {
                 Same product
               </SectionBadge>
               <div className="solutions-editions-copy relative z-[1]">
-                <span className="solutions-editions-copy-blur" aria-hidden="true" />
                 <h2 className="features-search-heading relative z-[1] font-display">
                   Not separate industry editions
                 </h2>
@@ -304,6 +288,7 @@ export function SolutionsLanding() {
           </FadeInWhenVisible>
         </div>
       </section>
+      </div>
     </>
   );
 }

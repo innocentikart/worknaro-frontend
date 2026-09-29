@@ -51,7 +51,6 @@ export function ProposalsStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap prp-wrap">
         <div className="prp-intro">
           <SectionBadge icon={FileText}>Proposals</SectionBadge>

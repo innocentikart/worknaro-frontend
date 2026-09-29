@@ -39,6 +39,7 @@ export const LEAD_CARD = {
   value: "$12,400",
   owner: "Alex",
   initials: "AX",
+  avatar: "/avatars/visitor-purple.svg",
   followUp: "20 Sep",
 };
 

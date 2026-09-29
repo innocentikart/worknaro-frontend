@@ -21,6 +21,8 @@ import { StoryTabs } from "@/components/features/story/StoryTabs";
 import { VizChrome } from "@/components/features/story/VizChrome";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { SectionBadge } from "@/components/ui/SectionBadge";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
+import { visitorAvatarForKey } from "@/lib/visitor-avatars";
 
 const ICONS = {
   tasks: ListChecks,
@@ -48,7 +50,6 @@ export function CalendarTimeStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="cts-ambient" aria-hidden="true" />
       <div className="why-wrap cts-wrap">
         <div className="mig-intro cts-intro">
           <SectionBadge icon={CalendarDays} className="mx-auto">
@@ -437,8 +438,8 @@ function WorkItem({
       </motion.div>
 
       <motion.div layout={motionOn ? "position" : false} className="cts-label" transition={transition}>
-        <span className={`pfs-avatar pfs-avatar-${item.who === "ED" ? "purple" : "blue"}`}>
-          {item.who}
+        <span className="pfs-avatar has-image" aria-hidden="true">
+          <VisitorAvatar src={visitorAvatarForKey(item.who)} />
         </span>
         <span className="cts-copy">
           <motion.strong layout={motionOn ? "position" : false} transition={transition}>

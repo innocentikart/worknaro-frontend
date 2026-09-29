@@ -12,6 +12,8 @@ import {
   scenePresence,
   stageIndexForProgress,
 } from "@/components/features/story/storyUtils";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
+import { VISITOR_AVATARS } from "@/lib/visitor-avatars";
 
 export function TimeFinanceCanvas({
   progress,
@@ -81,7 +83,9 @@ export function ClientsCanvas({
       <VizChrome title="Worknaro · Client" badge={CLIENT_STAGES[index].label} />
       <div className="mst-stage mst-client">
         <article className="mst-client-card">
-          <span className="pfs-avatar pfs-avatar-teal pfs-avatar-lg">NW</span>
+          <span className="pfs-avatar pfs-avatar-lg has-image" aria-hidden="true">
+            <VisitorAvatar src={VISITOR_AVATARS.green} />
+          </span>
           <div>
             <p className="mst-kicker">Active</p>
             <strong>Northwind Studio</strong>

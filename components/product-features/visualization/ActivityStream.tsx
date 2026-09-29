@@ -5,6 +5,7 @@ import {
   STORY_ACTIVITIES,
   STORY_PEOPLE,
 } from "@/components/product-features/featureStages";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
 
 function personById(id: string) {
   return STORY_PEOPLE.find((p) => p.id === id)!;
@@ -41,14 +42,14 @@ export function ActivityStream({
               {item.highlight ? (
                 <motion.span
                   layoutId="story-person-avatar"
-                  className={`pfs-avatar pfs-avatar-${person.accent}`}
+                  className="pfs-avatar has-image"
                   aria-hidden="true"
                 >
-                  {person.initials}
+                  <VisitorAvatar src={person.avatar} />
                 </motion.span>
               ) : (
-                <span className={`pfs-avatar pfs-avatar-${person.accent}`} aria-hidden="true">
-                  {person.initials}
+                <span className="pfs-avatar has-image" aria-hidden="true">
+                  <VisitorAvatar src={person.avatar} />
                 </span>
               )}
               <div className="pfs-activity-copy">

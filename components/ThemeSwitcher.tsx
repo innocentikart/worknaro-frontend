@@ -1,9 +1,11 @@
 "use client";
 
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 
 export function ThemeSwitcher({ className = "" }: { className?: string }) {
   const { fullyDark, toggleTheme } = useTheme();
+  const Icon = fullyDark ? Moon : Sun;
 
   return (
     <button
@@ -14,11 +16,7 @@ export function ThemeSwitcher({ className = "" }: { className?: string }) {
       title={fullyDark ? "Light mode" : "Dark mode"}
       data-theme={fullyDark ? "dark" : "light"}
     >
-      {/* Reflects the current active theme (dashboard Feather icons). */}
-      <i
-        className={`feather ${fullyDark ? "feather-moon" : "feather-sun"}`}
-        aria-hidden="true"
-      />
+      <Icon className="theme-switcher-icon" aria-hidden="true" />
     </button>
   );
 }

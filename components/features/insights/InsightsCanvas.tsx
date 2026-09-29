@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { INSIGHTS_STAGES } from "@/components/features/insights/insightsStages";
 import { stageIndexForProgress } from "@/components/features/story/storyUtils";
 import { STORY_PROJECT } from "@/components/product-features/featureStages";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
+import { VISITOR_AVATARS } from "@/lib/visitor-avatars";
 
 type ActivityKind =
   | "completed"
@@ -23,6 +25,7 @@ type ActivityRow = {
   action: string;
   time: string;
   linked?: boolean;
+  avatar?: string;
 };
 
 const ACTIVITIES: ActivityRow[] = [
@@ -34,6 +37,7 @@ const ACTIVITIES: ActivityRow[] = [
     accent: "blue",
     action: "completed Homepage Design",
     time: "2m",
+    avatar: VISITOR_AVATARS.coral,
   },
   {
     id: "overdue",
@@ -72,6 +76,7 @@ const ACTIVITIES: ActivityRow[] = [
     accent: "blue",
     action: "logged 8h on Homepage Design",
     time: "1h",
+    avatar: VISITOR_AVATARS.coral,
   },
   {
     id: "assign",
@@ -81,6 +86,7 @@ const ACTIVITIES: ActivityRow[] = [
     accent: "teal",
     action: "was assigned the QA pass",
     time: "14m",
+    avatar: VISITOR_AVATARS.green,
   },
   {
     id: "milestone",
@@ -176,10 +182,10 @@ export function InsightsCanvas({
                     transition={{ duration: reducedMotion ? 0 : 0.35 }}
                   >
                     <span
-                      className={`pfs-avatar pfs-avatar-${item.accent}`}
+                      className={`pfs-avatar ${item.avatar ? "has-image" : `pfs-avatar-${item.accent}`}`}
                       aria-hidden="true"
                     >
-                      {item.initials}
+                      {item.avatar ? <VisitorAvatar src={item.avatar} /> : item.initials}
                     </span>
                     <div className="pfs-activity-copy">
                       <p className="pfs-activity-action">

@@ -83,7 +83,6 @@ export function TimeFinanceStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap tmf-wrap">
         <div className="mig-intro tmf-intro">
           <SectionBadge icon={Wallet} className="mx-auto">

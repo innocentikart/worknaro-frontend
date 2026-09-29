@@ -12,6 +12,7 @@ import {
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { SectionBadge } from "@/components/ui/SectionBadge";
+import { SectionDotsFrame } from "@/components/ui/SectionDotsFrame";
 import { resourceCards } from "@/lib/content";
 
 type ResourceAccent = (typeof resourceCards)[number]["accent"];
@@ -155,14 +156,7 @@ export function ResourcesIntro() {
       aria-labelledby="resources-hero-heading"
     >
       <div className="resources-intro-bg" aria-hidden="true">
-        <span className="resources-intro-glow resources-intro-glow-copy" />
-        <span className="resources-intro-glow resources-intro-glow-panel" />
-        <span className="resources-intro-orb resources-intro-orb-bl" />
-        <span className="resources-intro-orb resources-intro-orb-tr" />
-        <span className="resources-intro-orb resources-intro-orb-tr-b" />
-        <span className="resources-intro-arc resources-intro-arc-a" />
-        <span className="resources-intro-arc resources-intro-arc-b" />
-        <span className="resources-intro-dots" />
+        <SectionDotsFrame variant="resources" />
       </div>
 
       <div className="resources-intro-wrap relative">

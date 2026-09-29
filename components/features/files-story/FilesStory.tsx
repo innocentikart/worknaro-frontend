@@ -48,7 +48,6 @@ export function FilesStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap fls-wrap">
         <div className="mig-intro fls-intro">
           <SectionBadge icon={Folder} className="mx-auto">

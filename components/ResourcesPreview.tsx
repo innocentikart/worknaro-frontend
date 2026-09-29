@@ -144,7 +144,6 @@ function ResourceCard({ item }: { item: ResourceCardItem }) {
         ) : (
           <GuidesPreview lightSrc={lightSrc} darkSrc={darkSrc} alt={previewAlt} />
         )}
-        <span className="resources-media-glow" aria-hidden="true" />
       </div>
 
       <div className="resources-card-body flex flex-1 flex-col">
@@ -173,14 +172,6 @@ export function ResourcesPreview() {
       className="resources-section relative overflow-hidden"
       aria-labelledby="resources-heading"
     >
-      <div className="resources-ambient" aria-hidden="true" />
-      <div className="resources-deco resources-deco-left" aria-hidden="true">
-        <span className="resources-deco-blob" />
-      </div>
-      <div className="resources-deco resources-deco-right" aria-hidden="true">
-        <span className="resources-deco-blob" />
-      </div>
-
       <div className="why-wrap relative">
         <FadeInWhenVisible>
           <div className="mx-auto max-w-3xl text-center">

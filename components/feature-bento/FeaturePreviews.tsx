@@ -1,8 +1,20 @@
 "use client";
 
 import type { ReactNode } from "react";
+import Image from "next/image";
+import { VISITOR_AVATAR_LIST } from "@/lib/visitor-avatars";
 
 /** Miniature CSS product previews for the workspace features section. */
+
+const WORKSPACE_AVATARS = VISITOR_AVATAR_LIST.map((avatar, index) => ({
+  ...avatar,
+  hover:
+    index === 0
+      ? ""
+      : index === 1
+        ? "group-hover:translate-x-0.5"
+        : "group-hover:translate-x-1",
+}));
 
 function PreviewShell({
   children,
@@ -129,27 +141,35 @@ export function WorkspaceRolesPreview() {
         </span>
       </div>
 
-      <div className="flex items-center">
-        {[
-          { label: "A", bg: "bg-violet-500", hover: "" },
-          { label: "J", bg: "bg-indigo-500", hover: "group-hover:translate-x-0.5" },
-          { label: "M", bg: "bg-emerald-500", hover: "group-hover:translate-x-1" },
-          { label: "K", bg: "bg-orange-500", hover: "group-hover:translate-x-1.5" },
-          { label: "+8", bg: "bg-slate-500", hover: "group-hover:translate-x-2" },
-        ].map((avatar, index) => (
+      <div className="flex items-center" aria-hidden="true">
+        {WORKSPACE_AVATARS.map((avatar, index) => (
           <span
-            key={avatar.label}
+            key={avatar.id}
             className={[
-              "inline-flex h-6 w-6 items-center justify-center rounded-full border-[1.5px] border-white text-[9px] font-bold text-white dark:border-slate-800",
+              "inline-flex h-7 w-7 overflow-hidden rounded-full border-[1.5px] border-white dark:border-slate-800",
               "transition-transform duration-200",
-              avatar.bg,
               avatar.hover,
-              index > 0 ? "-ml-1.5" : "",
+              index > 0 ? "-ml-2" : "",
             ].join(" ")}
           >
-            {avatar.label}
+            <Image
+              src={avatar.src}
+              alt=""
+              width={64}
+              height={64}
+              className="h-full w-full object-cover object-center"
+            />
           </span>
         ))}
+        <span
+          className={[
+            "inline-flex h-7 w-7 items-center justify-center rounded-full border-[1.5px] border-white bg-slate-500 text-[9px] font-bold text-white dark:border-slate-800",
+            "transition-transform duration-200 group-hover:translate-x-1.5",
+            "-ml-2",
+          ].join(" ")}
+        >
+          +8
+        </span>
       </div>
     </PreviewShell>
   );
@@ -159,8 +179,14 @@ export function ClientsProposalsPreview() {
   return (
     <PreviewShell className="space-y-3.5 p-3.5">
       <div className="flex items-center gap-2.5">
-        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-indigo-500 text-[10px] font-bold text-white">
-          N
+        <span className="inline-flex h-8 w-8 overflow-hidden rounded-full">
+          <Image
+            src={VISITOR_AVATAR_LIST[2].src}
+            alt=""
+            width={64}
+            height={64}
+            className="h-full w-full object-cover object-center"
+          />
         </span>
         <div className="min-w-0">
           <p className="text-xs font-semibold text-slate-900 dark:text-slate-100">

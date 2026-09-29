@@ -94,6 +94,7 @@ export const STORY_PEOPLE = [
     role: "Product Designer",
     initials: "SJ",
     accent: "blue" as const,
+    avatar: "/avatars/visitor-coral.svg",
   },
   {
     id: "michael",
@@ -101,6 +102,7 @@ export const STORY_PEOPLE = [
     role: "Frontend Engineer",
     initials: "MC",
     accent: "teal" as const,
+    avatar: "/avatars/visitor-purple.svg",
   },
   {
     id: "david",
@@ -108,6 +110,7 @@ export const STORY_PEOPLE = [
     role: "QA Lead",
     initials: "DO",
     accent: "purple" as const,
+    avatar: "/avatars/visitor-green.svg",
   },
 ] as const;
 

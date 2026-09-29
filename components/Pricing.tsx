@@ -59,15 +59,6 @@ export function Pricing({
       }`}
       aria-labelledby={showHeading ? "pricing-heading" : undefined}
     >
-      <div className="pricing-deco pricing-deco-left" aria-hidden="true">
-        <span className="pricing-deco-blob" />
-        <span className="pricing-deco-dots" />
-      </div>
-      <div className="pricing-deco pricing-deco-right" aria-hidden="true">
-        <span className="pricing-deco-blob" />
-        <span className="pricing-deco-dots" />
-      </div>
-
       <div
         className={`why-wrap relative ${
           afterIntro ? "pricing-follow-wrap" : ""
@@ -156,9 +147,7 @@ export function Pricing({
               <FadeInWhenVisible key={plan.code} className="h-full">
                 <article
                   className={`pricing-card group transition duration-300 hover:-translate-y-1 ${
-                    featured
-                      ? "is-featured ring-2 ring-primary/30 shadow-[0_24px_50px_-22px_rgba(57,104,234,0.32)]"
-                      : ""
+                    featured ? "is-featured" : ""
                   }`}
                 >
                   {featured ? (

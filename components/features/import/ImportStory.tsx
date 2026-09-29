@@ -85,7 +85,6 @@ export function ImportStory({
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap imp-wrap">
         <div className="mig-intro imp-intro">
           <SectionBadge icon={FolderInput} className="mx-auto">

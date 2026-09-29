@@ -16,6 +16,7 @@ import {
   User,
   Users,
 } from "lucide-react";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
 import {
   CLIENT_ACTIVITY,
   CLIENT_META,
@@ -76,7 +77,6 @@ export function ClientStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="cls-ambient" aria-hidden="true" />
       <div className="why-wrap cls-wrap">
         <div className="mig-intro cls-intro">
           <SectionBadge icon={User} className="mx-auto">
@@ -188,8 +188,8 @@ function ClientBoard({
 
       <div className="cls-main">
         <header className="cls-profile">
-          <span className="cls-avatar" aria-hidden="true">
-            {CLIENT_PROFILE.initials}
+          <span className="cls-avatar has-image" aria-hidden="true">
+            <VisitorAvatar src={CLIENT_PROFILE.avatar} />
           </span>
           <div className="cls-profile-copy">
             <strong>

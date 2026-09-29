@@ -16,8 +16,10 @@ export default async function SolutionsPage() {
   return (
     <>
       <SolutionsLanding />
-      <HowItWorks cmsSteps={landing?.how_it_works ?? null} />
-      <CTA cmsCta={landing?.cta ?? null} />
+      <div className="solutions-page-body">
+        <HowItWorks cmsSteps={landing?.how_it_works ?? null} />
+        <CTA cmsCta={landing?.cta ?? null} />
+      </div>
     </>
   );
 }

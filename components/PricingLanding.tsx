@@ -95,14 +95,16 @@ export function PricingLandingHero() {
         </div>
       </section>
 
-      <div id="plans" className="scroll-mt-28">
-        <Pricing
-          showHeading={false}
-          hideBillingControls
-          afterIntro
-          interval={interval}
-          onIntervalChange={setInterval}
-        />
+      <div className="landing-page-body">
+        <div id="plans" className="scroll-mt-28">
+          <Pricing
+            showHeading={false}
+            hideBillingControls
+            afterIntro
+            interval={interval}
+            onIntervalChange={setInterval}
+          />
+        </div>
       </div>
     </>
   );

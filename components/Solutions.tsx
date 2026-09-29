@@ -55,8 +55,6 @@ export function Solutions({
       className="solutions-section relative overflow-hidden"
       aria-labelledby={showHeading ? "solutions-heading" : undefined}
     >
-      <div className="audience-ambient" aria-hidden="true" />
-
       <div className="why-wrap relative">
         {showHeading ? (
           <FadeInWhenVisible>

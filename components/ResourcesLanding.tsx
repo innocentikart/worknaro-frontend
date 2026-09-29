@@ -80,17 +80,16 @@ export function ResourcesLanding() {
     <>
       <ResourcesIntro />
 
+      <div className="landing-page-body">
       <section
         id="library"
         className="resources-section relative overflow-hidden scroll-mt-28"
         aria-labelledby="resources-library-heading"
       >
         <div className="resources-deco resources-deco-left" aria-hidden="true">
-          <span className="resources-deco-blob" />
           <span className="resources-deco-dots" />
         </div>
         <div className="resources-deco resources-deco-right" aria-hidden="true">
-          <span className="resources-deco-blob" />
           <span className="resources-deco-dots" />
         </div>
 
@@ -158,7 +157,15 @@ export function ResourcesLanding() {
 
           <FadeInWhenVisible delay={80} className="mt-10">
             <p className="resources-placeholder">
-              Placeholder — additional help articles and tutorials will be linked here when available.
+              More guides are on the way. Meanwhile, explore{" "}
+              <Link href="/features" className="resources-placeholder-link">
+                Features
+              </Link>{" "}
+              or{" "}
+              <Link href="/contact" className="resources-placeholder-link">
+                Contact
+              </Link>{" "}
+              us with questions.
             </p>
           </FadeInWhenVisible>
         </div>
@@ -207,7 +214,6 @@ export function ResourcesLanding() {
             <div className="features-search-panel solutions-editions-panel relative overflow-hidden text-center">
               <div className="solutions-editions-deco" aria-hidden="true" />
               <div className="solutions-editions-copy relative z-[1]">
-                <span className="solutions-editions-copy-blur" aria-hidden="true" />
                 <h2 className="features-search-heading relative z-[1] font-display">
                   Ready to work in Worknaro?
                 </h2>
@@ -228,6 +234,7 @@ export function ResourcesLanding() {
           </FadeInWhenVisible>
         </div>
       </section>
+      </div>
     </>
   );
 }

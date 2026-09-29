@@ -14,11 +14,13 @@ export default function PricingPage() {
   return (
     <>
       <PricingLandingHero />
-      <FAQ
-        heading="Pricing questions"
-        description="How Worknaro plans work, including Free, upgrades, and Enterprise."
-      />
-      <CTA />
+      <div className="landing-page-body">
+        <FAQ
+          heading="Pricing questions"
+          description="How Worknaro plans work, including Free, upgrades, and Enterprise."
+        />
+        <CTA />
+      </div>
     </>
   );
 }

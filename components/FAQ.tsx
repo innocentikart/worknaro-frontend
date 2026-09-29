@@ -48,11 +48,9 @@ export function FAQ({
   return (
     <section className="faq-section relative overflow-hidden" aria-labelledby="faq-heading">
       <div className="faq-deco faq-deco-left" aria-hidden="true">
-        <span className="faq-deco-blob" />
         <span className="faq-deco-dots" />
       </div>
       <div className="faq-deco faq-deco-right" aria-hidden="true">
-        <span className="faq-deco-blob" />
         <span className="faq-deco-dots" />
       </div>
 

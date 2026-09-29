@@ -37,7 +37,6 @@ export function TrashStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap trs-wrap">
         <div className="mig-intro trs-intro">
           <SectionBadge icon={Trash2} className="mx-auto">

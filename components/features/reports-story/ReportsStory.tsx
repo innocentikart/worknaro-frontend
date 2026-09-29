@@ -62,7 +62,6 @@ export function ReportsStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap rpt-wrap">
         <div className="mig-intro rpt-intro">
           <SectionBadge icon={BarChart3} className="mx-auto">

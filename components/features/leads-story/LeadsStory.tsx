@@ -15,6 +15,7 @@ import {
   leadColumnFor,
   leadStatusFor,
 } from "@/components/features/leads-story/leadsStoryData";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const ICONS = {
@@ -45,7 +46,6 @@ export function LeadsStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap lds-wrap">
         <div className="mig-intro lds-intro">
           <SectionBadge icon={Kanban} className="mx-auto">
@@ -127,8 +127,8 @@ function LeadCard({ assigned, followUpDue }: { assigned: boolean; followUpDue: b
       transition={{ duration: 0.45, ease: EASE }}
     >
       <header>
-        <span className="pfs-avatar pfs-avatar-teal" aria-hidden="true">
-          {LEAD_CARD.initials}
+        <span className="pfs-avatar has-image" aria-hidden="true">
+          <VisitorAvatar src={LEAD_CARD.avatar} />
         </span>
         <div>
           <strong>{LEAD_CARD.company}</strong>

@@ -9,6 +9,8 @@ import {
   Handshake,
   ShieldCheck,
 } from "lucide-react";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
+import { visitorAvatarAt } from "@/lib/visitor-avatars";
 
 type MiniTone = "blue" | "teal" | "purple" | "orange";
 
@@ -88,12 +90,14 @@ export function MiniClientsUI({
     <div className="aud-mini">
       <MiniShell title="Clients">
         {[
-          { label: "Client A", tone: "blue" as const, initial: "A" },
-          { label: "Client B", tone: "teal" as const, initial: "B" },
-          { label: "Client C", tone: "orange" as const, initial: "C" },
+          { label: "Client A", avatar: visitorAvatarAt(0) },
+          { label: "Client B", avatar: visitorAvatarAt(1) },
+          { label: "Client C", avatar: visitorAvatarAt(2) },
         ].map((row) => (
           <div key={row.label} className="aud-mini-row aud-mini-row-avatar">
-            <span className={`aud-mini-avatar ${DOT[row.tone]}`}>{row.initial}</span>
+            <span className="aud-mini-avatar has-image">
+              <VisitorAvatar src={row.avatar} />
+            </span>
             <span className="aud-mini-label">{row.label}</span>
           </div>
         ))}
@@ -157,13 +161,13 @@ export function MiniTeamUI() {
     <div className="aud-mini">
       <MiniShell title="Team">
         {[
-          { label: "Admin", tone: "blue" as const },
-          { label: "Member", tone: "teal" as const },
-          { label: "Viewer", tone: "purple" as const },
+          { label: "Admin", avatar: visitorAvatarAt(0) },
+          { label: "Member", avatar: visitorAvatarAt(1) },
+          { label: "Viewer", avatar: visitorAvatarAt(2) },
         ].map((row) => (
           <div key={row.label} className="aud-mini-row aud-mini-row-avatar">
-            <span className={`aud-mini-avatar ${DOT[row.tone]}`}>
-              {row.label[0]}
+            <span className="aud-mini-avatar has-image">
+              <VisitorAvatar src={row.avatar} />
             </span>
             <span className="aud-mini-label">{row.label}</span>
           </div>

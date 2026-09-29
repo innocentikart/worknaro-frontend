@@ -31,6 +31,7 @@ export const CLIENT_META: Record<
 export const CLIENT_PROFILE = {
   name: "Northwind Studio",
   initials: "NW",
+  avatar: "/avatars/visitor-green.svg",
   status: "Active",
   email: "hello@northwind.studio",
   phone: "+1 415 555 0148",

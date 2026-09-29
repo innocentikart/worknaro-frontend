@@ -71,7 +71,7 @@ type AccentTokens = {
 const ACCENTS: Record<ShowcaseAccent, AccentTokens> = {
   blue: {
     badge: "bg-blue-50 text-blue-600 dark:bg-blue-500/15 dark:text-blue-300",
-    icon: "bg-blue-50 text-blue-600 dark:bg-blue-500/15 dark:text-blue-300",
+    icon: "bg-[rgba(var(--primary-rgb),0.1)] text-[color:var(--primary)] dark:bg-[rgba(var(--primary-rgb),0.16)] dark:text-[#93b0ff]",
     cardHover:
       "hover:border-blue-200 dark:hover:border-blue-400/30 dark:hover:shadow-black/30",
     glow: "bg-blue-500/10 dark:bg-blue-400/10",
@@ -84,7 +84,7 @@ const ACCENTS: Record<ShowcaseAccent, AccentTokens> = {
   },
   teal: {
     badge: "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300",
-    icon: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-300",
+    icon: "bg-[rgba(var(--primary-rgb),0.1)] text-[color:var(--primary)] dark:bg-[rgba(var(--primary-rgb),0.16)] dark:text-[#93b0ff]",
     cardHover:
       "hover:border-emerald-200 dark:hover:border-emerald-400/30 dark:hover:shadow-black/30",
     glow: "bg-emerald-500/10 dark:bg-emerald-400/10",
@@ -97,7 +97,7 @@ const ACCENTS: Record<ShowcaseAccent, AccentTokens> = {
   },
   purple: {
     badge: "bg-violet-50 text-violet-700 dark:bg-violet-500/15 dark:text-violet-300",
-    icon: "bg-violet-50 text-violet-600 dark:bg-violet-500/15 dark:text-violet-300",
+    icon: "bg-[rgba(var(--primary-rgb),0.1)] text-[color:var(--primary)] dark:bg-[rgba(var(--primary-rgb),0.16)] dark:text-[#93b0ff]",
     cardHover:
       "hover:border-violet-200 dark:hover:border-violet-400/30 dark:hover:shadow-black/30",
     glow: "bg-violet-500/10 dark:bg-violet-400/10",
@@ -435,6 +435,8 @@ export type FeatureShowcaseSectionProps = {
   secondaryCta?: { href: string; label: string };
   /** Show feature description under the title (Features/Solutions landing). */
   showDescription?: boolean;
+  /** Hide the blurred glow behind the product preview. */
+  hideGlow?: boolean;
   features?: ShowcaseFeatureItem[];
   previewKind?: PreviewKind;
   footer?: ReactNode;
@@ -450,6 +452,7 @@ export function FeatureShowcaseSection({
   cta = false,
   secondaryCta = { href: "/features", label: "Explore features" },
   showDescription = false,
+  hideGlow = false,
   features: featureItems,
   previewKind,
   footer,
@@ -475,10 +478,12 @@ export function FeatureShowcaseSection({
 
   const previewCol = (
     <div className="relative z-[2] lg:col-span-7">
-      <span
-        aria-hidden="true"
-        className={`pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] blur-3xl ${tokens.glow}`}
-      />
+      {!hideGlow ? (
+        <span
+          aria-hidden="true"
+          className={`pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] blur-3xl ${tokens.glow}`}
+        />
+      ) : null}
       <div
         ref={sourceRef}
         className={[

@@ -1,18 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { Check, Sparkles } from "lucide-react";
+import { Clock3, Sparkles, Users, Wallet, type LucideIcon } from "lucide-react";
 import { AccentUnderline } from "@/components/ui/AccentUnderline";
 import { SectionBadge } from "@/components/ui/SectionBadge";
+import { SectionDotsFrame } from "@/components/ui/SectionDotsFrame";
 import { HeroVisual } from "@/components/HeroVisual";
-import { LandingBackground } from "@/components/ui/LandingBackground";
 import { djangoRoutes } from "@/lib/site";
 
-const trustItems = [
-  "No credit card required",
-  "Set up in minutes",
-  "Built for teams",
-] as const;
+const trustItems: Array<{ label: string; icon: LucideIcon }> = [
+  { label: "No credit card required", icon: Wallet },
+  { label: "Set up in minutes", icon: Clock3 },
+  { label: "Built for teams", icon: Users },
+];
 
 export function Hero({
   cmsHero,
@@ -52,9 +52,7 @@ export function Hero({
       aria-labelledby="home-hero-heading"
     >
       <div className="hero-premium-bg" aria-hidden="true">
-        <LandingBackground variant="home" />
-        <span className="resources-intro-dots home-intro-dots-bottom-right" />
-        <span className="resources-intro-dots home-intro-dots-bottom-left" />
+        <SectionDotsFrame variant="hero" />
       </div>
       <div className="hero-wrap relative">
         <div className="hero-stage">
@@ -105,12 +103,12 @@ export function Hero({
             </div>
 
             <ul className="animate-fade-up-delay-3 hero-trust" aria-label="Why start with Worknaro">
-              {trustItems.map((item) => (
-                <li key={item} className="hero-trust-item">
-                  <span className="hero-trust-check" aria-hidden="true">
-                    <Check className="h-3 w-3" strokeWidth={2.6} />
+              {trustItems.map(({ label, icon: Icon }) => (
+                <li key={label} className="hero-trust-item">
+                  <span className="hero-trust-icon" aria-hidden="true">
+                    <Icon className="hero-trust-glyph" strokeWidth={2.15} />
                   </span>
-                  <span>{item}</span>
+                  <span>{label}</span>
                 </li>
               ))}
             </ul>

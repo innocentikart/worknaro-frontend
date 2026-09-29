@@ -3,13 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Activity, Check, Zap } from "lucide-react";
+import { VISITOR_AVATAR_LIST } from "@/lib/visitor-avatars";
 
-const TEAM = [
-  { initials: "AX", tone: "blue" },
-  { initials: "PS", tone: "teal" },
-  { initials: "JM", tone: "purple" },
-  { initials: "NK", tone: "orange" },
-] as const;
+const TEAM = VISITOR_AVATAR_LIST;
 
 export function HeroVisual() {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -30,7 +26,6 @@ export function HeroVisual() {
 
   return (
     <div ref={ref} className={`hero-visual ${playing ? "is-playing" : ""}`}>
-      <span className="hero-glow" aria-hidden="true" />
       <div className="hero-product">
         <figure className="hero-dash">
           <Image
@@ -54,12 +49,18 @@ export function HeroVisual() {
         <div className="hero-float-card hero-card-collab">
           <span className="hero-collab-avatars" aria-hidden="true">
             {TEAM.map((person) => (
-              <span key={person.initials} className={`hero-collab-avatar is-${person.tone}`}>
-                {person.initials}
+              <span key={person.id} className="hero-collab-avatar">
+                <Image
+                  src={person.src}
+                  alt=""
+                  width={64}
+                  height={64}
+                  className="hero-collab-avatar-img"
+                />
               </span>
             ))}
           </span>
-          <div className="min-w-0">
+          <div className="hero-float-copy">
             <p className="hero-float-title">Team Collaboration</p>
             <p className="hero-float-subtitle">Work together, achieve more</p>
           </div>

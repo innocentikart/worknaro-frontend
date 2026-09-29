@@ -29,14 +29,6 @@ export function CTA({
 
   return (
     <section className="final-cta-section relative overflow-x-clip" aria-labelledby="final-cta-heading">
-      <div className="final-cta-deco final-cta-deco-left" aria-hidden="true">
-        <span className="final-cta-deco-blob" />
-      </div>
-      <div className="final-cta-deco final-cta-deco-right" aria-hidden="true">
-        <span className="final-cta-deco-blob" />
-        <span className="final-cta-rings" />
-      </div>
-
       <div className="why-wrap relative">
         <FadeInWhenVisible>
           <div className="final-cta-panel solutions-editions-panel relative overflow-hidden text-center">
@@ -47,7 +39,6 @@ export function CTA({
             </SectionBadge>
 
             <div className="solutions-editions-copy relative z-[1]">
-              <span className="solutions-editions-copy-blur" aria-hidden="true" />
               <h2 id="final-cta-heading" className="final-cta-heading relative z-[1] font-display">
                 {beforeAccent ? (
                   <>

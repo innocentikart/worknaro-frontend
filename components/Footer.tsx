@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/Logo";
-import { LandingBackground } from "@/components/ui/LandingBackground";
 import { djangoRoutes, navLinks, siteConfig } from "@/lib/site";
 
 const productLinks = navLinks.filter((link) =>
@@ -48,7 +47,14 @@ export function Footer() {
   return (
     <footer className="site-footer landing-nav-chrome relative overflow-x-clip">
       <div className="site-footer-bg" aria-hidden="true">
-        <LandingBackground variant="home" />
+        <span className="footer-dots footer-dots-rail-top" />
+        <span className="footer-dots footer-dots-rail-bottom" />
+        <span className="footer-dots footer-dots-side-left" />
+        <span className="footer-dots footer-dots-side-right" />
+        <span className="footer-dots footer-dots-corner-tl" />
+        <span className="footer-dots footer-dots-corner-tr" />
+        <span className="footer-dots footer-dots-corner-bl" />
+        <span className="footer-dots footer-dots-corner-br" />
       </div>
       <div className="why-wrap relative z-10 grid gap-8 pb-12 sm:grid-cols-2 sm:gap-12 sm:pb-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>

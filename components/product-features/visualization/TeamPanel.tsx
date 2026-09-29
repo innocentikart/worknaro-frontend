@@ -5,6 +5,7 @@ import {
   STORY_PEOPLE,
   STORY_PROJECT,
 } from "@/components/product-features/featureStages";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
 
 const lanes = [
   { person: STORY_PEOPLE[0], lane: "Design" },
@@ -32,14 +33,14 @@ export function TeamPanel() {
             {item.person.id === "sarah" ? (
               <motion.span
                 layoutId="story-person-avatar"
-                className={`pfs-avatar pfs-avatar-${item.person.accent}`}
+                className="pfs-avatar has-image"
                 aria-hidden="true"
               >
-                {item.person.initials}
+                <VisitorAvatar src={item.person.avatar} />
               </motion.span>
             ) : (
-              <span className={`pfs-avatar pfs-avatar-${item.person.accent}`} aria-hidden="true">
-                {item.person.initials}
+              <span className="pfs-avatar has-image" aria-hidden="true">
+                <VisitorAvatar src={item.person.avatar} />
               </span>
             )}
             {item.person.id === "sarah" ? (

@@ -13,6 +13,7 @@ import {
   ACCESS_PEOPLE,
   ACCESS_TABS,
 } from "@/components/features/access-story/accessStoryData";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 const ICONS = { workspace: Users, invite: UserPlus, roles: Shield, guest: ShieldCheck } as const;
@@ -49,7 +50,6 @@ export function AccessStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap acc-wrap">
         <div className="mig-intro acc-intro">
           <SectionBadge icon={Shield} className="mx-auto">
@@ -103,8 +103,8 @@ export function AccessStory() {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: reduce ? 0 : 0.28, delay: reduce ? 0 : index * 0.03, ease: EASE }}
                     >
-                      <span className={`pfs-avatar pfs-avatar-${person.tone}`} aria-hidden="true">
-                        {person.initials}
+                      <span className="pfs-avatar has-image" aria-hidden="true">
+                        <VisitorAvatar src={person.avatar} />
                       </span>
                       <div>
                         <strong>{person.name}</strong>

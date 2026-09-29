@@ -101,15 +101,21 @@ const OVERVIEW_CARDS: Array<{
 
 export function FeaturesLanding() {
   return (
-    <div className="features-page">
+    <>
       <FeaturesIntro />
 
+      <div className="features-page-body">
       <section
         id="modules"
         className="solutions-section features-overview-section relative overflow-hidden scroll-mt-24"
         aria-labelledby="modules-heading"
       >
-        <div className="audience-ambient" aria-hidden="true" />
+        <div className="why-deco why-deco-left" aria-hidden="true">
+          <span className="why-deco-dots" />
+        </div>
+        <div className="why-deco why-deco-right" aria-hidden="true">
+          <span className="why-deco-dots" />
+        </div>
 
         <div className="why-wrap relative">
           <FadeInWhenVisible>
@@ -170,11 +176,9 @@ export function FeaturesLanding() {
 
       <section className="features-search-band relative overflow-x-clip" aria-labelledby="features-search-cta-heading">
         <div className="why-deco why-deco-left" aria-hidden="true">
-          <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
         <div className="why-deco why-deco-right" aria-hidden="true">
-          <span className="why-deco-blob" />
           <span className="why-deco-dots" />
         </div>
         <div className="why-wrap relative">
@@ -185,7 +189,6 @@ export function FeaturesLanding() {
                 <Search className="h-6 w-6" strokeWidth={1.8} />
               </span>
               <div className="solutions-editions-copy relative z-[1]">
-                <span className="solutions-editions-copy-blur" aria-hidden="true" />
                 <h2 id="features-search-cta-heading" className="features-search-heading relative z-[1] font-display">
                   Find work across the workspace
                 </h2>
@@ -207,6 +210,7 @@ export function FeaturesLanding() {
           </FadeInWhenVisible>
         </div>
       </section>
-    </div>
+      </div>
+    </>
   );
 }

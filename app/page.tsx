@@ -37,7 +37,7 @@ export default async function HomePage() {
     : undefined;
 
   return (
-    <>
+    <div className="home-landing">
       <Suspense fallback={null}>
         <BetaStatusBanner />
       </Suspense>
@@ -60,6 +60,6 @@ export default async function HomePage() {
         <BetaSignupForm config={landing?.beta ?? null} />
       )}
       <CTA cmsCta={landing?.cta ?? null} />
-    </>
+    </div>
   );
 }

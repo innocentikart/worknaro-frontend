@@ -7,11 +7,9 @@ export function ContactSplit() {
   return (
     <section className="contact-section relative overflow-hidden" aria-label="Contact and get started">
       <div className="contact-deco contact-deco-left" aria-hidden="true">
-        <span className="contact-deco-blob" />
         <span className="contact-deco-dots" />
       </div>
       <div className="contact-deco contact-deco-right" aria-hidden="true">
-        <span className="contact-deco-blob" />
         <span className="contact-deco-dots" />
       </div>
 
@@ -32,7 +30,6 @@ export function ContactSplit() {
         </Reveal>
         <Reveal delay={80}>
           <article className="contact-card contact-card-dark h-full">
-            <span className="contact-glow" aria-hidden="true" />
             <SectionBadge icon={Rocket} variant="on-dark">
               Start
             </SectionBadge>

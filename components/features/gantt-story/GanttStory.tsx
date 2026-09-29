@@ -58,7 +58,6 @@ export function GanttStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="gnt-ambient" aria-hidden="true" />
       <div className="why-wrap gnt-wrap">
         <div className="mig-intro gnt-intro">
           <SectionBadge icon={ChartNoAxesGantt} className="mx-auto">

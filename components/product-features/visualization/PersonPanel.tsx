@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { STORY_PEOPLE, STORY_PROJECT } from "@/components/product-features/featureStages";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
 
 const sarah = STORY_PEOPLE[0];
 
@@ -14,10 +15,10 @@ export function PersonPanel() {
       <div className="pfs-person-card">
         <motion.span
           layoutId="story-person-avatar"
-          className={`pfs-avatar pfs-avatar-lg pfs-avatar-${sarah.accent}`}
+          className="pfs-avatar pfs-avatar-lg has-image"
           aria-hidden="true"
         >
-          {sarah.initials}
+          <VisitorAvatar src={sarah.avatar} />
         </motion.span>
         <div>
           <motion.p layoutId="story-person-name" className="pfs-person-name">

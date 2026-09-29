@@ -13,11 +13,12 @@ import {
   scenePresence,
   stageIndexForProgress,
 } from "@/components/features/story/storyUtils";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
 
 const MEMBERS = [
-  { initials: "SJ", name: "Sarah", role: "Manager" },
-  { initials: "AX", name: "Alex", role: "Contributor" },
-  { initials: "DV", name: "David", role: "Viewer" },
+  { initials: "SJ", name: "Sarah", role: "Manager", avatar: "/avatars/visitor-coral.svg" },
+  { initials: "AX", name: "Alex", role: "Contributor", avatar: "/avatars/visitor-purple.svg" },
+  { initials: "DV", name: "David", role: "Viewer", avatar: "/avatars/visitor-green.svg" },
 ];
 
 const PROJECT_TASKS = [
@@ -57,7 +58,9 @@ export function ProjectCanvas({
             <ul className="mst-people">
               {MEMBERS.map((member) => (
                 <li key={member.initials}>
-                  <span className="pfs-avatar pfs-avatar-blue">{member.initials}</span>
+                  <span className="pfs-avatar has-image" aria-hidden="true">
+                    <VisitorAvatar src={member.avatar} />
+                  </span>
                   <span>
                     <strong>{member.name}</strong>
                     <em>{member.role}</em>

@@ -16,8 +16,10 @@ export default async function FeaturesPage() {
   return (
     <>
       <FeaturesLanding />
-      <HowItWorks cmsSteps={landing?.how_it_works ?? null} />
-      <CTA cmsCta={landing?.cta ?? null} />
+      <div className="features-page-body">
+        <HowItWorks cmsSteps={landing?.how_it_works ?? null} />
+        <CTA cmsCta={landing?.cta ?? null} />
+      </div>
     </>
   );
 }

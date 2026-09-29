@@ -41,7 +41,6 @@ export function TagsStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap tgs-wrap">
         <div className="mig-intro tgs-intro">
           <SectionBadge icon={Tags} className="mx-auto">

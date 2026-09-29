@@ -13,6 +13,8 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Icon } from "@/components/ui/Icon";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
+import { visitorAvatarAt } from "@/lib/visitor-avatars";
 
 export type PrincipleAccent = "blue" | "purple";
 
@@ -67,18 +69,20 @@ function ProjectsPreview() {
 
 function TeamPreview() {
   const rows = [
-    { name: "Admin", initial: "A", tone: "blue", role: "Owner" },
-    { name: "Member", initial: "M", tone: "teal", role: "Member" },
-    { name: "Viewer", initial: "V", tone: "purple", role: "Viewer" },
+    { name: "Admin", tone: "blue", role: "Owner", avatar: visitorAvatarAt(0) },
+    { name: "Member", tone: "teal", role: "Member", avatar: visitorAvatarAt(1) },
+    { name: "Viewer", tone: "purple", role: "Viewer", avatar: visitorAvatarAt(2) },
   ] as const;
 
   return (
     <div className="principle-preview principle-preview-team" aria-hidden="true">
       <div className="principle-preview-online">
         <span className="principle-preview-online-stack">
-          <i className="principle-preview-avatar-sm principle-preview-avatar-blue" />
-          <i className="principle-preview-avatar-sm principle-preview-avatar-teal" />
-          <i className="principle-preview-avatar-sm principle-preview-avatar-purple" />
+          {[0, 1, 2].map((index) => (
+            <i key={index} className="principle-preview-avatar-sm has-image">
+              <VisitorAvatar src={visitorAvatarAt(index)} />
+            </i>
+          ))}
         </span>
         <span>3 online</span>
       </div>
@@ -92,8 +96,8 @@ function TeamPreview() {
         <ul className="principle-preview-list principle-preview-list-team">
           {rows.map((row) => (
             <li key={row.name}>
-              <span className={`principle-preview-avatar principle-preview-avatar-${row.tone}`}>
-                {row.initial}
+              <span className="principle-preview-avatar has-image">
+                <VisitorAvatar src={row.avatar} />
               </span>
               <span className="principle-preview-name">{row.name}</span>
               <span className={`principle-preview-pill principle-preview-pill-${row.tone}`}>

@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-full flex-col">
+    <div className="landing-shell flex min-h-full flex-col">
       <BetaCampaign>
         <Navbar />
       </BetaCampaign>

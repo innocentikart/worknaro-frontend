@@ -140,7 +140,12 @@ export function FeatureCardsSection({ cmsHighlights }: FeatureCardsSectionProps)
       className="why-section relative overflow-hidden"
       aria-labelledby="why-worknaro-heading"
     >
-      <div className="why-ambient" aria-hidden="true" />
+      <div className="why-deco why-deco-left" aria-hidden="true">
+        <span className="why-deco-dots" />
+      </div>
+      <div className="why-deco why-deco-right" aria-hidden="true">
+        <span className="why-deco-dots" />
+      </div>
 
       <div className="why-wrap relative">
         <FadeInWhenVisible>

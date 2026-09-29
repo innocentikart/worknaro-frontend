@@ -76,8 +76,6 @@ export function HowItWorks({
 
   return (
     <section className="how-section relative overflow-hidden" aria-labelledby="how-heading">
-      <div className="how-ambient" aria-hidden="true" />
-
       <div className="how-wrap">
         <FadeInWhenVisible>
           <div className="how-intro">

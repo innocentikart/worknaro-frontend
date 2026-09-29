@@ -98,17 +98,16 @@ export function ContactLanding() {
     <>
       <ContactIntro />
 
+      <div className="landing-page-body">
       <section
         id="how-to-reach-us"
         className="contact-section relative overflow-hidden scroll-mt-28"
         aria-labelledby="contact-paths-heading"
       >
         <div className="contact-deco contact-deco-left" aria-hidden="true">
-          <span className="contact-deco-blob" />
           <span className="contact-deco-dots" />
         </div>
         <div className="contact-deco contact-deco-right" aria-hidden="true">
-          <span className="contact-deco-blob" />
           <span className="contact-deco-dots" />
         </div>
 
@@ -192,7 +191,6 @@ export function ContactLanding() {
               </SectionBadge>
 
               <div className="solutions-editions-copy relative z-[1]">
-                <span className="solutions-editions-copy-blur" aria-hidden="true" />
                 <h2 id="contact-account-heading" className="final-cta-heading relative z-[1] font-display">
                   Already have an{" "}
                   <HeadingAccent>account?</HeadingAccent>
@@ -217,6 +215,7 @@ export function ContactLanding() {
           </FadeInWhenVisible>
         </div>
       </section>
+      </div>
     </>
   );
 }

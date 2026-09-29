@@ -13,7 +13,9 @@ export default function AboutPage() {
   return (
     <>
       <AboutLanding />
-      <CTA />
+      <div className="landing-page-body">
+        <CTA />
+      </div>
     </>
   );
 }

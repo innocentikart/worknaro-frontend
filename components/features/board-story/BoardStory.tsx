@@ -47,7 +47,6 @@ export function BoardStory() {
       className="wbs-section pfs-section scroll-mt-24"
       aria-labelledby="collaboration-heading"
     >
-      <div className="wbs-ambient" aria-hidden="true" />
       <div className="why-wrap wbs-wrap">
         <div className="wbs-layout">
           <div className="wbs-copy">

@@ -54,13 +54,6 @@ export function BetaSignupForm({
 
   return (
     <section className="beta-section relative overflow-hidden" aria-labelledby="beta-heading">
-      <div className="beta-deco beta-deco-left" aria-hidden="true">
-        <span className="beta-deco-blob" />
-      </div>
-      <div className="beta-deco beta-deco-right" aria-hidden="true">
-        <span className="beta-deco-blob" />
-      </div>
-
       <div className="why-wrap relative">
         <Reveal>
           <div className="beta-card">

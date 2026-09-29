@@ -13,6 +13,7 @@ import { useStoryCycle } from "@/components/features/story/useStoryCycle";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { Icon } from "@/components/ui/Icon";
+import { VisitorAvatar } from "@/components/ui/VisitorAvatar";
 import {
   DIVE_BOARD,
   DIVE_CLIENT,
@@ -61,7 +62,6 @@ export function DeepDiveStory() {
       onMouseEnter={pause}
       onMouseLeave={resume}
     >
-      <div className="fst-ambient" aria-hidden="true" />
       <div className="why-wrap ddv-wrap">
         <div className="mig-intro ddv-intro">
           <SectionBadge icon={LayoutGrid} className="mx-auto">
@@ -176,7 +176,9 @@ function ProjectScene() {
         <ul className="ddv-people">
           {DIVE_MEMBERS.map((person) => (
             <li key={person.email}>
-              <span className={`ddv-avatar is-${person.tone}`}>{person.initials}</span>
+              <span className="ddv-avatar has-image" aria-hidden="true">
+                <VisitorAvatar src={person.avatar} />
+              </span>
               <span>
                 <strong>{person.name}</strong>
                 <small>{person.role}</small>
@@ -272,7 +274,9 @@ function ClientsScene() {
           <span className="ddv-chip">{DIVE_CLIENT.status}</span>
         </header>
         <div className="ddv-client">
-          <span className="ddv-avatar is-lg is-purple">{DIVE_CLIENT.initials}</span>
+          <span className="ddv-avatar is-lg has-image" aria-hidden="true">
+            <VisitorAvatar src={DIVE_CLIENT.avatar} />
+          </span>
           <div>
             <h3 className="ddv-title">{DIVE_CLIENT.name}</h3>
             <p className="ddv-copy">
@@ -321,7 +325,9 @@ function AccessScene() {
         <ul className="ddv-people">
           {DIVE_PEOPLE.map((person) => (
             <li key={person.name} className={"guest" in person && person.guest ? "is-guest" : ""}>
-              <span className={`ddv-avatar is-${person.tone}`}>{person.initials}</span>
+              <span className="ddv-avatar has-image" aria-hidden="true">
+                <VisitorAvatar src={person.avatar} />
+              </span>
               <span>
                 <strong>{person.name}</strong>
                 <small>{person.role}</small>

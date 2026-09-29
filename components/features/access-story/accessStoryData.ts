@@ -25,12 +25,12 @@ export const ACCESS_META: Record<AccessTab, { label: string; title: string; note
 };
 
 export const ACCESS_PEOPLE = [
-  { name: "Sarah Johnson", initials: "SJ", role: "Owner", tone: "blue" },
-  { name: "Alex Chen", initials: "AC", role: "Admin", tone: "teal" },
-  { name: "David Ortiz", initials: "DO", role: "Manager", tone: "purple" },
-  { name: "Maya Cole", initials: "MC", role: "Member", tone: "blue", invited: true },
-  { name: "Jen Park", initials: "JP", role: "Viewer", tone: "teal" },
-  { name: "Northwind", initials: "NW", role: "Guest", tone: "purple", guest: true },
+  { name: "Sarah Johnson", initials: "SJ", role: "Owner", tone: "blue", avatar: "/avatars/visitor-coral.svg" },
+  { name: "Alex Chen", initials: "AC", role: "Admin", tone: "teal", avatar: "/avatars/visitor-purple.svg" },
+  { name: "David Ortiz", initials: "DO", role: "Manager", tone: "purple", avatar: "/avatars/visitor-green.svg" },
+  { name: "Maya Cole", initials: "MC", role: "Member", tone: "blue", invited: true, avatar: "/avatars/visitor-coral.svg" },
+  { name: "Jen Park", initials: "JP", role: "Viewer", tone: "teal", avatar: "/avatars/visitor-purple.svg" },
+  { name: "Northwind", initials: "NW", role: "Guest", tone: "purple", guest: true, avatar: "/avatars/visitor-green.svg" },
 ] as const;
 
 export const ACCESS_MATRIX = [

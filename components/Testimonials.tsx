@@ -12,6 +12,7 @@ import { BadgeCheck, ChevronLeft, ChevronRight, MessageSquareQuote, Star } from 
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { SectionBadge } from "@/components/ui/SectionBadge";
+import { visitorAvatarAt } from "@/lib/visitor-avatars";
 
 export type TestimonialItem = {
   quote: string;
@@ -30,6 +31,7 @@ const placeholders: TestimonialItem[] = [
     role: "Product Manager",
     company: "NovaTech",
     initials: "DO",
+    avatar: "/avatars/visitor-coral.svg",
     rating: 5,
     quote:
       "Worknaro has completely transformed how our team manages projects. The interface is clean, intuitive, and has everything we need in one place.",
@@ -39,6 +41,7 @@ const placeholders: TestimonialItem[] = [
     role: "CEO",
     company: "BrightPath Solutions",
     initials: "SM",
+    avatar: "/avatars/visitor-purple.svg",
     verified: true,
     rating: 5,
     quote:
@@ -49,17 +52,26 @@ const placeholders: TestimonialItem[] = [
     role: "Founder",
     company: "Creative Agency",
     initials: "JT",
+    avatar: "/avatars/visitor-green.svg",
     rating: 5,
     quote:
       "Worknaro gives our team a much clearer way to manage clients, projects, and delivery without jumping between multiple tools.",
   },
 ];
 
-function initialsFromName(name: string) {
-  const parts = name.trim().split(/\s+/).filter(Boolean);
-  if (!parts.length) return "CN";
-  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
-  return `${parts[0][0]}${parts[parts.length - 1][0]}`.toUpperCase();
+function Avatar({ item }: { item: TestimonialItem }) {
+  const src = item.avatar || visitorAvatarAt(0);
+  return (
+    <span className="story-avatar">
+      <Image
+        src={src}
+        alt=""
+        width={64}
+        height={64}
+        className="story-avatar-img"
+      />
+    </span>
+  );
 }
 
 function StarRating({ value = 5 }: { value?: number }) {
@@ -76,28 +88,6 @@ function StarRating({ value = 5 }: { value?: number }) {
         />
       ))}
     </div>
-  );
-}
-
-function Avatar({ item }: { item: TestimonialItem }) {
-  const initials = item.initials || initialsFromName(item.name);
-  if (item.avatar) {
-    return (
-      <span className="story-avatar">
-        <Image
-          src={item.avatar}
-          alt=""
-          width={64}
-          height={64}
-          className="story-avatar-img"
-        />
-      </span>
-    );
-  }
-  return (
-    <span className="story-avatar story-avatar-fallback" aria-hidden="true">
-      {initials}
-    </span>
   );
 }
 
@@ -169,8 +159,11 @@ export function Testimonials({
 }) {
   const reduceMotion = useReducedMotion();
   const items = useMemo(() => {
-    if (cmsItems?.length) return cmsItems;
-    return placeholders;
+    const source = cmsItems?.length ? cmsItems : placeholders;
+    return source.map((item, index) => ({
+      ...item,
+      avatar: item.avatar || visitorAvatarAt(index),
+    }));
   }, [cmsItems]);
 
   const [active, setActive] = useState(() =>
@@ -229,11 +222,6 @@ export function Testimonials({
       className="stories-section relative"
       aria-labelledby="stories-heading"
     >
-      <div className="stories-ambient" aria-hidden="true">
-        <span className="stories-blob stories-blob-tr" />
-        <span className="stories-blob stories-blob-bl" />
-      </div>
-
       <div className="stories-wrap relative">
         <FadeInWhenVisible>
           <div className="stories-header">

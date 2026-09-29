@@ -63,10 +63,10 @@ export const DEMO_PROJECT = {
 };
 
 export const DEMO_MEMBERS = [
-  { initials: "SJ", name: "Sarah Johnson", email: "sarah@worknaro.dev", role: "Project Manager", tone: "blue" },
-  { initials: "AX", name: "Alex Carter", email: "alex@worknaro.dev", role: "Contributor", tone: "teal" },
-  { initials: "DV", name: "David Wilson", email: "david@worknaro.dev", role: "Viewer", tone: "purple" },
-  { initials: "ED", name: "Emily Davis", email: "emily@worknaro.dev", role: "Contributor", tone: "blue" },
+  { initials: "SJ", name: "Sarah Johnson", email: "sarah@worknaro.dev", role: "Project Manager", tone: "blue", avatar: "/avatars/visitor-coral.svg" },
+  { initials: "AX", name: "Alex Carter", email: "alex@worknaro.dev", role: "Contributor", tone: "teal", avatar: "/avatars/visitor-purple.svg" },
+  { initials: "DV", name: "David Wilson", email: "david@worknaro.dev", role: "Viewer", tone: "purple", avatar: "/avatars/visitor-green.svg" },
+  { initials: "ED", name: "Emily Davis", email: "emily@worknaro.dev", role: "Contributor", tone: "blue", avatar: "/avatars/visitor-coral.svg" },
 ] as const;
 
 export const DEMO_TASKS = [
