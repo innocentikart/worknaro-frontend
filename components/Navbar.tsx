@@ -58,8 +58,9 @@ export function Navbar() {
       className={`landing-header transition duration-300 ${
         overlay
           ? "border-b border-transparent bg-transparent"
-          : "border-b border-line bg-background/90 backdrop-blur-xl shadow-[0_8px_24px_-20px_rgba(40,60,80,0.45)]"
+          : "landing-header--solid border-b border-line bg-background/90 backdrop-blur-xl shadow-[0_8px_24px_-20px_rgba(40,60,80,0.45)]"
       }`}
+      data-chrome={overlay ? "overlay" : "solid"}
       style={{ ["--nav-scroll-progress" as string]: "0" }}
     >
       <div className="hero-wrap landing-header-bar relative flex items-center justify-between gap-4 py-3.5">
@@ -140,14 +141,14 @@ export function Navbar() {
       {open ? (
         <div
           id="mobile-nav"
-          className="landing-nav-chrome landing-nav-panel flex flex-col gap-[var(--space-4)] border-t border-line bg-surface-elevated lg:hidden"
+          className="landing-header-menu landing-nav-panel flex flex-col gap-[var(--space-4)] border-t lg:hidden"
         >
           <nav className="flex flex-col" aria-label="Mobile">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="landing-nav-link rounded-md px-3 py-2.5 text-sm font-medium text-ink-soft"
+                className="landing-nav-link rounded-md px-3 py-2.5 text-sm font-medium"
                 aria-current={pathname === link.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
               >

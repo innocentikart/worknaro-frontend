@@ -290,6 +290,19 @@ export function isFullyDark(state: AppearanceState): boolean {
   );
 }
 
+export function isFullyLight(state: AppearanceState): boolean {
+  return (
+    state.skin === SKIN_LIGHT &&
+    state.header === HEADER_LIGHT &&
+    state.navigation === NAV_LIGHT
+  );
+}
+
+/** Next global theme the topbar toggle should apply (Django dark/light button parity). */
+export function nextGlobalTheme(state: AppearanceState): ThemeMode {
+  return isFullyDark(state) ? "light" : "dark";
+}
+
 export function skinToTheme(skin: SkinMode): ThemeMode {
   return skin === SKIN_DARK ? "dark" : "light";
 }

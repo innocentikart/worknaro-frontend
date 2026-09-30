@@ -18,8 +18,10 @@ import {
   HEADER_DARK,
   HEADER_LIGHT,
   isFullyDark,
+  isFullyLight,
   NAV_DARK,
   NAV_LIGHT,
+  nextGlobalTheme,
   readAppearance,
   resetAppearance as resetAppearanceLib,
   SKIN_DARK,
@@ -36,6 +38,7 @@ type AppearanceContextValue = {
   appearance: AppearanceState;
   theme: ThemeMode;
   fullyDark: boolean;
+  fullyLight: boolean;
   setSkin: (skin: SkinMode) => void;
   setHeader: (header: HeaderMode) => void;
   setNavigation: (navigation: NavigationMode) => void;
@@ -99,9 +102,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   );
 
   const toggleTheme = useCallback(() => {
-    setAppearance((prev) =>
-      applyGlobalThemeLib(isFullyDark(prev) ? "light" : "dark", prev),
-    );
+    setAppearance((prev) => applyGlobalThemeLib(nextGlobalTheme(prev), prev));
   }, []);
 
   const reset = useCallback(() => {
@@ -110,12 +111,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   const theme = skinToTheme(appearance.skin);
   const fullyDark = isFullyDark(appearance);
+  const fullyLight = isFullyLight(appearance);
 
   const value = useMemo(
     () => ({
       appearance,
       theme,
       fullyDark,
+      fullyLight,
       setSkin,
       setHeader,
       setNavigation,
@@ -129,6 +132,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       appearance,
       theme,
       fullyDark,
+      fullyLight,
       setSkin,
       setHeader,
       setNavigation,
@@ -161,6 +165,8 @@ export function useTheme() {
     setTheme: ctx.setTheme,
     toggleTheme: ctx.toggleTheme,
     fullyDark: ctx.fullyDark,
+    fullyLight: ctx.fullyLight,
+    applyGlobalTheme: ctx.applyGlobalTheme,
   };
 }
 
