@@ -20,7 +20,7 @@ import {
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { SectionBadge } from "@/components/ui/SectionBadge";
-import { LandingBackground } from "@/components/ui/LandingBackground";
+import { SectionDotsFrame } from "@/components/ui/SectionDotsFrame";
 
 type NodeTone = "blue" | "teal" | "purple" | "orange";
 
@@ -316,7 +316,7 @@ export function SolutionsIntro() {
       className="solutions-intro relative overflow-hidden"
       aria-labelledby="solutions-hero-heading"
     >
-      <LandingBackground variant="solutions" />
+      <SectionDotsFrame />
 
       <div className="solutions-intro-wrap relative">
         <div className="solutions-intro-grid">

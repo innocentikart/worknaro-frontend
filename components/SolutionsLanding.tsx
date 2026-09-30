@@ -111,13 +111,6 @@ export function SolutionsLanding() {
         className="why-section relative overflow-hidden"
         aria-labelledby="pillars-heading"
       >
-        <div className="why-deco why-deco-left" aria-hidden="true">
-          <span className="why-deco-dots" />
-        </div>
-        <div className="why-deco why-deco-right" aria-hidden="true">
-          <span className="why-deco-dots" />
-        </div>
-
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="mx-auto max-w-3xl text-center">
@@ -252,12 +245,6 @@ export function SolutionsLanding() {
       </section>
 
       <section className="features-search-band relative overflow-x-clip">
-        <div className="why-deco why-deco-left" aria-hidden="true">
-          <span className="why-deco-dots" />
-        </div>
-        <div className="why-deco why-deco-right" aria-hidden="true">
-          <span className="why-deco-dots" />
-        </div>
         <div className="why-wrap relative">
           <FadeInWhenVisible>
             <div className="features-search-panel solutions-editions-panel relative overflow-hidden text-center">

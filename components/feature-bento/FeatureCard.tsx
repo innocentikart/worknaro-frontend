@@ -81,7 +81,7 @@ export function FeatureCard({
           <span
             aria-hidden="true"
             className={cx(
-              "inline-flex h-14 w-14 items-center justify-center rounded-2xl",
+              "feature-card-icon inline-flex h-14 w-14 items-center justify-center rounded-2xl",
               "transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-2",
               styles.icon,
             )}
@@ -127,7 +127,7 @@ export function FeatureCard({
           <div
             aria-hidden="true"
             className={cx(
-              "relative mt-6 flex-1",
+              "feature-card-preview relative mt-6 flex-1",
               useSplit && "lg:mt-0 lg:flex lg:w-[55%] lg:items-center",
               styles.previewTint,
               "rounded-xl",

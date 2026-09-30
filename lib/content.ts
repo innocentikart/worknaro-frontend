@@ -234,6 +234,42 @@ export const howItWorksSteps = [
   },
 ] as const;
 
+/** Light/dark Deep dive screenshots for `/solutions` audiences. */
+export const solutionDeepDiveImages = {
+  startups: {
+    light: "/product/solutions/startups-light.png",
+    dark: "/product/solutions/startups-dark.png",
+  },
+  agencies: {
+    light: "/product/solutions/agencies-light.png",
+    dark: "/product/solutions/agencies-dark.png",
+  },
+  freelancers: {
+    light: "/product/solutions/freelancers-light.png",
+    dark: "/product/solutions/freelancers-dark.png",
+  },
+  "small-businesses": {
+    light: "/product/solutions/small-businesses-light.png",
+    dark: "/product/solutions/small-businesses-dark.png",
+  },
+  "larger-organizations": {
+    light: "/product/solutions/larger-organizations-light.png",
+    dark: "/product/solutions/larger-organizations-dark.png",
+  },
+  nonprofits: {
+    light: "/product/solutions/nonprofits-light.png",
+    dark: "/product/solutions/nonprofits-dark.png",
+  },
+  "education-teams": {
+    light: "/product/solutions/education-teams-light.png",
+    dark: "/product/solutions/education-teams-dark.png",
+  },
+  "client-service": {
+    light: "/product/solutions/client-service-light.png",
+    dark: "/product/solutions/client-service-dark.png",
+  },
+} as const;
+
 export const solutions = [
   {
     id: "startups",
@@ -246,6 +282,8 @@ export const solutions = [
       "Client records when you start billing delivery work",
     ],
     visual: "projects" as const,
+    image: solutionDeepDiveImages.startups.light,
+    imageDark: solutionDeepDiveImages.startups.dark,
   },
   {
     id: "agencies",
@@ -258,6 +296,8 @@ export const solutions = [
       "Timesheets and invoices against the same delivery work",
     ],
     visual: "clients" as const,
+    image: solutionDeepDiveImages.agencies.light,
+    imageDark: solutionDeepDiveImages.agencies.dark,
   },
   {
     id: "freelancers",
@@ -270,6 +310,8 @@ export const solutions = [
       "Invoices and estimates when you are ready to bill",
     ],
     visual: "finance" as const,
+    image: solutionDeepDiveImages.freelancers.light,
+    imageDark: solutionDeepDiveImages.freelancers.dark,
   },
   {
     id: "small-businesses",
@@ -282,6 +324,8 @@ export const solutions = [
       "Finance documents in the same workspace as delivery",
     ],
     visual: "board" as const,
+    image: solutionDeepDiveImages["small-businesses"].light,
+    imageDark: solutionDeepDiveImages["small-businesses"].dark,
   },
   {
     id: "larger-organizations",
@@ -294,6 +338,8 @@ export const solutions = [
       "Enterprise plan limits and sales-managed terms when needed",
     ],
     visual: "reports" as const,
+    image: solutionDeepDiveImages["larger-organizations"].light,
+    imageDark: solutionDeepDiveImages["larger-organizations"].dark,
   },
   {
     id: "nonprofits",
@@ -306,6 +352,8 @@ export const solutions = [
       "Same Worknaro product—no separate nonprofit edition",
     ],
     visual: "files" as const,
+    image: solutionDeepDiveImages.nonprofits.light,
+    imageDark: solutionDeepDiveImages.nonprofits.dark,
   },
   {
     id: "education-teams",
@@ -318,6 +366,8 @@ export const solutions = [
       "Same product catalog—not a separate education edition",
     ],
     visual: "board" as const,
+    image: solutionDeepDiveImages["education-teams"].light,
+    imageDark: solutionDeepDiveImages["education-teams"].dark,
   },
   {
     id: "client-service",
@@ -330,6 +380,8 @@ export const solutions = [
       "Delivery, timesheets, and invoices without switching apps",
     ],
     visual: "clients" as const,
+    image: solutionDeepDiveImages["client-service"].light,
+    imageDark: solutionDeepDiveImages["client-service"].dark,
   },
 ] as const;
 
@@ -398,7 +450,8 @@ export const resourceCards = [
     excerpt:
       "See the modules that exist in the Worknaro application today—including AI Insights and import.",
     href: "/features",
-    image: "/product/projects.png",
+    image: "/product/platform-capabilities-light.png",
+    imageDark: "/product/platform-capabilities-dark.png",
     cta: "Explore platform",
     preview: "product" as const,
     accent: "blue" as const,
@@ -408,8 +461,8 @@ export const resourceCards = [
     category: "Pricing",
     excerpt: "Compare Free, Starter, Pro, and Enterprise using the live plan catalog.",
     href: "/pricing",
-    image: "/product/billing-light.png",
-    imageDark: "/product/billing-dark.png",
+    image: "/product/plans-and-billing-light.png",
+    imageDark: "/product/plans-and-billing-dark.png",
     cta: "Explore plans",
     preview: "pricing" as const,
     accent: "emerald" as const,
@@ -419,7 +472,8 @@ export const resourceCards = [
     category: "Resources",
     excerpt: "Open product pages or continue into the authenticated application.",
     href: "/resources",
-    image: "/product/workspaces.png",
+    image: "/product/guides-and-links-light.png",
+    imageDark: "/product/guides-and-links-dark.png",
     cta: "View resources",
     preview: "guides" as const,
     accent: "purple" as const,

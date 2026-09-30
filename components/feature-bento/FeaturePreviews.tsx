@@ -2,19 +2,10 @@
 
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { VISITOR_AVATAR_LIST } from "@/lib/visitor-avatars";
+import { Users } from "lucide-react";
+import { visitorAvatarAt } from "@/lib/visitor-avatars";
 
 /** Miniature CSS product previews for the workspace features section. */
-
-const WORKSPACE_AVATARS = VISITOR_AVATAR_LIST.map((avatar, index) => ({
-  ...avatar,
-  hover:
-    index === 0
-      ? ""
-      : index === 1
-        ? "group-hover:translate-x-0.5"
-        : "group-hover:translate-x-1",
-}));
 
 function PreviewShell({
   children,
@@ -113,65 +104,59 @@ export function ProjectsTasksPreview() {
 }
 
 export function WorkspaceRolesPreview() {
+  const roles = ["Owner", "Admin", "Member", "Viewer", "Guest"] as const;
+  const avatars = [0, 1, 2, 1].map((avatarIndex, i) => ({
+    id: `ws-avatar-${i}`,
+    src: visitorAvatarAt(avatarIndex),
+  }));
+
   return (
-    <PreviewShell className="space-y-3.5 p-3.5">
-      <div className="flex items-center gap-2.5">
-        <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-violet-100 text-sm font-bold text-violet-700 dark:bg-violet-500/20 dark:text-violet-300">
-          O
-        </span>
-        <div className="min-w-0 flex-1">
-          <p className="text-xs font-semibold text-slate-900 dark:text-slate-100">
-            Worknaro HQ
-          </p>
-          <span className="mt-1 inline-flex rounded-full bg-violet-50 px-2 py-0.5 text-[10px] font-semibold text-violet-700 dark:bg-violet-500/15 dark:text-violet-300">
-            12 members
-          </span>
+    <div className="ws-roles-preview" aria-hidden="true">
+      <div className="ws-roles-preview-card">
+        <div className="ws-roles-preview-head">
+          <span className="ws-roles-preview-mark">W</span>
+          <div className="ws-roles-preview-meta">
+            <p className="ws-roles-preview-name">Worknaro HQ</p>
+            <span className="ws-roles-preview-members">
+              <Users className="h-3 w-3" strokeWidth={2.2} aria-hidden="true" />
+              12 members
+            </span>
+          </div>
+        </div>
+
+        <div className="ws-roles-preview-pills">
+          {roles.map((role) => (
+            <span
+              key={role}
+              className={`ws-roles-preview-pill${role === "Owner" ? " is-active" : ""}`}
+            >
+              {role}
+            </span>
+          ))}
+        </div>
+
+        <div className="ws-roles-preview-divider" />
+
+        <div className="ws-roles-preview-avatars">
+          {avatars.map((avatar, index) => (
+            <span
+              key={avatar.id}
+              className="ws-roles-preview-avatar"
+              style={{ zIndex: avatars.length - index }}
+            >
+              <Image
+                src={avatar.src}
+                alt=""
+                width={64}
+                height={64}
+                className="h-full w-full object-cover object-center"
+              />
+            </span>
+          ))}
+          <span className="ws-roles-preview-more">+8</span>
         </div>
       </div>
-
-      <div className="flex flex-wrap gap-1.5">
-        <span className="rounded-md bg-violet-100 px-2 py-0.5 text-[10px] font-bold text-violet-700 dark:bg-violet-500/20 dark:text-violet-300">
-          Owner
-        </span>
-        <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600 dark:bg-slate-700/60 dark:text-slate-300">
-          Admin
-        </span>
-        <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[10px] font-bold text-slate-600 dark:bg-slate-700/60 dark:text-slate-300">
-          Member
-        </span>
-      </div>
-
-      <div className="flex items-center" aria-hidden="true">
-        {WORKSPACE_AVATARS.map((avatar, index) => (
-          <span
-            key={avatar.id}
-            className={[
-              "inline-flex h-7 w-7 overflow-hidden rounded-full border-[1.5px] border-white dark:border-slate-800",
-              "transition-transform duration-200",
-              avatar.hover,
-              index > 0 ? "-ml-2" : "",
-            ].join(" ")}
-          >
-            <Image
-              src={avatar.src}
-              alt=""
-              width={64}
-              height={64}
-              className="h-full w-full object-cover object-center"
-            />
-          </span>
-        ))}
-        <span
-          className={[
-            "inline-flex h-7 w-7 items-center justify-center rounded-full border-[1.5px] border-white bg-slate-500 text-[9px] font-bold text-white dark:border-slate-800",
-            "transition-transform duration-200 group-hover:translate-x-1.5",
-            "-ml-2",
-          ].join(" ")}
-        >
-          +8
-        </span>
-      </div>
-    </PreviewShell>
+    </div>
   );
 }
 
@@ -181,7 +166,7 @@ export function ClientsProposalsPreview() {
       <div className="flex items-center gap-2.5">
         <span className="inline-flex h-8 w-8 overflow-hidden rounded-full">
           <Image
-            src={VISITOR_AVATAR_LIST[2].src}
+            src={visitorAvatarAt(2)}
             alt=""
             width={64}
             height={64}

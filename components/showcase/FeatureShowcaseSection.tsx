@@ -36,6 +36,7 @@ import {
 import { ProductPreview, type PreviewKind } from "@/components/ProductPreview";
 import { FadeInWhenVisible } from "@/components/ui/AnimatedSection";
 import { Icon } from "@/components/ui/Icon";
+import { ThemeProductImage } from "@/components/ui/ThemeProductImage";
 import { djangoRoutes } from "@/lib/site";
 
 export type ShowcaseFeatureItem = {
@@ -54,6 +55,9 @@ export type ShowcaseSource = {
   description: string;
   points: readonly string[];
   visual: PreviewKind;
+  /** Optional light/dark product screenshots (Solutions Deep dive). */
+  image?: string;
+  imageDark?: string;
 };
 
 type AccentTokens = {
@@ -476,6 +480,11 @@ export function FeatureShowcaseSection({
     reverse,
   );
 
+  const themeShot =
+    feature.image && feature.imageDark
+      ? { light: feature.image, dark: feature.imageDark }
+      : null;
+
   const previewCol = (
     <div className="relative z-[2] lg:col-span-7">
       {!hideGlow ? (
@@ -491,7 +500,19 @@ export function FeatureShowcaseSection({
           "dark:border-slate-700/50 dark:bg-[#0f172a]",
         ].join(" ")}
       >
-        <ProductPreview kind={visual} />
+        {themeShot ? (
+          <ThemeProductImage
+            lightSrc={themeShot.light}
+            darkSrc={themeShot.dark}
+            alt={`${feature.title} — Worknaro workspace screenshot`}
+            width={1920}
+            height={980}
+            className="showcase-theme-image"
+            sizes="(max-width: 1023px) 92vw, 58vw"
+          />
+        ) : (
+          <ProductPreview kind={visual} />
+        )}
       </div>
     </div>
   );

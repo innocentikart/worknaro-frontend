@@ -334,6 +334,7 @@ export function applyDomAppearance(state: AppearanceState) {
   const option = getFontOption(state.fontFamily);
   html.style.setProperty("--font-sans", option.cssStack);
   html.style.setProperty("--appearance-font", option.cssStack);
+  html.style.setProperty("--font-display", option.cssStack);
 
   ensureFontStylesheet(state.fontFamily);
 }

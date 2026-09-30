@@ -12,6 +12,7 @@ import {
   SKIN_LIGHT,
 } from "@/lib/appearance";
 import { useAppearance } from "@/components/ThemeProvider";
+import { scrollToLandingFooter } from "@/lib/scroll-to-footer";
 
 type AxisOption<T extends string> = { value: T; label: string };
 
@@ -137,16 +138,6 @@ export function AppearanceCustomizer() {
 
         <div className="appearance-panel-body">
           <AxisGroup
-            title="Navigation"
-            name="app-navigation"
-            value={appearance.navigation}
-            options={[
-              { value: NAV_LIGHT, label: "Light" },
-              { value: NAV_DARK, label: "Dark" },
-            ]}
-            onChange={setNavigation}
-          />
-          <AxisGroup
             title="Header"
             name="app-header"
             value={appearance.header}
@@ -165,6 +156,21 @@ export function AppearanceCustomizer() {
               { value: SKIN_DARK, label: "Dark" },
             ]}
             onChange={setSkin}
+          />
+          <AxisGroup
+            title="Footer"
+            name="app-navigation"
+            value={appearance.navigation}
+            options={[
+              { value: NAV_LIGHT, label: "Light" },
+              { value: NAV_DARK, label: "Dark" },
+            ]}
+            onChange={(value) => {
+              setNavigation(value);
+              window.requestAnimationFrame(() => {
+                scrollToLandingFooter();
+              });
+            }}
           />
 
           <div className="appearance-axis">

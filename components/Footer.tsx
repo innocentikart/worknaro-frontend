@@ -45,21 +45,15 @@ function FooterNavLink({
 
 export function Footer() {
   return (
-    <footer className="site-footer landing-nav-chrome relative overflow-x-clip">
+    <footer id="site-footer" className="site-footer landing-nav-chrome relative overflow-x-clip">
       <div className="site-footer-bg" aria-hidden="true">
-        <span className="footer-dots footer-dots-rail-top" />
-        <span className="footer-dots footer-dots-rail-bottom" />
-        <span className="footer-dots footer-dots-side-left" />
-        <span className="footer-dots footer-dots-side-right" />
-        <span className="footer-dots footer-dots-corner-tl" />
-        <span className="footer-dots footer-dots-corner-tr" />
-        <span className="footer-dots footer-dots-corner-bl" />
-        <span className="footer-dots footer-dots-corner-br" />
+        <span className="footer-dots footer-dots-patch-left" />
+        <span className="footer-dots footer-dots-patch-right" />
       </div>
       <div className="why-wrap relative z-10 grid gap-8 pb-12 sm:grid-cols-2 sm:gap-12 sm:pb-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo />
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate">
+          <p className="site-footer-desc mt-4 max-w-xs text-sm leading-relaxed">
             {siteConfig.shortDescription}
           </p>
           <a href={djangoRoutes.register()} className="hero-cta-primary hero-btn btn-shine mt-6">
@@ -109,7 +103,7 @@ export function Footer() {
         </div>
       </div>
       <div className="site-footer-bottom relative z-10">
-        <div className="why-wrap flex flex-col gap-2 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="site-footer-meta why-wrap flex flex-col gap-2 py-5 text-xs sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>

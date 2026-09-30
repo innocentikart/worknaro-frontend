@@ -43,6 +43,7 @@ type FeatureSlot = {
   split?: boolean;
   span: string;
   previewGraphic: ReactNode;
+  className?: string;
 };
 
 const DEFAULT_SLOTS: FeatureSlot[] = [
@@ -70,6 +71,7 @@ const DEFAULT_SLOTS: FeatureSlot[] = [
     split: true,
     span: "md:col-span-2 lg:col-span-4",
     previewGraphic: <WorkspaceRolesPreview />,
+    className: "feature-card-workspaces",
   },
   {
     key: "clients",
@@ -186,6 +188,7 @@ export function FeatureCardsSection({ cmsHighlights }: FeatureCardsSectionProps)
                 featured={slot.featured}
                 split={slot.split}
                 previewGraphic={slot.previewGraphic}
+                className={slot.className}
               />
             </FadeInWhenVisible>
           ))}

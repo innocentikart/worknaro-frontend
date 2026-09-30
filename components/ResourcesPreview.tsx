@@ -24,9 +24,9 @@ const CATEGORY_ICONS = {
   purple: BookOpen,
 } as const;
 
-function BrowserChrome({ tone = "dark" }: { tone?: "dark" | "light" }) {
+function BrowserChrome() {
   return (
-    <div className={`resources-chrome resources-chrome-${tone}`} aria-hidden="true">
+    <div className="resources-chrome resources-chrome-light" aria-hidden="true">
       <span />
       <span />
       <span />
@@ -35,83 +35,31 @@ function BrowserChrome({ tone = "dark" }: { tone?: "dark" | "light" }) {
   );
 }
 
-function ProductPreview({
+function ResourcePreview({
   lightSrc,
   darkSrc,
   alt,
+  width,
+  height,
 }: {
   lightSrc: string;
   darkSrc: string;
   alt: string;
+  width: number;
+  height: number;
 }) {
   return (
-    <div className="resources-preview-shell resources-preview-product">
-      <div className="resources-app-frame">
-        <BrowserChrome tone="dark" />
-        <div className="resources-app-stage">
-          <ThemeProductImage
-            lightSrc={lightSrc}
-            darkSrc={darkSrc}
-            alt={alt}
-            width={960}
-            height={540}
-            className="resources-preview-image"
-            sizes="(max-width: 1080px) 90vw, 360px"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function PricingPreview({
-  lightSrc,
-  darkSrc,
-}: {
-  lightSrc: string;
-  darkSrc: string;
-}) {
-  return (
-    <div className="resources-preview-shell resources-preview-pricing">
+    <div className="resources-preview-shell">
       <div className="resources-billing-frame">
-        <BrowserChrome tone="light" />
+        <BrowserChrome />
         <div className="resources-billing-stage">
           <ThemeProductImage
             lightSrc={lightSrc}
             darkSrc={darkSrc}
-            alt="Worknaro billing plans: Free, Starter, Pro, and Enterprise"
-            width={1024}
-            height={481}
-            className="resources-billing-image"
-            sizes="(max-width: 1080px) 90vw, 360px"
-          />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function GuidesPreview({
-  lightSrc,
-  darkSrc,
-  alt,
-}: {
-  lightSrc: string;
-  darkSrc: string;
-  alt: string;
-}) {
-  return (
-    <div className="resources-preview-shell resources-preview-guides">
-      <div className="resources-app-frame">
-        <BrowserChrome tone="dark" />
-        <div className="resources-app-stage">
-          <ThemeProductImage
-            lightSrc={lightSrc}
-            darkSrc={darkSrc}
             alt={alt}
-            width={1357}
-            height={646}
-            className="resources-preview-image"
+            width={width}
+            height={height}
+            className="resources-billing-image"
             sizes="(max-width: 1080px) 90vw, 360px"
           />
         </div>
@@ -126,10 +74,16 @@ function ResourceCard({ item }: { item: ResourceCardItem }) {
   const darkSrc = "imageDark" in item && item.imageDark ? item.imageDark : item.image;
   const previewAlt =
     item.preview === "product"
-      ? "Worknaro platform projects view"
-      : item.preview === "guides"
-        ? "Worknaro workspaces"
-        : "";
+      ? "Worknaro platform capabilities"
+      : item.preview === "pricing"
+        ? "Worknaro billing plans: Free, Starter, Pro, and Enterprise"
+        : "Worknaro guides and links";
+  const previewSize =
+    item.preview === "product"
+      ? { width: 960, height: 540 }
+      : item.preview === "pricing"
+        ? { width: 1024, height: 481 }
+        : { width: 1357, height: 646 };
 
   return (
     <Link
@@ -137,13 +91,13 @@ function ResourceCard({ item }: { item: ResourceCardItem }) {
       className={`resources-card resources-card-${item.accent} group flex h-full flex-col overflow-hidden`}
     >
       <div className="resources-media">
-        {item.preview === "product" ? (
-          <ProductPreview lightSrc={lightSrc} darkSrc={darkSrc} alt={previewAlt} />
-        ) : item.preview === "pricing" ? (
-          <PricingPreview lightSrc={lightSrc} darkSrc={darkSrc} />
-        ) : (
-          <GuidesPreview lightSrc={lightSrc} darkSrc={darkSrc} alt={previewAlt} />
-        )}
+        <ResourcePreview
+          lightSrc={lightSrc}
+          darkSrc={darkSrc}
+          alt={previewAlt}
+          width={previewSize.width}
+          height={previewSize.height}
+        />
       </div>
 
       <div className="resources-card-body flex flex-1 flex-col">

@@ -65,14 +65,54 @@ const themeBootScript = `
     var HEADER_DARK = 'app-header-dark';
     var HEADER_LIGHT = 'app-header-light';
     var FONT_DEFAULT = 'app-font-family-inter';
-    var FONTS = [
-      'app-font-family-lato','app-font-family-rubik','app-font-family-inter','app-font-family-cinzel',
-      'app-font-family-nunito','app-font-family-roboto','app-font-family-ubuntu','app-font-family-poppins',
-      'app-font-family-raleway','app-font-family-system-ui','app-font-family-noto-sans','app-font-family-fira-sans',
-      'app-font-family-work-sans','app-font-family-open-sans','app-font-family-maven-pro','app-font-family-quicksand',
-      'app-font-family-montserrat','app-font-family-josefin-sans','app-font-family-ibm-plex-sans',
-      'app-font-family-source-sans-pro','app-font-family-montserrat-alt','app-font-family-roboto-slab'
-    ];
+    var FONT_STACKS = {
+      'app-font-family-lato': '"Lato", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-rubik': '"Rubik", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-inter': '"Inter", var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-cinzel': '"Cinzel", ui-serif, Georgia, serif',
+      'app-font-family-nunito': '"Nunito", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-roboto': '"Roboto", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-ubuntu': '"Ubuntu", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-poppins': '"Poppins", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-raleway': '"Raleway", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-system-ui': 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+      'app-font-family-noto-sans': '"Noto Sans", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-fira-sans': '"Fira Sans", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-work-sans': '"Work Sans", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-open-sans': '"Open Sans", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-maven-pro': '"Maven Pro", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-quicksand': '"Quicksand", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-montserrat': '"Montserrat", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-josefin-sans': '"Josefin Sans", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-ibm-plex-sans': '"IBM Plex Sans", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-source-sans-pro': '"Source Sans 3", "Source Sans Pro", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-montserrat-alt': '"Montserrat Alternates", ui-sans-serif, system-ui, sans-serif',
+      'app-font-family-roboto-slab': '"Roboto Slab", ui-serif, Georgia, serif'
+    };
+    var FONT_GOOGLE = {
+      'app-font-family-lato': 'Lato',
+      'app-font-family-rubik': 'Rubik',
+      'app-font-family-inter': 'Inter',
+      'app-font-family-cinzel': 'Cinzel',
+      'app-font-family-nunito': 'Nunito',
+      'app-font-family-roboto': 'Roboto',
+      'app-font-family-ubuntu': 'Ubuntu',
+      'app-font-family-poppins': 'Poppins',
+      'app-font-family-raleway': 'Raleway',
+      'app-font-family-noto-sans': 'Noto Sans',
+      'app-font-family-fira-sans': 'Fira Sans',
+      'app-font-family-work-sans': 'Work Sans',
+      'app-font-family-open-sans': 'Open Sans',
+      'app-font-family-maven-pro': 'Maven Pro',
+      'app-font-family-quicksand': 'Quicksand',
+      'app-font-family-montserrat': 'Montserrat',
+      'app-font-family-josefin-sans': 'Josefin Sans',
+      'app-font-family-ibm-plex-sans': 'IBM Plex Sans',
+      'app-font-family-source-sans-pro': 'Source Sans 3',
+      'app-font-family-montserrat-alt': 'Montserrat Alternates',
+      'app-font-family-roboto-slab': 'Roboto Slab'
+    };
+    var FONTS = Object.keys(FONT_STACKS);
     function readMode(keys, darkValue, lightValue) {
       for (var i = 0; i < keys.length; i++) {
         var v = localStorage.getItem(keys[i]);
@@ -106,6 +146,26 @@ const themeBootScript = `
     if (skin === SKIN_DARK) root.classList.add('dark');
     else root.classList.remove('dark');
     root.style.colorScheme = skin === SKIN_DARK ? 'dark' : 'light';
+    var stack = FONT_STACKS[font] || FONT_STACKS[FONT_DEFAULT];
+    root.style.setProperty('--font-sans', stack);
+    root.style.setProperty('--appearance-font', stack);
+    root.style.setProperty('--font-display', stack);
+    var googleFamily = FONT_GOOGLE[font];
+    if (googleFamily) {
+      var existing = document.getElementById('organitio-appearance-font');
+      var href = 'https://fonts.googleapis.com/css2?family=' +
+        encodeURIComponent(googleFamily).replace(/%20/g, '+') +
+        ':wght@400;500;600;700;800&display=swap';
+      if (existing) {
+        existing.href = href;
+      } else {
+        var link = document.createElement('link');
+        link.id = 'organitio-appearance-font';
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      }
+    }
   } catch (e) {}
 })();
 `;
