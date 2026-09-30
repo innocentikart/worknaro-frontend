@@ -12,7 +12,6 @@ import {
   SKIN_LIGHT,
 } from "@/lib/appearance";
 import { useAppearance } from "@/components/ThemeProvider";
-import { scrollToLandingFooter } from "@/lib/scroll-to-footer";
 
 type AxisOption<T extends string> = { value: T; label: string };
 
@@ -80,12 +79,24 @@ export function AppearanceCustomizer() {
       if (event.key === "Escape") setOpen(false);
     };
     document.addEventListener("keydown", onKey);
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    const scrollY = window.scrollY;
+    const { body } = document;
+    const prevOverflow = body.style.overflow;
+    const prevPosition = body.style.position;
+    const prevTop = body.style.top;
+    const prevWidth = body.style.width;
+    body.style.overflow = "hidden";
+    body.style.position = "fixed";
+    body.style.top = `-${scrollY}px`;
+    body.style.width = "100%";
     closeRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
+      body.style.overflow = prevOverflow;
+      body.style.position = prevPosition;
+      body.style.top = prevTop;
+      body.style.width = prevWidth;
+      window.scrollTo(0, scrollY);
     };
   }, [open]);
 
@@ -165,12 +176,7 @@ export function AppearanceCustomizer() {
               { value: NAV_LIGHT, label: "Light" },
               { value: NAV_DARK, label: "Dark" },
             ]}
-            onChange={(value) => {
-              setNavigation(value);
-              window.requestAnimationFrame(() => {
-                scrollToLandingFooter();
-              });
-            }}
+            onChange={setNavigation}
           />
 
           <div className="appearance-axis">
