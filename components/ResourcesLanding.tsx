@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -119,25 +118,15 @@ export function ResourcesLanding() {
                     className={`resources-card resources-card-${accent} group flex h-full flex-col overflow-hidden`}
                   >
                     <div className="resources-media relative overflow-hidden">
-                      {"imageDark" in item && item.imageDark ? (
-                        <ThemeProductImage
-                          lightSrc={item.image}
-                          darkSrc={item.imageDark}
-                          alt=""
-                          width={1024}
-                          height={481}
-                          className="resources-billing-cover"
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                        />
-                      ) : (
-                        <Image
-                          src={item.image}
-                          alt=""
-                          width={960}
-                          height={500}
-                          className="h-full w-full object-cover object-top transition duration-300 group-hover:scale-[1.03]"
-                        />
-                      )}
+                      <ThemeProductImage
+                        lightSrc={item.image}
+                        darkSrc={item.imageDark}
+                        alt=""
+                        width={1024}
+                        height={481}
+                        className="resources-billing-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
                       <span className="resources-media-fade" aria-hidden="true" />
                     </div>
                     <div className="resources-card-body flex flex-1 flex-col">

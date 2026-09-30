@@ -71,7 +71,7 @@ function ResourcePreview({
 function ResourceCard({ item }: { item: ResourceCardItem }) {
   const Icon = CATEGORY_ICONS[item.accent] ?? LayoutGrid;
   const lightSrc = item.image;
-  const darkSrc = "imageDark" in item && item.imageDark ? item.imageDark : item.image;
+  const darkSrc = item.imageDark;
   const previewAlt =
     item.preview === "product"
       ? "Worknaro platform capabilities"
