@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Clock3, Sparkles, Users, Wallet, type LucideIcon } from "lucide-react";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
+import { HeadingAccent } from "@/components/ui/HeadingAccent";
 import { SectionBadge } from "@/components/ui/SectionBadge";
 import { SectionDotsFrame } from "@/components/ui/SectionDotsFrame";
 import { HeroVisual } from "@/components/HeroVisual";
@@ -66,20 +66,13 @@ export function Hero({
                 <>
                   <span className="hero-line-one">Everything your team needs to</span>
                   <span className="hero-line-two">
-                    get{" "}
-                    <span className="hero-headline-accent-wrap">
-                      <span className="hero-gradient-text hero-headline-accent">work done.</span>
-                      <AccentUnderline className="hero-headline-underline" wide />
-                    </span>
+                    get <HeadingAccent>work done.</HeadingAccent>
                   </span>
                 </>
               ) : (
                 <>
                   <span className="hero-headline-lead">{line1}</span>{" "}
-                  <span className="hero-headline-accent-wrap">
-                    <span className="hero-gradient-text hero-headline-accent">{line2}</span>
-                    <AccentUnderline className="hero-headline-underline" wide />
-                  </span>
+                  <HeadingAccent>{line2}</HeadingAccent>
                 </>
               )}
             </h1>

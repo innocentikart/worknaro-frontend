@@ -236,42 +236,104 @@ export function getFontOption(id: string): FontOption {
   return FONT_OPTIONS.find((f) => f.id === id) ?? FONT_OPTIONS.find((f) => f.id === DEFAULT_FONT)!;
 }
 
+function hasStoredMode(
+  keys: string[],
+  darkValue: string,
+  lightValue: string,
+): boolean {
+  for (const key of keys) {
+    const value = safeGet(key);
+    if (value === darkValue || value === lightValue) return true;
+  }
+  return false;
+}
+
+/**
+ * Resolve Skin from dual storage keys used by Django + landing.
+ * Prefer `app-skin` (customizer), then landing global theme, then vendor
+ * `app-skin-dark` mirror — never let a stale mirror force Dark when Light
+ * was saved on `app-skin` / organitio-landing-theme.
+ */
+function resolveSkinMode(): SkinMode {
+  const primary = safeGet(STORAGE.skin);
+  if (primary === SKIN_DARK || primary === SKIN_LIGHT) {
+    return primary;
+  }
+
+  const legacy = safeGet(STORAGE.landingTheme);
+  if (legacy === "dark") return SKIN_DARK;
+  if (legacy === "light") return SKIN_LIGHT;
+
+  const mirror = safeGet(STORAGE.skinDark);
+  if (mirror === SKIN_DARK || mirror === SKIN_LIGHT) {
+    return mirror;
+  }
+
+  return SKIN_LIGHT;
+}
+
+/** True when the visitor has any saved theme preference (global or per-axis). */
+export function hasSavedThemePreference(): boolean {
+  if (typeof window === "undefined") return false;
+  const legacy = safeGet(STORAGE.landingTheme);
+  if (legacy === "dark" || legacy === "light") return true;
+  return (
+    hasStoredMode([STORAGE.skin, STORAGE.skinDark], SKIN_DARK, SKIN_LIGHT) ||
+    hasStoredMode([STORAGE.header], HEADER_DARK, HEADER_LIGHT) ||
+    hasStoredMode([STORAGE.navigation], NAV_DARK, NAV_LIGHT)
+  );
+}
+
 export function readAppearance(): AppearanceState {
   if (typeof window === "undefined") return { ...DEFAULT_APPEARANCE };
 
-  let skin = readMode(
-    [STORAGE.skinDark, STORAGE.skin],
-    SKIN_DARK,
-    SKIN_LIGHT,
-  ) as SkinMode;
-
-  // Legacy landing key fallback when Django keys absent
-  const hasDjangoSkin =
-    safeGet(STORAGE.skin) === SKIN_DARK ||
-    safeGet(STORAGE.skin) === SKIN_LIGHT ||
-    safeGet(STORAGE.skinDark) === SKIN_DARK ||
-    safeGet(STORAGE.skinDark) === SKIN_LIGHT;
-
-  if (!hasDjangoSkin) {
-    const legacy = safeGet(STORAGE.landingTheme);
-    if (legacy === "dark") skin = SKIN_DARK;
-    else if (legacy === "light") skin = SKIN_LIGHT;
-    else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      skin = SKIN_DARK;
-    }
+  // First visit / no saved preference → Light for Header, Skin, and Footer.
+  // Never auto-follow OS dark.
+  if (!hasSavedThemePreference()) {
+    const storedFont = safeGet(STORAGE.fontFamily);
+    return {
+      ...DEFAULT_APPEARANCE,
+      fontFamily:
+        storedFont && ALL_FONT_CLASSES.includes(storedFont)
+          ? storedFont
+          : DEFAULT_FONT,
+    };
   }
 
-  const header = readMode(
+  const hasHeader = hasStoredMode(
+    [STORAGE.header],
+    HEADER_DARK,
+    HEADER_LIGHT,
+  );
+
+  const hasNavigation = hasStoredMode(
+    [STORAGE.navigation],
+    NAV_DARK,
+    NAV_LIGHT,
+  );
+
+  const skin = resolveSkinMode();
+
+  let header = readMode(
     [STORAGE.header],
     HEADER_DARK,
     HEADER_LIGHT,
   ) as HeaderMode;
 
-  const navigation = readMode(
+  let navigation = readMode(
     [STORAGE.navigation],
     NAV_DARK,
     NAV_LIGHT,
   ) as NavigationMode;
+
+  // Unset Header/Footer axes follow Skin so a saved global preference
+  // loads as one coherent theme (Header + Skin + Footer together).
+  if (!hasHeader) {
+    header = skin === SKIN_DARK ? HEADER_DARK : HEADER_LIGHT;
+  }
+  if (!hasNavigation) {
+    navigation = skin === SKIN_DARK ? NAV_DARK : NAV_LIGHT;
+  }
 
   const storedFont = safeGet(STORAGE.fontFamily);
   const fontFamily =

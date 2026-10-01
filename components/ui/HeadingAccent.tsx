@@ -1,18 +1,22 @@
 import type { ReactNode } from "react";
-import { AccentUnderline } from "@/components/ui/AccentUnderline";
 
-/** Hero “work done.” accent: brand-gradient text + curved underline. */
+/**
+ * Shared landing heading accent: brand-gradient text + curved underline.
+ * Visual reference: hero “work done.”
+ *
+ * Outer span owns the curved underline with box-decoration-break: clone
+ * so each wrapped line gets its own stroke. Inner span owns the gradient fill.
+ */
 export function HeadingAccent({
   children,
-  wide = true,
 }: {
   children: ReactNode;
+  /** @deprecated Unused — kept so existing call sites type-check. */
   wide?: boolean;
 }) {
   return (
-    <span className="hero-headline-accent-wrap">
-      <span className="hero-gradient-text hero-headline-accent">{children}</span>
-      <AccentUnderline className="hero-headline-underline" wide={wide} />
+    <span className="heading-accent">
+      <span className="heading-accent-fill hero-gradient-text">{children}</span>
     </span>
   );
 }

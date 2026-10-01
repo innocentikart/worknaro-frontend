@@ -838,32 +838,71 @@ html.dark .hero-headline {
 }
 
 .hero-headline-lead,
-.hero-headline-accent {
+.hero-headline-accent,
+.heading-accent-text {
   display: inline;
 }
 
+/*
+ * Shared heading accent — curved underline (hero “work done.” is the source of truth).
+ *
+ * .heading-accent        → curved underline + box-decoration-break: clone
+ * .heading-accent-fill   → brand gradient text
+ *
+ * Clone paints one curve under every wrapped line fragment. Do not set
+ * display:inline-block on .heading-accent or fragmentation (and per-line
+ * underlines) will not occur.
+ */
+.heading-accent,
 .hero-headline-accent-wrap {
-  position: relative;
-  display: inline-block;
+  display: inline;
   max-width: 100%;
-  padding-bottom: 0.18em;
-  vertical-align: baseline;
+  padding-bottom: 0.22em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 14' fill='none' preserveAspectRatio='none'%3E%3Cpath d='M3 11C42 2.2 86 1.2 118 4.2C150 7.2 184 12.2 217 3.5' stroke='%233968ea' stroke-width='3.25' stroke-linecap='round' vector-effect='non-scaling-stroke'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 100% 0.34em;
 }
 
-.hero-headline-underline {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 0.28em;
-  color: var(--primary);
-  overflow: visible;
-  pointer-events: none;
+.heading-accent-fill,
+.heading-accent .hero-gradient-text,
+.heading-accent .heading-accent-text {
+  display: inline;
 }
 
-html.dark .hero-headline-underline {
-  color: var(--primary);
+/* Legacy absolute SVG underlines (kept for leftover markup) */
+.heading-accent-underline,
+.hero-headline-underline,
+.accent-underline,
+.why-underline,
+.solutions-underline,
+.int-underline,
+.pricing-underline,
+.faq-underline,
+.final-cta-underline,
+.resources-underline,
+.features-underline,
+.about-intro-underline,
+.contact-intro-underline {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .heading-accent,
+  .hero-headline-accent-wrap {
+    padding-bottom: 0.2em;
+    background-size: 100% 0.32em;
+  }
+}
+
+@media (max-width: 389px) {
+  .heading-accent,
+  .hero-headline-accent-wrap {
+    padding-bottom: 0.18em;
+    background-size: 100% 0.3em;
+  }
 }
 
 .hero-gradient-text {
@@ -4347,20 +4386,6 @@ html.dark .about-intro-heading {
   padding-bottom: 0.12em;
 }
 
-.about-intro-underline {
-  position: absolute;
-  left: 0;
-  bottom: -0.02em;
-  width: 100%;
-  height: 0.26em;
-  color: var(--primary);
-  overflow: visible;
-}
-
-html.dark .about-intro-underline {
-  color: var(--primary);
-}
-
 .about-intro-lead {
   margin: 1.2rem 0 0;
   max-width: 32rem;
@@ -6809,20 +6834,6 @@ html.dark .resources-heading-accent {
   color: var(--primary);
 }
 
-.resources-underline {
-  position: absolute;
-  left: 0;
-  bottom: -0.05em;
-  width: 100%;
-  height: 0.28em;
-  color: var(--primary);
-  overflow: visible;
-}
-
-html.dark .resources-underline {
-  color: var(--primary);
-}
-
 .resources-card-teal {
   --res-accent: var(--secondary);
   --res-accent-soft: rgba(var(--secondary-rgb), 0.12);
@@ -7156,20 +7167,6 @@ html.dark .contact-intro-heading {
   display: inline-block;
   color: inherit;
   padding-bottom: 0.12em;
-}
-
-.contact-intro-underline {
-  position: absolute;
-  left: 0;
-  bottom: -0.02em;
-  width: 100%;
-  height: 0.26em;
-  color: var(--primary);
-  overflow: visible;
-}
-
-html.dark .contact-intro-underline {
-  color: var(--primary);
 }
 
 .contact-intro-lead {
@@ -7603,18 +7600,6 @@ html.dark .final-cta-accent {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-.pricing-underline,
-.faq-underline,
-.final-cta-underline {
-  position: absolute;
-  left: 0;
-  bottom: -0.05em;
-  width: 100%;
-  height: 0.28em;
-  color: var(--primary);
-  overflow: visible;
 }
 
 .pricing-lead,
@@ -9645,26 +9630,6 @@ html.dark .why-brand-gradient {
   color: var(--primary);
 }
 
-.why-underline,
-.accent-underline,
-.solutions-underline,
-.int-underline {
-  position: absolute;
-  left: 0;
-  bottom: -0.05em;
-  width: 100%;
-  height: 0.28em;
-  color: var(--primary);
-  overflow: visible;
-}
-
-html.dark .why-underline,
-html.dark .accent-underline,
-html.dark .solutions-underline,
-html.dark .int-underline {
-  color: var(--primary);
-}
-
 .solutions-heading,
 .int-heading {
   margin: 0;
@@ -10333,20 +10298,6 @@ html.dark .features-page-heading {
 }
 
 html.dark .features-page-heading-accent {
-  color: var(--primary);
-}
-
-.features-underline {
-  position: absolute;
-  left: 0;
-  bottom: -0.05em;
-  width: 100%;
-  height: 0.28em;
-  color: var(--primary);
-  overflow: visible;
-}
-
-html.dark .features-underline {
   color: var(--primary);
 }
 
@@ -21742,34 +21693,7 @@ main {
     display: block;
   }
 
-  /* Multi-line accents: per-line underline (absolute SVG only tracks the last line). */
-  .mig-heading .hero-headline-accent-wrap,
-  .pfs-heading .hero-headline-accent-wrap,
-  .audience-heading .hero-headline-accent-wrap,
-  .features-page-heading .hero-headline-accent-wrap,
-  .features-intro-heading .hero-headline-accent-wrap {
-    display: inline;
-    padding-bottom: 0.08em;
-  }
-
-  .mig-heading .hero-headline-accent,
-  .pfs-heading .hero-headline-accent,
-  .audience-heading .hero-headline-accent,
-  .features-page-heading .hero-headline-accent,
-  .features-intro-heading .hero-headline-accent {
-    padding-bottom: 0.08em;
-    border-bottom: 0.11em solid var(--primary);
-    box-decoration-break: clone;
-    -webkit-box-decoration-break: clone;
-  }
-
-  .mig-heading .hero-headline-underline,
-  .pfs-heading .hero-headline-underline,
-  .audience-heading .hero-headline-underline,
-  .features-page-heading .hero-headline-underline,
-  .features-intro-heading .hero-headline-underline {
-    display: none;
-  }
+  /* Curved accent underlines stay visible on mobile — do not replace with straight borders. */
 
   .hero-description,
   .features-page-lead,

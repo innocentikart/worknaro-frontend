@@ -124,20 +124,50 @@ const themeBootScript = `
       }
       return lightValue;
     }
-    var skin = readMode(['app-skin-dark', 'app-skin'], SKIN_DARK, SKIN_LIGHT);
-    var hasDjangoSkin =
-      localStorage.getItem('app-skin') === SKIN_DARK ||
-      localStorage.getItem('app-skin') === SKIN_LIGHT ||
-      localStorage.getItem('app-skin-dark') === SKIN_DARK ||
-      localStorage.getItem('app-skin-dark') === SKIN_LIGHT;
-    if (!hasDjangoSkin) {
-      var legacy = localStorage.getItem('organitio-landing-theme');
-      if (legacy === 'dark') skin = SKIN_DARK;
-      else if (legacy === 'light') skin = SKIN_LIGHT;
-      else if (window.matchMedia('(prefers-color-scheme: dark)').matches) skin = SKIN_DARK;
+    function hasMode(keys, darkValue, lightValue) {
+      for (var i = 0; i < keys.length; i++) {
+        var hv = localStorage.getItem(keys[i]);
+        if (hv === darkValue || hv === lightValue) return true;
+      }
+      return false;
     }
-    var header = readMode(['app-header'], HEADER_DARK, HEADER_LIGHT);
-    var navigation = readMode(['app-navigation'], NAV_DARK, NAV_LIGHT);
+    var legacy = localStorage.getItem('organitio-landing-theme');
+    var primarySkin = localStorage.getItem('app-skin');
+    var mirrorSkin = localStorage.getItem('app-skin-dark');
+    var hasPrimarySkin = primarySkin === SKIN_DARK || primarySkin === SKIN_LIGHT;
+    var hasMirrorSkin = mirrorSkin === SKIN_DARK || mirrorSkin === SKIN_LIGHT;
+    var hasDjangoSkin = hasPrimarySkin || hasMirrorSkin;
+    var hasHeader = hasMode(['app-header'], HEADER_DARK, HEADER_LIGHT);
+    var hasNavigation = hasMode(['app-navigation'], NAV_DARK, NAV_LIGHT);
+    var hasAnyPreference =
+      hasDjangoSkin || hasHeader || hasNavigation ||
+      legacy === 'dark' || legacy === 'light';
+    // First visit / no saved preference → Light for Header, Skin, and Footer.
+    // Never auto-follow OS dark.
+    var skin = SKIN_LIGHT;
+    var header = HEADER_LIGHT;
+    var navigation = NAV_LIGHT;
+    if (hasAnyPreference) {
+      // Prefer app-skin, then landing theme, then vendor app-skin-dark mirror
+      if (hasPrimarySkin) skin = primarySkin;
+      else if (legacy === 'dark') skin = SKIN_DARK;
+      else if (legacy === 'light') skin = SKIN_LIGHT;
+      else if (hasMirrorSkin) skin = mirrorSkin;
+      else skin = SKIN_LIGHT;
+      header = hasHeader
+        ? readMode(['app-header'], HEADER_DARK, HEADER_LIGHT)
+        : (skin === SKIN_DARK ? HEADER_DARK : HEADER_LIGHT);
+      navigation = hasNavigation
+        ? readMode(['app-navigation'], NAV_DARK, NAV_LIGHT)
+        : (skin === SKIN_DARK ? NAV_DARK : NAV_LIGHT);
+    }
+    // Heal conflicting dual skin keys so Appearance radios stay in sync
+    try {
+      if (hasAnyPreference) {
+        localStorage.setItem('app-skin', skin);
+        localStorage.setItem('app-skin-dark', skin);
+      }
+    } catch (e) {}
     var font = localStorage.getItem('font-family');
     if (!font || FONTS.indexOf(font) === -1) font = FONT_DEFAULT;
     var root = document.documentElement;
@@ -181,7 +211,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jakarta.variable} h-full antialiased`}
+      className={`${inter.variable} ${jakarta.variable} h-full antialiased app-skin-light app-header-light app-navigation-light`}
+      style={{ colorScheme: "light" }}
       suppressHydrationWarning
     >
       <head>

@@ -1,44 +1,36 @@
-/** Curved accent underline matching the FAQ “answered” treatment. */
+/**
+ * Curved accent underline SVG (data-URI source of truth).
+ * Kept for any legacy call sites; HeadingAccent uses CSS background instead
+ * so wrapped lines each get their own curve via box-decoration-break.
+ */
+import type { CSSProperties } from "react";
+
+/** Shared hand-drawn path matching hero “work done.” */
+export const ACCENT_UNDERLINE_PATH =
+  "M3 11C42 2.2 86 1.2 118 4.2C150 7.2 184 12.2 217 3.5";
+
 export function AccentUnderline({
-  className = "accent-underline",
-  wide = false,
+  className = "heading-accent-underline",
+  style,
 }: {
   className?: string;
-  /** Slightly longer path for multi-word accents */
+  style?: CSSProperties;
+  /** @deprecated Unused. */
   wide?: boolean;
 }) {
-  if (wide) {
-    return (
-      <svg
-        className={className}
-        viewBox="0 0 220 12"
-        fill="none"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          d="M2 8.5C38 3.5 78 2 118 3.8C158 5.5 192 8.2 218 4.5"
-          stroke="currentColor"
-          strokeWidth="3"
-          strokeLinecap="round"
-          vectorEffect="non-scaling-stroke"
-        />
-      </svg>
-    );
-  }
-
   return (
     <svg
       className={className}
-      viewBox="0 0 180 12"
+      style={style}
+      viewBox="0 0 220 14"
       fill="none"
       preserveAspectRatio="none"
       aria-hidden="true"
     >
       <path
-        d="M2 8.5C28 3.5 58 2 90 3.5C122 5 152 8 178 4.5"
+        d={ACCENT_UNDERLINE_PATH}
         stroke="currentColor"
-        strokeWidth="3"
+        strokeWidth="3.25"
         strokeLinecap="round"
         vectorEffect="non-scaling-stroke"
       />

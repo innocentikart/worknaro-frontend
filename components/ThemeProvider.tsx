@@ -5,6 +5,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useLayoutEffect,
   useMemo,
   useState,
   type ReactNode,
@@ -17,11 +18,13 @@ import {
   DEFAULT_APPEARANCE,
   HEADER_DARK,
   HEADER_LIGHT,
+  hasSavedThemePreference,
   isFullyDark,
   isFullyLight,
   NAV_DARK,
   NAV_LIGHT,
   nextGlobalTheme,
+  persistAppearance,
   readAppearance,
   resetAppearance as resetAppearanceLib,
   SKIN_DARK,
@@ -54,10 +57,16 @@ const AppearanceContext = createContext<AppearanceContextValue | null>(null);
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [appearance, setAppearance] = useState<AppearanceState>(DEFAULT_APPEARANCE);
 
-  useEffect(() => {
+  // Sync from localStorage (and boot-script DOM) before paint to avoid a wrong
+  // Light/Dark toggle flash after hydration. First visit stays Light.
+  useLayoutEffect(() => {
     const initial = readAppearance();
     setAppearance(initial);
     applyDomAppearance(initial);
+    // Heal dual skin keys / unset axes so Appearance radios match the resolved theme.
+    if (hasSavedThemePreference()) {
+      persistAppearance(initial);
+    }
   }, []);
 
   useEffect(() => {
