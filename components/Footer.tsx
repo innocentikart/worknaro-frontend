@@ -107,7 +107,11 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <p>Public website · Application hosted separately</p>
+          <div className="site-footer-legal flex flex-wrap items-center gap-x-4 gap-y-1">
+            <FooterNavLink href="/privacy">Privacy Policy</FooterNavLink>
+            <FooterNavLink href="/terms">Terms of Service</FooterNavLink>
+            <p>Public website · Application hosted separately</p>
+          </div>
         </div>
       </div>
     </footer>

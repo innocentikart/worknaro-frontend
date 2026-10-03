@@ -138,6 +138,7 @@ function SolutionAudienceMap() {
   const nodeRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const [connectors, setConnectors] = useState<ConnectorPath[]>([]);
   const [viewport, setViewport] = useState({ width: 0, height: 0 });
+  const [orbit, setOrbit] = useState({ cx: 0, cy: 0, r: 0 });
   const [activeId, setActiveId] = useState<string | null>(null);
 
   const measureConnectors = useCallback(() => {
@@ -149,6 +150,7 @@ function SolutionAudienceMap() {
     if (rootRect.width < 8 || rootRect.height < 8) return;
 
     const hubRect = hub.getBoundingClientRect();
+    const hubRadius = Math.min(hub.offsetWidth, hub.offsetHeight) / 2;
     const hubCenter = localPoint(
       rootRect,
       hubRect.left + hubRect.width / 2,
@@ -156,6 +158,7 @@ function SolutionAudienceMap() {
     );
 
     const next: ConnectorPath[] = [];
+    const radii: number[] = [];
 
     for (const node of MAP_NODES) {
       const el = nodeRefs.current[node.id];
@@ -169,6 +172,8 @@ function SolutionAudienceMap() {
         nodeRect.left + nodeRect.width / 2,
         nodeRect.top + nodeRect.height / 2,
       );
+
+      radii.push(Math.hypot(nodeCenter.x - hubCenter.x, nodeCenter.y - hubCenter.y));
 
       const start = roundedRectEdge(hubRect, rootRect, nodeCenter, 0.5);
       const end = roundedRectEdge(nodeRect, rootRect, hubCenter, 0.5);
@@ -201,6 +206,17 @@ function SolutionAudienceMap() {
       next.push({ id: node.id, d: softCurve(coveredStart, coveredEnd) });
     }
 
+    // Match /features: ring rides the node orbit so it clears the dotted disc.
+    const avgRadius =
+      radii.length > 0
+        ? radii.reduce((sum, value) => sum + value, 0) / radii.length
+        : Math.min(rootRect.width, rootRect.height) * 0.38;
+
+    setOrbit({
+      cx: hubCenter.x,
+      cy: hubCenter.y,
+      r: Math.max(avgRadius - 6, hubRadius + 28),
+    });
     setViewport({ width: rootRect.width, height: rootRect.height });
     setConnectors(next);
   }, []);
@@ -222,6 +238,8 @@ function SolutionAudienceMap() {
     const resizeObserver = new ResizeObserver(schedule);
     resizeObserver.observe(root);
     if (hubRef.current) resizeObserver.observe(hubRef.current);
+    const orbitEl = root.querySelector(".solutions-map-orbit");
+    if (orbitEl) resizeObserver.observe(orbitEl);
 
     window.addEventListener("resize", schedule);
     document.fonts?.ready?.then(schedule).catch(() => undefined);
@@ -252,6 +270,15 @@ function SolutionAudienceMap() {
         preserveAspectRatio="none"
         aria-hidden="true"
       >
+        {orbit.r > 0 ? (
+          <circle
+            className="solutions-map-orbit-ring"
+            cx={orbit.cx}
+            cy={orbit.cy}
+            r={orbit.r}
+          />
+        ) : null}
+
         {connectors.map((connector, index) => (
           <path
             key={connector.id}

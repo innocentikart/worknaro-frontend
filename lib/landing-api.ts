@@ -95,6 +95,50 @@ export type BetaCampaignConfig = {
   popup_scroll_percent?: number;
 };
 
+export type LegalDocumentPayload = {
+  published: boolean;
+  title: string;
+  summary: string;
+  body_html: string;
+  updated_at?: string | null;
+  effective_at?: string | null;
+  version_label?: string;
+  public_path?: string;
+};
+
+/** @deprecated Prefer LegalDocumentPayload */
+export type PrivacyPolicyPayload = LegalDocumentPayload;
+
+async function fetchPublishedLegalDocument(
+  path: string,
+): Promise<LegalDocumentPayload | null> {
+  try {
+    const res = await fetch(`${getAppUrl()}${path}`, {
+      // Keep Super Admin publishes visible quickly for Google OAuth review.
+      cache: "no-store",
+      headers: { Accept: "application/json" },
+    });
+    if (!res.ok) {
+      return null;
+    }
+    const payload = (await res.json()) as LegalDocumentPayload;
+    if (!payload?.published || !payload.body_html?.trim()) {
+      return null;
+    }
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+export async function fetchPublishedPrivacyPolicy(): Promise<LegalDocumentPayload | null> {
+  return fetchPublishedLegalDocument("/api/v1/public/privacy-policy/");
+}
+
+export async function fetchPublishedTermsOfService(): Promise<LegalDocumentPayload | null> {
+  return fetchPublishedLegalDocument("/api/v1/public/terms-of-service/");
+}
+
 export async function fetchLandingPage(): Promise<LandingPayload | null> {
   try {
     const res = await fetch(`${getAppUrl()}/api/v1/public/landing-page/`, {

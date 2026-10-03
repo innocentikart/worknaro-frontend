@@ -13,7 +13,7 @@ const DEFAULT_DESCRIPTION =
   "Be among the first to test Worknaro, report bugs, share feedback, and help shape the product.";
 const LEGACY_HEADINGS = new Set([
   "Be among the first to experience Worknaro.",
-  "Be among the first to experience Organitio.",
+  "Be among the first to experience Worknaro.",
 ]);
 const LEGACY_DESCRIPTIONS = new Set(["Join the beta and get early access to the platform."]);
 

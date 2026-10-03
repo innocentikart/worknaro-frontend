@@ -29,13 +29,20 @@ export const metadata: Metadata = {
   applicationName: BRAND_NAME,
   icons: {
     icon: [
-      { url: BRAND_ASSETS.favicon32, sizes: "32x32", type: "image/png" },
-      { url: BRAND_ASSETS.favicon192, sizes: "192x192", type: "image/png" },
-      { url: BRAND_ASSETS.favicon512, sizes: "512x512", type: "image/png" },
-      { url: BRAND_ASSETS.faviconIco, sizes: "any" },
+      {
+        url: BRAND_ASSETS.favicon,
+        sizes: "512x512",
+        type: "image/png",
+      },
     ],
-    shortcut: BRAND_ASSETS.faviconIco,
-    apple: [{ url: BRAND_ASSETS.favicon192, sizes: "192x192", type: "image/png" }],
+    shortcut: BRAND_ASSETS.favicon,
+    apple: [
+      {
+        url: BRAND_ASSETS.favicon,
+        sizes: "512x512",
+        type: "image/png",
+      },
+    ],
   },
   manifest: "/site.webmanifest",
   openGraph: {

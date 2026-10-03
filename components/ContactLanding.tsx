@@ -117,9 +117,14 @@ export function ContactLanding() {
               <SectionBadge icon={Mail} className="mx-auto">
                 How to reach us
               </SectionBadge>
-              <h2 id="contact-paths-heading" className="why-heading font-display">
-                Two clear paths—sales or{" "}
-                <HeadingAccent>self-serve</HeadingAccent>
+              <h2
+                id="contact-paths-heading"
+                className="why-heading why-heading-stack font-display"
+              >
+                <span className="why-heading-line">Two clear paths—sales or</span>
+                <span className="why-heading-line">
+                  <HeadingAccent>self-serve</HeadingAccent>
+                </span>
               </h2>
               <p className="why-description">
                 This page does not collect emails or create accounts. Sales and registration

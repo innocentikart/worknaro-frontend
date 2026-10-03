@@ -8187,6 +8187,138 @@ html.dark .faq-answer {
   }
 }
 
+/* ── Privacy Policy (public legal page) ── */
+.privacy-page {
+  background: var(--background);
+  padding: 5.25rem 0 4.5rem;
+}
+
+.privacy-wrap {
+  max-width: 48rem;
+}
+
+.privacy-header {
+  margin-inline: auto;
+  max-width: 40rem;
+  text-align: center;
+}
+
+.privacy-title {
+  margin-top: var(--space-6);
+  font-size: clamp(1.85rem, 2.8vw + 0.6rem, 2.75rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: #0f172a;
+}
+
+html.dark .privacy-title {
+  color: #e2e8f0;
+}
+
+.privacy-lead {
+  margin: 1.15rem auto 0;
+  max-width: 36rem;
+  font-size: clamp(1rem, 1.35vw, 1.1rem);
+  line-height: 1.7;
+  color: #64748b;
+}
+
+html.dark .privacy-lead {
+  color: #94a3b8;
+}
+
+.privacy-updated {
+  margin-top: 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--primary) 72%, #64748b);
+}
+
+.privacy-doc {
+  margin-top: 2.75rem;
+  display: grid;
+  gap: 1.85rem;
+}
+
+.privacy-section h2,
+.privacy-doc--cms h2 {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.05rem, 1.2vw + 0.55rem, 1.25rem);
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+}
+
+html.dark .privacy-section h2,
+html.dark .privacy-doc--cms h2 {
+  color: #e2e8f0;
+}
+
+.privacy-section p,
+.privacy-section li,
+.privacy-doc--cms p,
+.privacy-doc--cms li {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: #475569;
+}
+
+html.dark .privacy-section p,
+html.dark .privacy-section li,
+html.dark .privacy-doc--cms p,
+html.dark .privacy-doc--cms li {
+  color: #94a3b8;
+}
+
+.privacy-section p + p,
+.privacy-doc--cms p + p {
+  margin-top: 0.75rem;
+}
+
+.privacy-section ul,
+.privacy-doc--cms ul {
+  margin: 0.75rem 0 0;
+  padding-left: 1.2rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.privacy-section li::marker,
+.privacy-doc--cms li::marker {
+  color: color-mix(in srgb, var(--primary) 55%, #94a3b8);
+}
+
+.privacy-doc--cms > div,
+.privacy-doc--cms > section {
+  display: grid;
+  gap: 0;
+}
+
+.privacy-inline-link {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.14em;
+}
+
+.privacy-inline-link:hover {
+  color: color-mix(in srgb, var(--primary) 82%, #0f172a);
+}
+
+html.dark .privacy-inline-link:hover {
+  color: color-mix(in srgb, var(--primary) 70%, #fff);
+}
+
+@media (max-width: 639px) {
+  .privacy-page {
+    padding: 4.25rem 0 3.5rem;
+  }
+}
+
 /* ── Contact split ── */
 .contact-section {
   background: var(--background);
@@ -9097,13 +9229,24 @@ html.dark .about-pillar-desc {
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  background: var(--ap-accent);
-  color: #fff;
-  transition: transform 0.28s ease-out;
+  background: var(--ap-accent-soft);
+  color: var(--ap-accent);
+  transition:
+    transform 0.28s ease-out,
+    background-color 0.22s ease,
+    color 0.22s ease;
+}
+
+html.dark .about-pillar-cta-arrow {
+  background: color-mix(in srgb, var(--ap-accent) 18%, transparent);
+  color: color-mix(in srgb, var(--ap-accent) 78%, #ffffff);
 }
 
 .about-pillar-card:hover .about-pillar-cta-arrow,
-.about-pillar-cta:hover .about-pillar-cta-arrow {
+.about-pillar-cta:hover .about-pillar-cta-arrow,
+.about-pillar-cta:focus-visible .about-pillar-cta-arrow {
+  background: var(--ap-accent);
+  color: #fff;
   transform: translateX(2px);
 }
 
@@ -9527,27 +9670,6 @@ html.dark .about-viz-plan-meta li {
 
 .how-workflow-card .about-pillar-cta {
   font-size: 0.82rem;
-}
-
-.how-workflow-card .about-pillar-cta-arrow {
-  background: var(--ap-accent-soft);
-  color: var(--ap-accent);
-  transition:
-    transform 0.28s ease-out,
-    background-color 0.22s ease,
-    color 0.22s ease;
-}
-
-html.dark .how-workflow-card .about-pillar-cta-arrow {
-  background: color-mix(in srgb, var(--ap-accent) 18%, transparent);
-  color: color-mix(in srgb, var(--ap-accent) 78%, #ffffff);
-}
-
-.how-workflow-card.about-pillar-card:hover .about-pillar-cta-arrow,
-.how-workflow-card .about-pillar-cta:hover .about-pillar-cta-arrow {
-  background: var(--ap-accent);
-  color: #fff;
-  transform: translateX(2px);
 }
 
 .about-viz-wave {
@@ -10585,32 +10707,46 @@ html.dark .features-callout-title {
   min-height: 22rem;
 }
 
-.features-ecosystem-glow {
+/* Circular dotted disc behind hero hubs (features + solutions). */
+.features-ecosystem-glow,
+.solutions-map-glow {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 16rem;
-  height: 16rem;
+  z-index: 0;
+  width: min(21.5rem, 86%);
+  height: min(21.5rem, 86%);
+  aspect-ratio: 1;
   transform: translate(-50%, -50%);
   border-radius: 999px;
-  background: radial-gradient(
-    circle,
-    rgba(99, 120, 255, 0.22),
-    rgba(139, 92, 246, 0.1) 42%,
-    transparent 72%
-  );
-  filter: blur(12px);
   pointer-events: none;
-  animation: features-eco-glow 5.5s ease-in-out infinite;
+  filter: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--primary) 55%, #67e8f9) 1px,
+    transparent 1.05px
+  );
+  background-size: 13px 13px;
+  background-position: 0 0;
+  background-repeat: repeat;
+  opacity: 0.72;
+  clip-path: circle(50% at 50% 50%);
+  -webkit-mask-image: none;
+  mask-image: none;
+  animation: hero-hub-dots 6s ease-in-out infinite;
 }
 
-html.dark .features-ecosystem-glow {
-  background: radial-gradient(
+html.dark .features-ecosystem-glow,
+html.dark .solutions-map-glow {
+  background-image: radial-gradient(
     circle,
-    color-mix(in srgb, var(--primary) 28%, transparent),
-    rgba(139, 92, 246, 0.12) 42%,
-    transparent 72%
+    color-mix(in srgb, var(--primary) 48%, #7dd3fc) 1px,
+    transparent 1.05px
   );
+  opacity: 0.42;
+  animation-name: hero-hub-dots-dark;
 }
 
 .features-ecosystem-lines {
@@ -10623,7 +10759,8 @@ html.dark .features-ecosystem-glow {
   z-index: 0;
 }
 
-.features-ecosystem-orbit-ring {
+.features-ecosystem-orbit-ring,
+.solutions-map-orbit-ring {
   stroke: color-mix(in srgb, #94a3b8 70%, transparent);
   stroke-width: 1;
   stroke-dasharray: 2.5 6.5;
@@ -10631,7 +10768,8 @@ html.dark .features-ecosystem-glow {
   fill: none;
 }
 
-html.dark .features-ecosystem-orbit-ring {
+html.dark .features-ecosystem-orbit-ring,
+html.dark .solutions-map-orbit-ring {
   stroke: color-mix(in srgb, #94a3b8 50%, transparent);
   opacity: 0.32;
 }
@@ -10695,8 +10833,8 @@ html.dark .features-ecosystem-path--flow {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
     0 1px 2px rgba(15, 23, 42, 0.04),
-    0 18px 40px -22px rgba(var(--primary-rgb), 0.35),
-    0 28px 56px -36px rgba(15, 23, 42, 0.18);
+    0 14px 28px -20px rgba(var(--primary-rgb), 0.18),
+    0 22px 40px -32px rgba(15, 23, 42, 0.14);
   animation: features-eco-pulse 5.2s ease-in-out infinite;
 }
 
@@ -10932,15 +11070,27 @@ html.dark .features-eco-node-label {
   }
 }
 
-@keyframes features-eco-glow {
+@keyframes hero-hub-dots {
   0%,
   100% {
-    opacity: 0.75;
+    opacity: 0.64;
     transform: translate(-50%, -50%) scale(1);
   }
   50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.06);
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.015);
+  }
+}
+
+@keyframes hero-hub-dots-dark {
+  0%,
+  100% {
+    opacity: 0.34;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.48;
+    transform: translate(-50%, -50%) scale(1.015);
   }
 }
 
@@ -11346,34 +11496,6 @@ html.dark .solutions-intro-heading {
   min-height: 24rem;
 }
 
-.solutions-map-glow {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 14rem;
-  height: 14rem;
-  transform: translate(-50%, -50%);
-  border-radius: 999px;
-  background: radial-gradient(
-    circle,
-    rgba(99, 120, 255, 0.2),
-    rgba(139, 92, 246, 0.08) 46%,
-    transparent 72%
-  );
-  filter: blur(14px);
-  pointer-events: none;
-  animation: solutions-map-glow 5.5s ease-in-out infinite;
-}
-
-html.dark .solutions-map-glow {
-  background: radial-gradient(
-    circle,
-    color-mix(in srgb, var(--primary) 24%, transparent),
-    rgba(139, 92, 246, 0.1) 46%,
-    transparent 72%
-  );
-}
-
 .solutions-map-lines {
   position: absolute;
   inset: 0;
@@ -11437,8 +11559,8 @@ html.dark .solutions-map-path--active {
   box-shadow:
     0 1px 0 rgba(255, 255, 255, 0.9) inset,
     0 1px 2px rgba(15, 23, 42, 0.04),
-    0 18px 40px -22px rgba(var(--primary-rgb), 0.32),
-    0 28px 56px -36px rgba(15, 23, 42, 0.16);
+    0 14px 28px -20px rgba(var(--primary-rgb), 0.18),
+    0 22px 40px -32px rgba(15, 23, 42, 0.14);
   animation: solutions-map-pulse 5.2s ease-in-out infinite;
 }
 
@@ -11673,18 +11795,6 @@ html.dark .solutions-map-node-label {
   50% {
     opacity: 0.52;
     transform: scale(1.03);
-  }
-}
-
-@keyframes solutions-map-glow {
-  0%,
-  100% {
-    opacity: 0.75;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.05);
   }
 }
 

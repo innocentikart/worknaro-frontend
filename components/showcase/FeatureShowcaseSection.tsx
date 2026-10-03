@@ -218,9 +218,20 @@ type ConnectorGeometry = {
 };
 
 function buildBezier(start: Point, end: Point): string {
-  const dx = Math.max(48, Math.abs(end.x - start.x) * 0.5);
-  const c1x = start.x + (end.x >= start.x ? dx : -dx);
-  const c2x = end.x + (end.x >= start.x ? -dx : dx);
+  const spanX = Math.abs(end.x - start.x);
+  const spanY = Math.abs(end.y - start.y);
+
+  // Short horizontal spans: a large fixed control offset crosses itself and
+  // leaves a visible gap (common for the middle "Files, Notes & Time" wire).
+  if (spanX < 96 && spanY < 8) {
+    return `M ${start.x} ${start.y} L ${end.x} ${end.y}`;
+  }
+
+  // Keep both control points between start/end so the cubic never folds back.
+  const dx = Math.min(Math.max(28, spanX * 0.4), Math.max(12, spanX * 0.5));
+  const dir = end.x >= start.x ? 1 : -1;
+  const c1x = start.x + dir * dx;
+  const c2x = end.x - dir * dx;
   return `M ${start.x} ${start.y} C ${c1x} ${start.y}, ${c2x} ${end.y}, ${end.x} ${end.y}`;
 }
 
@@ -266,6 +277,7 @@ function useFeatureConnectors(
     targets.forEach((el) => {
       if (!el) return;
       const tRect = el.getBoundingClientRect();
+      // Card edge dots are centered on the border (`left/right: -0.375rem` + 0.75rem size).
       const end: Point = reverse
         ? {
             x: tRect.right - cRect.left,

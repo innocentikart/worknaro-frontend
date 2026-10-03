@@ -25,6 +25,17 @@ Open [http://localhost:3000](http://localhost:3000).
 | `NEXT_PUBLIC_APP_URL` | Django application origin | `http://127.0.0.1:8000` |
 | `NEXT_PUBLIC_SITE_URL` | Marketing site origin (SEO canonical / OG) | `http://localhost:3000` |
 
+The authenticated Django app does not host a separate Privacy Policy. Its footer
+**Privacy** link uses Django `LANDING_SITE_URL` / `PUBLIC_PRIVACY_POLICY_URL` and
+points at this site’s `/privacy/` page (absolute URL across hosts).
+
+Legal pages are managed in Super Admin → Compliance:
+
+- Privacy Policy → `/privacy/` via `GET /api/v1/public/privacy-policy/`
+- Terms of Service → `/terms/` via `GET /api/v1/public/terms-of-service/`
+
+Published versions only; SSR on the Next.js pages.
+
 Deep links:
 
 - Login → `{APP_URL}/accounts/login/`
