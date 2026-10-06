@@ -1,6 +1,6 @@
 /**
  * Shared Appearance state with Django Worknaro customizer.
- * Keys/classes must match static/assets/js/organitio-theme-skin.js + customizer.html.
+ * Keys/classes must match static/assets/js/worknaro-theme-skin.js + customizer.html.
  */
 
 export const SKIN_DARK = "app-skin-dark";
@@ -17,7 +17,7 @@ export const STORAGE = {
   header: "app-header",
   fontFamily: "font-family",
   /** Legacy landing-only key; mirrored for one release of compatibility. */
-  landingTheme: "organitio-landing-theme",
+  landingTheme: "worknaro-landing-theme",
 } as const;
 
 export const ALL_THEME_CLASSES = [
@@ -252,7 +252,7 @@ function hasStoredMode(
  * Resolve Skin from dual storage keys used by Django + landing.
  * Prefer `app-skin` (customizer), then landing global theme, then vendor
  * `app-skin-dark` mirror — never let a stale mirror force Dark when Light
- * was saved on `app-skin` / organitio-landing-theme.
+ * was saved on `app-skin` / worknaro-landing-theme.
  */
 function resolveSkinMode(): SkinMode {
   const primary = safeGet(STORAGE.skin);
@@ -369,7 +369,7 @@ export function skinToTheme(skin: SkinMode): ThemeMode {
   return skin === SKIN_DARK ? "dark" : "light";
 }
 
-const FONT_LINK_ID = "organitio-appearance-font";
+const FONT_LINK_ID = "worknaro-appearance-font";
 
 export function ensureFontStylesheet(fontId: string) {
   if (typeof document === "undefined") return;

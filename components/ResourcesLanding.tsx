@@ -177,7 +177,7 @@ export function ResourcesLanding() {
             </div>
           </FadeInWhenVisible>
 
-          <StaggerChildren className="about-pillar-grid landing-to-content mx-auto grid w-full gap-5 sm:grid-cols-2 lg:grid-cols-4 xl:gap-6">
+          <StaggerChildren className="about-pillar-grid landing-to-content mx-auto grid w-full gap-5 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
             {quickLinks.map((item, index) => (
               <FadeInWhenVisible key={item.title} className="h-full" delay={index * 50}>
                 <PremiumModuleCard

@@ -313,6 +313,17 @@ html.dark {
   box-sizing: border-box;
 }
 
+img,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  max-width: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -415,8 +426,8 @@ h3,
 .page-wrap {
   margin-inline: auto;
   width: 100%;
-  max-width: 1140px;
-  padding-inline: var(--space-5);
+  max-width: var(--landing-container);
+  padding-inline: var(--landing-gutter);
 }
 
 .hero-wrap {
@@ -424,21 +435,8 @@ h3,
   z-index: 1;
   margin-inline: auto;
   width: 100%;
-  max-width: 1280px;
-  padding-inline: var(--space-5);
-}
-
-@media (min-width: 640px) {
-  .page-wrap,
-  .hero-wrap {
-    padding-inline: var(--space-7);
-  }
-}
-
-@media (min-width: 1280px) {
-  .hero-wrap {
-    padding-inline: var(--space-8);
-  }
+  max-width: var(--landing-container);
+  padding-inline: var(--landing-gutter);
 }
 
 .hero-light {
@@ -602,8 +600,8 @@ html.dark .section-dots-frame .hero-dots-patch-br {
   .section-dots-frame .hero-dots-patch-br {
     width: min(7rem, 22vw);
     height: min(5.25rem, 15vw);
-    opacity: 0.24;
-  }
+  opacity: 0.24;
+}
 
   html.dark .section-dots-frame .hero-dots-patch-bl,
   html.dark .section-dots-frame .hero-dots-patch-br {
@@ -618,8 +616,8 @@ html.dark .section-dots-frame .hero-dots-patch-br {
   }
 
   html.dark .section-dots-frame .hero-dots {
-    opacity: 0.2;
-  }
+  opacity: 0.2;
+}
 
   /* Mobile: keep upper patches only, scaled down */
   .section-dots-frame .hero-dots-patch-bl,
@@ -702,22 +700,22 @@ html.dark .site-footer .footer-dots {
   .site-footer .footer-dots-patch-right {
     width: 4.5rem;
     height: 9rem;
-    opacity: 0.4;
+  opacity: 0.4;
   }
 
   html.dark .site-footer .footer-dots-patch-left,
   html.dark .site-footer .footer-dots-patch-right {
-    opacity: 0.3;
+  opacity: 0.3;
   }
 }
 
 @media (max-width: 639px) {
-  .site-footer .footer-dots {
+.site-footer .footer-dots {
     background-size: 12px 12px;
     opacity: 0.32;
-  }
+}
 
-  html.dark .site-footer .footer-dots {
+html.dark .site-footer .footer-dots {
     opacity: 0.24;
   }
 
@@ -729,11 +727,11 @@ html.dark .site-footer .footer-dots {
   }
 
   .site-footer .footer-dots-patch-left {
-    left: 2%;
-  }
+  left: 2%;
+}
 
   .site-footer .footer-dots-patch-right {
-    right: 2%;
+  right: 2%;
   }
 }
 
@@ -897,14 +895,6 @@ html.dark .hero-headline {
   }
 }
 
-@media (max-width: 389px) {
-  .heading-accent,
-  .hero-headline-accent-wrap {
-    padding-bottom: 0.18em;
-    background-size: 100% 0.3em;
-  }
-}
-
 .hero-gradient-text {
   background: var(--brand-gradient);
   -webkit-background-clip: text;
@@ -947,6 +937,7 @@ html.dark .hero-description {
   gap: var(--space-2);
   box-sizing: border-box;
   min-height: 2.75rem;
+  max-width: 100%;
   border-radius: 999px;
   padding: 0.88rem 1.45rem;
   font-size: 0.92rem;
@@ -1116,17 +1107,46 @@ html.dark .hero-trust-icon {
   margin: 1.4rem auto 1.8rem;
   overflow: hidden;
   border-radius: 1.15rem;
-  border: 1px solid color-mix(in srgb, var(--line-strong) 88%, transparent);
-  background: #0a1220;
-  box-shadow: 0 24px 48px -28px rgba(15, 23, 42, 0.35);
+  /* Solid token border — same weight/color on every side. */
+  border: 1px solid var(--ui-border);
+  background: var(--surface-elevated);
+  box-shadow: 0 24px 48px -28px rgba(15, 23, 42, 0.22);
   transform: perspective(1600px) rotateY(-8deg) rotateX(5deg);
   transform-origin: 58% 54%;
   animation: hero-dashboard-reveal 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.18s both;
 }
 
+/*
+ * Home theme: keep a uniform 1px frame (light + dark).
+ * .home-landing * kills elevation shadows; perspective also skews border AA.
+ * Flatten the mock and use the solid --ui-border token on all sides.
+ */
+.home-landing .hero-dash {
+  border: 1px solid var(--ui-border) !important;
+  transform: none !important;
+  transform-origin: center center;
+  animation: hero-dashboard-reveal-flat 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.16s both;
+}
+
+html:not(.dark) .home-landing .hero-dash {
+  background: var(--surface-elevated) !important;
+}
+
+/*
+ * Dark home hero: --ui-border (#1b2436) is too close to the dark product chrome,
+ * so a plain border looks broken/uneven. Use a slightly elevated solid slate
+ * stroke on the flattened mock so every side reads the same (matches light).
+ */
+html.dark .home-landing .hero-dash {
+  border: 1px solid #2d3a52 !important;
+  background: #0a1220 !important;
+  box-shadow: none !important;
+}
+
 html.dark .hero-dash {
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 24px 48px -28px rgba(0, 0, 0, 0.5);
+  border-color: var(--ui-border);
+  background: #0a1220;
+  box-shadow: none;
 }
 
 .hero-dash-img {
@@ -1148,7 +1168,7 @@ html.dark .hero-dash {
   gap: 0.65rem;
   max-width: 15.5rem;
   border-radius: 1rem;
-  border: 1px solid color-mix(in srgb, var(--line-strong) 90%, transparent);
+  border: 1px solid var(--ui-border);
   background: color-mix(in srgb, var(--surface-elevated) 88%, transparent);
   padding: 0.72rem 0.9rem;
   color: var(--ink);
@@ -1164,12 +1184,16 @@ html.dark .hero-dash {
 }
 
 html.dark .hero-float-card {
-  border-color: rgba(186, 210, 255, 0.22);
+  border: 1px solid var(--ui-border) !important;
   background: rgba(18, 28, 52, 0.94);
   color: #f8fafc;
-  box-shadow:
-    0 0 0 1px rgba(var(--primary-rgb), 0.16),
-    0 22px 44px -16px rgba(0, 0, 0, 0.85);
+  box-shadow: none;
+}
+
+/* Home dark: match hero-dash frame weight/color. */
+html.dark .home-landing .hero-float-card {
+  border: 1px solid #2d3a52 !important;
+  box-shadow: none !important;
 }
 
 .hero-float-icon {
@@ -1731,22 +1755,23 @@ html.dark .trust-section {
 
 .trust-deco {
   position: absolute;
-  width: 220px;
-  height: 220px;
+  width: min(14rem, 36vw);
+  height: min(14rem, 36vw);
+  max-width: 36%;
   pointer-events: none;
   z-index: 0;
 }
 
 .trust-deco-left {
-  left: -90px;
+  left: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-35%, -50%);
 }
 
 .trust-deco-right {
-  right: -90px;
+  right: 0;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(35%, -50%);
 }
 
 .trust-deco-blob {
@@ -1999,20 +2024,23 @@ html.dark .showcase-ambient {
 
 .showcase-deco {
   position: absolute;
-  width: 260px;
-  height: 260px;
+  width: min(16rem, 40vw);
+  height: min(16rem, 40vw);
+  max-width: 38%;
   pointer-events: none;
   z-index: 0;
 }
 
 .showcase-deco-left {
-  left: -110px;
+  left: 0;
   top: 8%;
+  transform: translateX(-35%);
 }
 
 .showcase-deco-right {
-  right: -110px;
+  right: 0;
   bottom: 12%;
+  transform: translateX(35%);
 }
 
 .showcase-deco-blob {
@@ -2386,15 +2414,9 @@ html.dark .solutions-section {
   background: var(--background);
 }
 
-/* Wider container for the 4-column audience grid on large screens only */
+/* Wider container for the 4-column audience grid — uses landing token */
 .solutions-section .why-wrap {
-  max-width: 1440px;
-}
-
-@media (min-width: 1440px) {
-  .solutions-section .why-wrap {
-    padding-inline: var(--space-9);
-  }
+  max-width: var(--landing-container-wide);
 }
 
 .audience-ambient {
@@ -3184,11 +3206,6 @@ html.dark .how-ambient {
   padding-block: 0;
 }
 
-@media (min-width: 1440px) {
-  .how-wrap {
-    padding-inline: var(--space-9);
-  }
-}
 
 .how-intro {
   margin-inline: auto;
@@ -4217,7 +4234,7 @@ html.dark .stories-dot-active {
 .about-intro {
   isolation: isolate;
   overflow: hidden;
-  min-height: 42rem;
+  min-height: 0;
   background: var(--background);
 }
 
@@ -4303,8 +4320,8 @@ html.dark .about-section-bg-chip {
   z-index: 10;
   margin-inline: auto;
   width: 100%;
-  max-width: 1180px;
-  padding: 5.5rem var(--space-5) var(--space-13);
+  max-width: var(--landing-container);
+  padding: 5.5rem var(--landing-gutter) var(--space-13);
 }
 
 @media (min-width: 640px) {
@@ -5310,8 +5327,8 @@ html.dark .landing-bg-specks {
   z-index: 1;
   margin-inline: auto;
   width: 100%;
-  max-width: 1240px;
-  padding: 5.25rem var(--space-5) var(--space-12);
+  max-width: var(--landing-container);
+  padding: 5.25rem var(--landing-gutter) var(--space-12);
 }
 
 @media (min-width: 640px) {
@@ -6500,7 +6517,7 @@ html.dark .resources-pricing-toggle span.is-active {
 
 .resources-pricing-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.25rem), 1fr));
   gap: var(--space-tight);
 }
 
@@ -6661,7 +6678,7 @@ html.dark .resources-guides-hero {
 
 .resources-guides-tiles {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 4.5rem), 1fr));
   gap: 0.3rem;
 }
 
@@ -6799,15 +6816,6 @@ html.dark .resources-card-copy {
   .resources-card-body {
     padding: 1.2rem 1.2rem 1.3rem;
   }
-
-  .resources-pricing-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.4rem;
-  }
-
-  .resources-pricing-col:nth-child(n + 3) {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -6888,6 +6896,10 @@ html.dark .pricing-section-follow {
 }
 
 .pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16.5rem), 1fr));
+  align-items: stretch;
+  gap: var(--space-5);
   overflow: visible;
   padding-block: var(--space-tight) var(--space-3);
 }
@@ -7050,20 +7062,14 @@ html.dark .pricing-intro-heading {
 
 /* Match Product Features section width on large screens */
 .pricing-section .why-wrap {
-  max-width: 1440px;
-}
-
-@media (min-width: 1440px) {
-  .pricing-section .why-wrap {
-    padding-inline: var(--space-9);
-  }
+  max-width: var(--landing-container-wide);
 }
 
 /* ── Contact page editorial intro (conversation — not a marketing hero) ── */
 .contact-intro {
   isolation: isolate;
   overflow: hidden;
-  min-height: 42rem;
+  min-height: 0;
   background: var(--background);
 }
 
@@ -7076,8 +7082,8 @@ html.dark .contact-intro {
   z-index: 10;
   margin-inline: auto;
   width: 100%;
-  max-width: 1180px;
-  padding: 5.5rem var(--space-5) var(--space-13);
+  max-width: var(--landing-container);
+  padding: 5.5rem var(--landing-gutter) var(--space-13);
 }
 
 @media (min-width: 640px) {
@@ -7475,8 +7481,9 @@ html.dark .contact-intro-chip-purple {
 .faq-deco,
 .contact-deco {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  width: min(18rem, 42vw);
+  height: min(18rem, 42vw);
+  max-width: 40%;
   pointer-events: none;
   z-index: 0;
 }
@@ -7484,15 +7491,17 @@ html.dark .contact-intro-chip-purple {
 .pricing-deco-left,
 .faq-deco-left,
 .contact-deco-left {
-  left: -120px;
+  left: 0;
   top: 12%;
+  transform: translateX(-35%);
 }
 
 .pricing-deco-right,
 .faq-deco-right,
 .contact-deco-right {
-  right: -120px;
+  right: 0;
   bottom: 10%;
+  transform: translateX(35%);
 }
 
 .pricing-deco-blob,
@@ -8194,7 +8203,13 @@ html.dark .faq-answer {
 }
 
 .privacy-wrap {
-  max-width: 48rem;
+  max-width: min(100%, 48rem);
+}
+
+.privacy-doc,
+.privacy-doc--cms {
+  overflow-wrap: break-word;
+  word-break: normal;
 }
 
 .privacy-header {
@@ -8243,6 +8258,7 @@ html.dark .privacy-lead {
   gap: 1.85rem;
 }
 
+/* Seeded/sectioned legal HTML: one grid cell per section wrapper. */
 .privacy-section h2,
 .privacy-doc--cms h2 {
   margin: 0 0 0.7rem;
@@ -8254,6 +8270,20 @@ html.dark .privacy-lead {
 
 html.dark .privacy-section h2,
 html.dark .privacy-doc--cms h2 {
+  color: #e2e8f0;
+}
+
+.privacy-section h3,
+.privacy-doc--cms h3 {
+  margin: 1.15rem 0 0.55rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #0f172a;
+}
+
+html.dark .privacy-section h3,
+html.dark .privacy-doc--cms h3 {
   color: #e2e8f0;
 }
 
@@ -8279,7 +8309,9 @@ html.dark .privacy-doc--cms li {
 }
 
 .privacy-section ul,
-.privacy-doc--cms ul {
+.privacy-section ol,
+.privacy-doc--cms ul,
+.privacy-doc--cms ol {
   margin: 0.75rem 0 0;
   padding-left: 1.2rem;
   display: grid;
@@ -8297,6 +8329,58 @@ html.dark .privacy-doc--cms li {
   gap: 0;
 }
 
+/*
+ * Quill / flat CMS HTML: many direct h2/p/ul siblings.
+ * Do not use the section grid gap between every node (that creates huge blank
+ * bands after empty Quill <p><br></p> and between paragraphs).
+ */
+.privacy-doc.privacy-doc--cms {
+  display: block;
+}
+
+.privacy-doc--cms > h2 {
+  margin-top: 1.85rem;
+}
+
+.privacy-doc--cms > h2:first-child {
+  margin-top: 0;
+}
+
+.privacy-doc--cms > h3 {
+  margin-top: 1.35rem;
+}
+
+.privacy-doc--cms > p,
+.privacy-doc--cms > ul,
+.privacy-doc--cms > ol,
+.privacy-doc--cms > blockquote {
+  margin-top: 0.75rem;
+}
+
+.privacy-doc--cms > h2 + p,
+.privacy-doc--cms > h2 + ul,
+.privacy-doc--cms > h2 + ol,
+.privacy-doc--cms > h3 + p,
+.privacy-doc--cms > h3 + ul,
+.privacy-doc--cms > h3 + ol {
+  margin-top: 0.7rem;
+}
+
+/* Hide Quill blank spacer paragraphs */
+.privacy-doc--cms > p:empty,
+.privacy-doc--cms p:has(> br:only-child),
+.privacy-doc--cms p:has(> br:first-child:last-child) {
+  display: none;
+}
+
+.privacy-doc--cms > div + div,
+.privacy-doc--cms > section + section,
+.privacy-doc--cms > div + section,
+.privacy-doc--cms > section + div {
+  margin-top: 1.85rem;
+}
+
+.privacy-doc--cms a,
 .privacy-inline-link {
   color: var(--primary);
   font-weight: 600;
@@ -8305,12 +8389,36 @@ html.dark .privacy-doc--cms li {
   text-underline-offset: 0.14em;
 }
 
+.privacy-doc--cms a:hover,
 .privacy-inline-link:hover {
   color: color-mix(in srgb, var(--primary) 82%, #0f172a);
 }
 
+html.dark .privacy-doc--cms a:hover,
 html.dark .privacy-inline-link:hover {
   color: color-mix(in srgb, var(--primary) 70%, #fff);
+}
+
+.privacy-doc--cms strong,
+.privacy-doc--cms b {
+  font-weight: 700;
+  color: #334155;
+}
+
+html.dark .privacy-doc--cms strong,
+html.dark .privacy-doc--cms b {
+  color: #cbd5e1;
+}
+
+.privacy-doc--cms blockquote {
+  margin: 0.9rem 0 0;
+  padding: 0.55rem 0 0.55rem 0.95rem;
+  border-left: 3px solid color-mix(in srgb, var(--primary) 45%, transparent);
+  color: #64748b;
+}
+
+html.dark .privacy-doc--cms blockquote {
+  color: #94a3b8;
 }
 
 @media (max-width: 639px) {
@@ -8837,39 +8945,30 @@ html.dark .why-section {
 .why-wrap {
   margin-inline: auto;
   width: 100%;
-  max-width: 1280px;
-  padding-inline: var(--space-5);
-}
-
-@media (min-width: 640px) {
-  .why-wrap {
-    padding-inline: var(--space-7);
-  }
-}
-
-@media (min-width: 1280px) {
-  .why-wrap {
-    padding-inline: var(--space-8);
-  }
+  max-width: var(--landing-container);
+  padding-inline: var(--landing-gutter);
 }
 
 .why-deco {
   position: absolute;
   top: 12%;
-  width: 280px;
-  height: 280px;
+  width: min(18rem, 42vw);
+  height: min(18rem, 42vw);
+  max-width: 40%;
   pointer-events: none;
   z-index: 0;
 }
 
 .why-deco-left {
-  left: -120px;
+  left: 0;
+  transform: translateX(-35%);
 }
 
 .why-deco-right {
-  right: -120px;
+  right: 0;
   top: auto;
   bottom: 8%;
+  transform: translateX(35%);
 }
 
 .why-deco-blob {
@@ -8918,7 +9017,14 @@ html.dark .why-deco-dots {
 @media (max-width: 1023px) {
   .why-deco {
     opacity: 0.45;
-    transform: scale(0.75);
+  }
+
+  .why-deco-left {
+    transform: translateX(-35%) scale(0.75);
+  }
+
+  .why-deco-right {
+    transform: translateX(35%) scale(0.75);
   }
 }
 
@@ -9017,7 +9123,7 @@ html.dark .why-eyebrow {
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-height: 26.5rem;
+  min-height: 0;
   overflow: hidden;
   isolation: isolate;
   border-radius: 1.5rem;
@@ -9665,7 +9771,7 @@ html.dark .about-viz-plan-meta li {
 }
 
 .how-workflow-card.about-pillar-card {
-  min-height: 26.5rem;
+  min-height: 0;
 }
 
 .how-workflow-card .about-pillar-cta {
@@ -10510,8 +10616,8 @@ html.dark .features-intro-bg {
   z-index: 1;
   margin-inline: auto;
   width: 100%;
-  max-width: 1280px;
-  padding: 5.25rem var(--space-5) var(--space-16);
+  max-width: var(--landing-container);
+  padding: 5.25rem var(--landing-gutter) var(--space-16);
 }
 
 @media (min-width: 640px) {
@@ -11361,8 +11467,8 @@ html.dark .solutions-intro-bg {
   z-index: 1;
   margin-inline: auto;
   width: 100%;
-  max-width: 1240px;
-  padding: 5.25rem var(--space-5) 4.25rem;
+  max-width: var(--landing-container);
+  padding: 5.25rem var(--landing-gutter) 4.25rem;
 }
 
 @media (min-width: 640px) {
@@ -13596,7 +13702,7 @@ html.dark .landing-menu-toggle {
 /* Independent Header chrome (can differ from Skin) */
 html.app-header-dark .landing-header[data-chrome="solid"] {
   background: rgba(10, 16, 28, 0.92) !important;
-  border-bottom-color: rgba(148, 163, 184, 0.14) !important;
+  border-bottom: 1px solid var(--ui-border) !important;
   color: #e2e8f0;
 }
 
@@ -13608,7 +13714,7 @@ html.app-header-dark .landing-header[data-chrome="solid"] .landing-header-action
 
 html.app-header-light .landing-header[data-chrome="solid"] {
   background: rgba(255, 255, 255, 0.92) !important;
-  border-bottom-color: rgba(15, 23, 42, 0.08) !important;
+  border-bottom: 1px solid var(--ui-border) !important;
   color: #0f172a;
 }
 
@@ -14460,6 +14566,17 @@ html.dark .beta-input.is-invalid:focus {
 
 html.dark .beta-field-error {
   color: #f87171;
+}
+
+.beta-field-help {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  color: #64748b;
+}
+
+html.dark .beta-field-help {
+  color: #94a3b8;
 }
 
 .beta-success {
@@ -21841,12 +21958,6 @@ main {
   .main-dashboard {
     max-width: 100%;
     min-width: 0;
-  }
-}
-
-@media (max-width: 389px) {
-  :root {
-    --landing-gutter: var(--space-4);
   }
 }
 

@@ -54,7 +54,7 @@ export function StoryCanvas({
   const emphasizeActivity = activeId === "activity";
 
   return (
-    <LayoutGroup id="organitio-feature-story">
+    <LayoutGroup id="worknaro-feature-story">
       <div className="pfs-viz" aria-live="polite">
         <div className="pfs-viz-chrome">
           <span className="pfs-viz-dots" aria-hidden="true">

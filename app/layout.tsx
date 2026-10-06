@@ -138,7 +138,7 @@ const themeBootScript = `
       }
       return false;
     }
-    var legacy = localStorage.getItem('organitio-landing-theme');
+    var legacy = localStorage.getItem('worknaro-landing-theme');
     var primarySkin = localStorage.getItem('app-skin');
     var mirrorSkin = localStorage.getItem('app-skin-dark');
     var hasPrimarySkin = primarySkin === SKIN_DARK || primarySkin === SKIN_LIGHT;
@@ -192,7 +192,7 @@ const themeBootScript = `
     root.style.setProperty('--font-display', stack);
     var googleFamily = FONT_GOOGLE[font];
     if (googleFamily) {
-      var existing = document.getElementById('organitio-appearance-font');
+      var existing = document.getElementById('worknaro-appearance-font');
       var href = 'https://fonts.googleapis.com/css2?family=' +
         encodeURIComponent(googleFamily).replace(/%20/g, '+') +
         ':wght@400;500;600;700;800&display=swap';
@@ -200,7 +200,7 @@ const themeBootScript = `
         existing.href = href;
       } else {
         var link = document.createElement('link');
-        link.id = 'organitio-appearance-font';
+        link.id = 'worknaro-appearance-font';
         link.rel = 'stylesheet';
         link.href = href;
         document.head.appendChild(link);

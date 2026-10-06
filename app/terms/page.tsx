@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = terms?.title?.trim() || "Terms of Service";
   const description =
     terms?.summary?.trim() ||
-    `Terms of Service for ${siteConfig.name}, covering accounts, workspaces, User Content, billing when enabled, Google Sign-In, and acceptable use of the Worknaro website and application.`;
+    `Terms of Service for ${siteConfig.name}, covering accounts, workspaces, roles, User Content, billing and trials when enabled, Sign-In providers, acceptable use, and related Service terms.`;
 
   return {
     title: {

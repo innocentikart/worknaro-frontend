@@ -128,7 +128,7 @@ export function Pricing({
         ) : null}
 
         <StaggerChildren
-          className={`pricing-cards-grid grid items-stretch gap-5 lg:grid-cols-4 ${
+          className={`pricing-cards-grid ${
             afterIntro ? "mt-0" : "landing-to-content"
           }`}
         >

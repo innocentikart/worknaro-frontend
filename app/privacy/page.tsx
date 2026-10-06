@@ -10,7 +10,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = policy?.title?.trim() || "Privacy Policy";
   const description =
     policy?.summary?.trim() ||
-    `Privacy Policy for ${siteConfig.name}, explaining how we collect, use, and share information across the Worknaro website and application, including Google Sign-In.`;
+    `Privacy Policy for ${siteConfig.name}, explaining how we collect, use, and share information across the Worknaro website and application, including workspaces, billing when enabled, and Sign-In providers.`;
 
   return {
     title: {

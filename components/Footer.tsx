@@ -50,7 +50,7 @@ export function Footer() {
         <span className="footer-dots footer-dots-patch-left" />
         <span className="footer-dots footer-dots-patch-right" />
       </div>
-      <div className="why-wrap relative z-10 grid gap-8 pb-12 sm:grid-cols-2 sm:gap-12 sm:pb-16 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="why-wrap relative z-10 grid gap-8 pb-12 sm:grid-cols-2 sm:gap-12 sm:pb-16 xl:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Logo />
           <p className="site-footer-desc mt-4 max-w-xs text-sm leading-relaxed">

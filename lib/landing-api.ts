@@ -181,6 +181,7 @@ export async function submitBetaSignup(input: {
   role?: string;
   team_size?: string;
   notes?: string;
+  phone?: string;
 }): Promise<{ ok: boolean; message: string }> {
   try {
     const res = await fetch(`${getAppUrl()}/api/v1/public/beta-signups/`, {
@@ -196,6 +197,7 @@ export async function submitBetaSignup(input: {
         role: input.role || "",
         team_size: input.team_size || "",
         notes: input.notes || "",
+        phone: input.phone || "",
         website: "", // honeypot
       }),
     });
